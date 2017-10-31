@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RunningRhythm.xcodeproj">
+      location = "group:/Users/boris/GitHub/borischu/RunningRhythm/RunningRhythm/RunningRhythm.xcdatamodel">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */; };
-		A1D0A1801FA2B8CB003862B4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17F1FA2B8CB003862B4 /* MainViewController.swift */; };
+		A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */; };
 		A1D0A1831FA2B8CB003862B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D0A1811FA2B8CB003862B4 /* Main.storyboard */; };
-		A1D0A1861FA2B8CB003862B4 /* RunningRhythm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A1841FA2B8CB003862B4 /* RunningRhythm.xcdatamodeld */; };
 		A1D0A1881FA2B8CB003862B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1D0A1871FA2B8CB003862B4 /* Assets.xcassets */; };
 		A1D0A18B1FA2B8CB003862B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D0A1891FA2B8CB003862B4 /* LaunchScreen.storyboard */; };
 		A1D0A1961FA2B8CB003862B4 /* RunningRhythmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A1951FA2B8CB003862B4 /* RunningRhythmTests.swift */; };
@@ -18,6 +17,9 @@
 		A1D0A1B11FA2C154003862B4 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1AE1FA2C153003862B4 /* SpotifyAudioPlayback.framework */; };
 		A1D0A1B21FA2C154003862B4 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1AF1FA2C153003862B4 /* SpotifyAuthentication.framework */; };
 		A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */; };
+		A1F08C1D1FA843B2009BDAFA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1F08C1C1FA843B2009BDAFA /* README.md */; };
+		A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */; };
+		A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,9 +42,8 @@
 /* Begin PBXFileReference section */
 		A1D0A17A1FA2B8CB003862B4 /* RunningRhythm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningRhythm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1D0A17F1FA2B8CB003862B4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A1D0A1821FA2B8CB003862B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A1D0A1851FA2B8CB003862B4 /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
 		A1D0A1871FA2B8CB003862B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1D0A18A1FA2B8CB003862B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1D0A18C1FA2B8CB003862B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		A1D0A1AF1FA2C153003862B4 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
 		A1D0A1B41FA2C302003862B4 /* RunningRhythm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningRhythm-Bridging-Header.h"; sourceTree = "<group>"; };
+		A1F08C1C1FA843B2009BDAFA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginViewController.swift; sourceTree = "<group>"; };
+		A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,15 +114,17 @@
 			isa = PBXGroup;
 			children = (
 				A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */,
-				A1D0A17F1FA2B8CB003862B4 /* MainViewController.swift */,
+				A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */,
+				A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
+				A1F08C1C1FA843B2009BDAFA /* README.md */,
 				A1D0A1AE1FA2C153003862B4 /* SpotifyAudioPlayback.framework */,
 				A1D0A1AF1FA2C153003862B4 /* SpotifyAuthentication.framework */,
 				A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */,
 				A1D0A1871FA2B8CB003862B4 /* Assets.xcassets */,
 				A1D0A1891FA2B8CB003862B4 /* LaunchScreen.storyboard */,
+				A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */,
 				A1D0A18C1FA2B8CB003862B4 /* Info.plist */,
-				A1D0A1841FA2B8CB003862B4 /* RunningRhythm.xcdatamodeld */,
 				A1D0A1B41FA2C302003862B4 /* RunningRhythm-Bridging-Header.h */,
 			);
 			path = RunningRhythm;
@@ -252,6 +258,7 @@
 			files = (
 				A1D0A18B1FA2B8CB003862B4 /* LaunchScreen.storyboard in Resources */,
 				A1D0A1881FA2B8CB003862B4 /* Assets.xcassets in Resources */,
+				A1F08C1D1FA843B2009BDAFA /* README.md in Resources */,
 				A1D0A1831FA2B8CB003862B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,8 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1D0A1801FA2B8CB003862B4 /* MainViewController.swift in Sources */,
-				A1D0A1861FA2B8CB003862B4 /* RunningRhythm.xcdatamodeld in Sources */,
+				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
+				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
+				A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */,
 				A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,19 +600,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A1D0A1841FA2B8CB003862B4 /* RunningRhythm.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A1D0A1851FA2B8CB003862B4 /* RunningRhythm.xcdatamodel */,
-			);
-			currentVersion = A1D0A1851FA2B8CB003862B4 /* RunningRhythm.xcdatamodel */;
-			path = RunningRhythm.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A1D0A1721FA2B8CB003862B4 /* Project object */;
 }
