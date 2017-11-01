@@ -17,10 +17,10 @@
 		A1D0A1B11FA2C154003862B4 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1AE1FA2C153003862B4 /* SpotifyAudioPlayback.framework */; };
 		A1D0A1B21FA2C154003862B4 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1AF1FA2C153003862B4 /* SpotifyAuthentication.framework */; };
 		A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */; };
+		A1EB75091FA975D600BDB1B1 /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB75081FA975D600BDB1B1 /* SpotifyLoginViewController.swift */; };
 		A1F08C1D1FA843B2009BDAFA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1F08C1C1FA843B2009BDAFA /* README.md */; };
 		A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */; };
 		A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */; };
-		C7DCCF0A1FA94D6000A119BB /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF091FA94D6000A119BB /* SpotifyLoginViewController.swift */; };
 		C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,10 +59,10 @@
 		A1D0A1AF1FA2C153003862B4 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
 		A1D0A1B41FA2C302003862B4 /* RunningRhythm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningRhythm-Bridging-Header.h"; sourceTree = "<group>"; };
+		A1EB75081FA975D600BDB1B1 /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
 		A1F08C1C1FA843B2009BDAFA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginViewController.swift; sourceTree = "<group>"; };
 		A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
-		C7DCCF091FA94D6000A119BB /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpotifyLoginViewController.swift; path = ../SpotifyLoginViewController.swift; sourceTree = "<group>"; };
 		C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 				A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */,
 				A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */,
 				A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */,
-				C7DCCF091FA94D6000A119BB /* SpotifyLoginViewController.swift */,
+				A1EB75081FA975D600BDB1B1 /* SpotifyLoginViewController.swift */,
 				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
 				A1F08C1C1FA843B2009BDAFA /* README.md */,
@@ -290,11 +290,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7DCCF0A1FA94D6000A119BB /* SpotifyLoginViewController.swift in Sources */,
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
 				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
 				A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */,
+				A1EB75091FA975D600BDB1B1 /* SpotifyLoginViewController.swift in Sources */,
 				A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

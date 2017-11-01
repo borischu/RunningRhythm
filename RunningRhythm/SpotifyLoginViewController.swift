@@ -12,7 +12,6 @@ class SpotifyLoginViewController: UIViewController {
     
     var username: String?
     @IBOutlet weak var userNameLabel: UILabel!
-    var alertController: UIAlertController?
     let clientID = "e6b39d82ce7945a493ebe0811837cd3b"
     let redirectURL = "RunningRhythm://returnAfterLogin"
     let tokenSwapURL = "http://localhost:1234/swap"
