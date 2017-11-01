@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,6 +14,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hiv-cl-NHC"/>
+                        <viewControllerLayoutGuide type="bottom" id="M49-Ux-oja"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,23 +98,22 @@
                             <constraint firstItem="hat-2Y-WnB" firstAttribute="baseline" secondItem="Rpm-Ou-fY6" secondAttribute="baseline" id="D5R-Fa-8Bl"/>
                             <constraint firstItem="HYI-h8-yzK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="F4y-Lr-5Un"/>
                             <constraint firstItem="HYI-h8-yzK" firstAttribute="trailing" secondItem="Rpm-Ou-fY6" secondAttribute="trailing" id="GBB-be-nVK"/>
-                            <constraint firstItem="1CX-qv-6An" firstAttribute="top" secondItem="gPj-Kr-BS5" secondAttribute="top" constant="109" id="ILN-3g-nUS"/>
+                            <constraint firstItem="1CX-qv-6An" firstAttribute="top" secondItem="hiv-cl-NHC" secondAttribute="bottom" constant="109" id="ILN-3g-nUS"/>
                             <constraint firstItem="d2T-UN-LKK" firstAttribute="top" secondItem="Rt1-Ly-q3D" secondAttribute="bottom" constant="20" id="Km2-yT-dqs"/>
                             <constraint firstItem="hat-2Y-WnB" firstAttribute="top" secondItem="HYI-h8-yzK" secondAttribute="bottom" constant="18" id="Mjr-Q7-R7C"/>
-                            <constraint firstItem="Rmv-uE-eVg" firstAttribute="top" secondItem="gPj-Kr-BS5" secondAttribute="top" constant="54" id="O2Y-dR-ZD8"/>
-                            <constraint firstItem="1CX-qv-6An" firstAttribute="centerX" secondItem="gPj-Kr-BS5" secondAttribute="centerX" id="Qbs-y8-kRN"/>
-                            <constraint firstItem="oJn-kG-T6H" firstAttribute="leading" secondItem="gPj-Kr-BS5" secondAttribute="leading" constant="86" id="Quu-Iv-il4"/>
-                            <constraint firstItem="Rmv-uE-eVg" firstAttribute="leading" secondItem="gPj-Kr-BS5" secondAttribute="leading" constant="66" id="USB-E2-20G"/>
+                            <constraint firstItem="Rmv-uE-eVg" firstAttribute="top" secondItem="hiv-cl-NHC" secondAttribute="bottom" constant="54" id="O2Y-dR-ZD8"/>
+                            <constraint firstItem="1CX-qv-6An" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qbs-y8-kRN"/>
+                            <constraint firstItem="oJn-kG-T6H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="86" id="Quu-Iv-il4"/>
+                            <constraint firstItem="Rmv-uE-eVg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="66" id="USB-E2-20G"/>
                             <constraint firstItem="Rt1-Ly-q3D" firstAttribute="leading" secondItem="hat-2Y-WnB" secondAttribute="leading" id="WkA-b4-xvv"/>
                             <constraint firstItem="Rpm-Ou-fY6" firstAttribute="leading" secondItem="hat-2Y-WnB" secondAttribute="trailing" constant="28" id="ZDD-b9-b0a"/>
                             <constraint firstItem="d2T-UN-LKK" firstAttribute="centerX" secondItem="oJn-kG-T6H" secondAttribute="centerX" id="fxn-qC-D96"/>
-                            <constraint firstItem="Rt1-Ly-q3D" firstAttribute="leading" secondItem="gPj-Kr-BS5" secondAttribute="leading" constant="89" id="goJ-T4-Xu7"/>
+                            <constraint firstItem="Rt1-Ly-q3D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="89" id="goJ-T4-Xu7"/>
                             <constraint firstItem="1CX-qv-6An" firstAttribute="centerX" secondItem="d2T-UN-LKK" secondAttribute="centerX" id="hch-QS-EfR"/>
                             <constraint firstItem="Rmv-uE-eVg" firstAttribute="centerX" secondItem="1CX-qv-6An" secondAttribute="centerX" id="mKe-NE-THz"/>
                             <constraint firstItem="oJn-kG-T6H" firstAttribute="trailing" secondItem="HYI-h8-yzK" secondAttribute="trailing" id="uYE-3k-xoz"/>
                             <constraint firstItem="oJn-kG-T6H" firstAttribute="leading" secondItem="HYI-h8-yzK" secondAttribute="leading" id="yP1-H8-9Qx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gPj-Kr-BS5"/>
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="HYI-h8-yzK" id="9tX-TO-fcT"/>
@@ -127,6 +129,10 @@
         <scene sceneID="bfW-H8-AZL">
             <objects>
                 <viewController id="CFt-Sm-nnB" customClass="AppLoginViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1zP-OJ-pdC"/>
+                        <viewControllerLayoutGuide type="bottom" id="h4D-zk-CTD"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KZW-W8-zNd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,15 +162,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Njj-ON-V0Z" firstAttribute="leading" secondItem="5gA-H8-JwZ" secondAttribute="leading" constant="34" id="35P-2J-vtu"/>
+                            <constraint firstItem="Njj-ON-V0Z" firstAttribute="leading" secondItem="KZW-W8-zNd" secondAttribute="leading" constant="34" id="35P-2J-vtu"/>
                             <constraint firstItem="dRR-n3-AUR" firstAttribute="leading" secondItem="Njj-ON-V0Z" secondAttribute="trailing" constant="8" symbolic="YES" id="Jw7-F9-LTw"/>
                             <constraint firstItem="Njj-ON-V0Z" firstAttribute="baseline" secondItem="dRR-n3-AUR" secondAttribute="baseline" id="Vg0-si-wne"/>
                             <constraint firstItem="5se-l2-Kdo" firstAttribute="top" secondItem="KZW-W8-zNd" secondAttribute="topMargin" constant="75" id="chI-gW-o3n"/>
-                            <constraint firstItem="Njj-ON-V0Z" firstAttribute="top" secondItem="5gA-H8-JwZ" secondAttribute="top" id="dCb-Kb-AjY"/>
-                            <constraint firstItem="5gA-H8-JwZ" firstAttribute="trailing" secondItem="5se-l2-Kdo" secondAttribute="trailing" constant="169" id="gIn-gV-a5G"/>
+                            <constraint firstItem="Njj-ON-V0Z" firstAttribute="top" secondItem="1zP-OJ-pdC" secondAttribute="bottom" id="dCb-Kb-AjY"/>
+                            <constraint firstAttribute="trailing" secondItem="5se-l2-Kdo" secondAttribute="trailing" constant="169" id="gIn-gV-a5G"/>
                             <constraint firstItem="dRR-n3-AUR" firstAttribute="trailing" secondItem="KZW-W8-zNd" secondAttribute="trailingMargin" id="nbb-Eg-ukv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5gA-H8-JwZ"/>
                     </view>
                     <connections>
                         <outlet property="usernameLabel" destination="dRR-n3-AUR" id="jNJ-42-Klb"/>
