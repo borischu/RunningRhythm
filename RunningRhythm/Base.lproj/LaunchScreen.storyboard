@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="runningrhythmlaunch" translatesAutoresizingMaskIntoConstraints="NO" id="cO5-mg-6OP">
-                                <rect key="frame" x="16" y="105" width="342" height="114"/>
+                                <rect key="frame" x="16.5" y="105" width="342" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="EEO-Ue-O4p"/>
                                     <constraint firstAttribute="width" constant="342" id="Zy0-L0-fkA"/>
@@ -38,6 +38,9 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.26274509800000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cO5-mg-6OP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pAR-0m-sX2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
