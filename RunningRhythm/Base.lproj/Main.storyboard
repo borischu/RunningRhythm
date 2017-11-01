@@ -66,6 +66,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="loginWithApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8im-1F-5Qv"/>
                                     <segue destination="CFt-Sm-nnB" kind="show" identifier="appLogin" id="J1r-RE-U4j"/>
                                 </connections>
                             </button>
@@ -111,9 +112,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkB-9B-gMX">
-                                <rect key="frame" x="113" y="227" width="149" height="46"/>
-                                <color key="backgroundColor" red="0.11424986273050308" green="0.72681492567062378" blue="0.33033949136734009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkB-9B-gMX">
+                                <rect key="frame" x="117" y="227" width="180" height="46"/>
+                                <color key="backgroundColor" red="0.1142498627" green="0.72681492569999995" blue="0.33033949140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Login with Spotify">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.9839094883419689" green="0.59456956348304613" blue="0.85547690715917413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

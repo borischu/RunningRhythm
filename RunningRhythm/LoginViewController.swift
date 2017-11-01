@@ -45,15 +45,13 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    
     @IBAction func signUp(_ sender: Any) {
         if userNameTextField.text != "" && passwordTextField.text != "" {
             saveLogin(user: userNameTextField.text!, pass: passwordTextField.text!)
         } else {
-            self.alertController = UIAlertController(title: "Signup error", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
-            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-            self.alertController!.addAction(OKAction)
+            self.alertController = UIAlertController(title: "Signup error", message: "Complete all fields.", preferredStyle: UIAlertControllerStyle.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            self.alertController!.addAction(ok)
             self.present(self.alertController!, animated: true, completion:nil)
         }
     }
@@ -75,4 +73,3 @@ class LoginViewController: UIViewController {
     }
     
 }
-
