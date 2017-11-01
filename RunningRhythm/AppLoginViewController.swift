@@ -25,7 +25,7 @@ class AppLoginViewController: UIViewController {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Login")
         do {
             loginList = try managedContext.fetch(fetchRequest)
-            print(loginList)
+//            print(loginList)
             self.usernameLabel.text = loginList[0].value(forKey: "username") as! String
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
