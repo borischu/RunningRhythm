@@ -213,9 +213,11 @@
                                 </constraints>
                                 <state key="normal" title="Settings" image="realsettingsicon"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="runningrhythmlaunchalternate" translatesAutoresizingMaskIntoConstraints="NO" id="mfV-37-lLK">
-                                <rect key="frame" x="16" y="35" width="342" height="114"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runningrhythmlaunchalternate" translatesAutoresizingMaskIntoConstraints="NO" id="mfV-37-lLK">
+                                <rect key="frame" x="16.5" y="35" width="342" height="114"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="114" id="90X-A7-4Zv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="342" id="Cep-NN-FNl"/>
                                     <constraint firstAttribute="width" constant="342" id="itT-bg-Lrt"/>
                                     <constraint firstAttribute="height" constant="114" id="wgJ-2J-p4K"/>
                                 </constraints>
@@ -225,11 +227,13 @@
                         <constraints>
                             <constraint firstItem="FxH-Zv-LRe" firstAttribute="centerX" secondItem="KZW-W8-zNd" secondAttribute="centerX" id="9iT-mW-6rB"/>
                             <constraint firstItem="eMF-v8-wcK" firstAttribute="leading" secondItem="KZW-W8-zNd" secondAttribute="leadingMargin" id="Blt-Cc-Re5"/>
+                            <constraint firstItem="mfV-37-lLK" firstAttribute="centerX" secondItem="KZW-W8-zNd" secondAttribute="centerX" id="NOC-8X-Ixp"/>
                             <constraint firstItem="h4D-zk-CTD" firstAttribute="top" secondItem="eMF-v8-wcK" secondAttribute="bottom" constant="55" id="S91-V3-VBi"/>
                             <constraint firstItem="h4D-zk-CTD" firstAttribute="top" secondItem="FxH-Zv-LRe" secondAttribute="bottom" constant="55" id="aw7-Z3-xus"/>
                             <constraint firstItem="xf1-O0-mFH" firstAttribute="trailing" secondItem="KZW-W8-zNd" secondAttribute="trailingMargin" id="bJr-Hy-ICm"/>
                             <constraint firstItem="5se-l2-Kdo" firstAttribute="top" secondItem="KZW-W8-zNd" secondAttribute="topMargin" constant="75" id="chI-gW-o3n"/>
                             <constraint firstAttribute="trailing" secondItem="5se-l2-Kdo" secondAttribute="trailing" constant="169" id="gIn-gV-a5G"/>
+                            <constraint firstItem="mfV-37-lLK" firstAttribute="top" secondItem="1zP-OJ-pdC" secondAttribute="bottom" constant="15" id="uCp-64-NdY"/>
                             <constraint firstItem="h4D-zk-CTD" firstAttribute="top" secondItem="xf1-O0-mFH" secondAttribute="bottom" constant="55" id="z7V-uE-Cwd"/>
                         </constraints>
                     </view>
