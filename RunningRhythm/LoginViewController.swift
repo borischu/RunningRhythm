@@ -12,41 +12,11 @@ class LoginViewController: UIViewController {
     
     var username: String?
     var alertController: UIAlertController?
-    let clientID = "e6b39d82ce7945a493ebe0811837cd3b"
-    let redirectURL = "RunningRhythm://returnAfterLogin"
-    let tokenSwapURL = "http://localhost:1234/swap"
-    let tokenRefreshServiceURL = "http://localhost:1234/refresh"
-    
-    @IBOutlet weak var spotifyLoginButton: UIButton!
-    var session:SPTSession!
-    
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let auth = SPTAuth.defaultInstance()!
-        
-        if auth.session == nil {
-            print("No token/session exists")
-            return
-        }
-        
-        if auth.session.isValid() {
-            print("Valid session exists")
-            return
-        }
-    }
-    @IBAction func loginWithSpotify(_ sender: AnyObject) {
-        let auth = SPTAuth.defaultInstance()!
-        
-        auth.clientID = clientID
-        auth.redirectURL = URL(string: redirectURL)
-        auth.tokenRefreshURL = URL(string: tokenRefreshServiceURL)
-        auth.tokenSwapURL = URL(string: tokenSwapURL)
-        auth.requestedScopes = [SPTAuthStreamingScope]
-        let loginURL = auth.spotifyWebAuthenticationURL()
-        UIApplication.shared.open(loginURL!)
     }
     
     func saveLogin(user: String, pass: String) {
@@ -74,6 +44,7 @@ class LoginViewController: UIViewController {
             self.present(self.alertController!, animated: true, completion:nil)
         }
     }
+    
     
     
     @IBAction func signUp(_ sender: Any) {
