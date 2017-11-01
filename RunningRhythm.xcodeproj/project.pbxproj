@@ -20,6 +20,8 @@
 		A1F08C1D1FA843B2009BDAFA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1F08C1C1FA843B2009BDAFA /* README.md */; };
 		A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */; };
 		A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */; };
+		C7DCCF0A1FA94D6000A119BB /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF091FA94D6000A119BB /* SpotifyLoginViewController.swift */; };
+		C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		A1F08C1C1FA843B2009BDAFA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginViewController.swift; sourceTree = "<group>"; };
 		A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
+		C7DCCF091FA94D6000A119BB /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpotifyLoginViewController.swift; path = ../SpotifyLoginViewController.swift; sourceTree = "<group>"; };
+		C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */,
 				A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */,
 				A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */,
+				C7DCCF091FA94D6000A119BB /* SpotifyLoginViewController.swift */,
+				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
 				A1F08C1C1FA843B2009BDAFA /* README.md */,
 				A1D0A1AE1FA2C153003862B4 /* SpotifyAudioPlayback.framework */,
@@ -284,6 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DCCF0A1FA94D6000A119BB /* SpotifyLoginViewController.swift in Sources */,
+				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
 				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
 				A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */,
