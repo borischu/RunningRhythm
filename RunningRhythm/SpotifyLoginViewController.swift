@@ -22,6 +22,7 @@ class SpotifyLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameLabel.text = username
         let auth = SPTAuth.defaultInstance()!
         if auth.session == nil {
             print("No token/session exists")
@@ -31,7 +32,6 @@ class SpotifyLoginViewController: UIViewController {
             print("Valid session exists")
             return
         }
-        userNameLabel.text = username
     }
     @IBAction func loginWithSpotify(_ sender: AnyObject) {
         let auth = SPTAuth.defaultInstance()!
