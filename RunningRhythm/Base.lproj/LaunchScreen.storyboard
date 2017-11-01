@@ -29,7 +29,7 @@
                                 <color key="textColor" red="0.70986807346343994" green="0.33899706602096558" blue="0.39630091190338135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="runningrhythmlaunch" translatesAutoresizingMaskIntoConstraints="NO" id="cO5-mg-6OP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runningrhythmlaunch" translatesAutoresizingMaskIntoConstraints="NO" id="cO5-mg-6OP">
                                 <rect key="frame" x="16.5" y="105" width="342" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="EEO-Ue-O4p"/>
@@ -39,6 +39,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.26274509800000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cO5-mg-6OP" firstAttribute="top" secondItem="5mh-Bh-WVU" secondAttribute="bottom" constant="85" id="F57-zZ-cxb"/>
                             <constraint firstItem="cO5-mg-6OP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pAR-0m-sX2"/>
                         </constraints>
                     </view>
