@@ -58,7 +58,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Login with Spotify"/>
                                 <connections>
-                                    <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="96V-lF-Kbl"/>
+                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eIH-pf-CPa"/>
+                                    <segue destination="RoS-Jb-cCs" kind="show" identifier="spotifyLogin" id="NBY-OZ-XGO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hat-2Y-WnB">
@@ -67,8 +68,8 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eIH-pf-CPa"/>
-                                    <segue destination="CFt-Sm-nnB" kind="show" id="2c2-rH-or1"/>
+                                    <action selector="loginWithApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q3B-PH-aT7"/>
+                                    <segue destination="CFt-Sm-nnB" kind="show" identifier="appLogin" id="TRQ-CF-WCB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2T-UN-LKK">
@@ -92,7 +93,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.209755539894104" green="0.26463538408279419" blue="0.34427553415298462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Rt1-Ly-q3D" firstAttribute="trailing" secondItem="oJn-kG-T6H" secondAttribute="trailing" id="02i-eu-rR0"/>
                             <constraint firstItem="HYI-h8-yzK" firstAttribute="top" secondItem="oJn-kG-T6H" secondAttribute="bottom" constant="2" id="0PC-Dq-BOx"/>
                             <constraint firstItem="oJn-kG-T6H" firstAttribute="top" secondItem="d2T-UN-LKK" secondAttribute="bottom" constant="18" id="2g2-di-mdT"/>
                             <constraint firstItem="hat-2Y-WnB" firstAttribute="baseline" secondItem="Rpm-Ou-fY6" secondAttribute="baseline" id="D5R-Fa-8Bl"/>
@@ -116,7 +116,6 @@
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="HYI-h8-yzK" id="9tX-TO-fcT"/>
-                        <outlet property="spotifyLoginButton" destination="Rt1-Ly-q3D" id="zPd-97-FCz"/>
                         <outlet property="userNameTextField" destination="oJn-kG-T6H" id="oBT-Mi-z12"/>
                     </connections>
                 </viewController>
@@ -148,8 +147,30 @@
                                 </state>
                                 <connections>
                                     <action selector="loginWithSpotify:" destination="RoS-Jb-cCs" eventType="touchUpInside" id="dxs-TI-3HW"/>
+                                    <segue destination="CFt-Sm-nnB" kind="show" id="8xe-j5-sGn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in as:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGW-zh-Td5">
+                                <rect key="frame" x="36" y="139" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFU-d9-5rk">
+                                <rect key="frame" x="168" y="139" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aC-2s-xyN">
+                                <rect key="frame" x="144" y="243" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -160,11 +181,12 @@
                     </view>
                     <connections>
                         <outlet property="spotifyLoginButton" destination="TkB-9B-gMX" id="DBI-I4-C4R"/>
+                        <outlet property="userNameLabel" destination="UFU-d9-5rk" id="equ-aM-vK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rwc-jh-8zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="-576"/>
+            <point key="canvasLocation" x="117.59999999999999" y="-576.1619190404798"/>
         </scene>
         <!--App Login View Controller-->
         <scene sceneID="bfW-H8-AZL">
@@ -223,6 +245,20 @@
                                     <constraint firstAttribute="height" constant="114" id="wgJ-2J-p4K"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="   Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-x0-YLP">
+                                <rect key="frame" x="180" y="157" width="188" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="logged in as:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hs-gY-htn">
+                                <rect key="frame" x="59" y="157" width="122" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97036689519882202" green="0.9224129319190979" blue="0.87584108114242554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -238,6 +274,9 @@
                             <constraint firstItem="h4D-zk-CTD" firstAttribute="top" secondItem="xf1-O0-mFH" secondAttribute="bottom" constant="55" id="z7V-uE-Cwd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userNameLabel" destination="UPl-x0-YLP" id="XPv-A1-K0u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAs-LZ-IWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
