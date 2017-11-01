@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import CoreData
 
 class LoginViewController: UIViewController {
     
+    var username: String?
     var alertController: UIAlertController?
     let clientID = "e6b39d82ce7945a493ebe0811837cd3b"
     let redirectURL = "RunningRhythm://returnAfterLogin"
@@ -46,57 +46,30 @@ class LoginViewController: UIViewController {
         auth.tokenSwapURL = URL(string: tokenSwapURL)
         auth.requestedScopes = [SPTAuthStreamingScope]
         let loginURL = auth.spotifyWebAuthenticationURL()
-        print("Login URL: \(loginURL)")
         UIApplication.shared.open(loginURL!)
     }
     
-    var loginList : [NSDictionary] = []
-    
     func saveLogin(user: String, pass: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Login", in: managedContext)
-        let loginList = NSManagedObject(entity: entity!, insertInto: managedContext)
-        loginList.setValue(pass, forKey: user)
-        do {
-            try managedContext.save()
-            print(loginList)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        UserDefaults.standard.set(pass, forKey: user)
+        username = user
     }
     
     @IBAction func loginWithApp(_ sender: Any) {
         if userNameTextField.text != "" && passwordTextField.text != "" {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            if passwordTextField.text == loginList[userNameTextField.text] as! String {
-                print("Correct username and password")
+            let password = UserDefaults.standard.object(forKey: userNameTextField.text!)
+            if passwordTextField.text == password as? String {
+                print("Login successful")
+                username = userNameTextField.text
             } else {
                 print("Incorrect username and password")
-                self.alertController = UIAlertController(title: "Login Error", message: "Incorrect Username and Password", preferredStyle: UIAlertControllerStyle.alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action:UIAlertAction) in
-                    print("Cancel Button Pressed 1");
-                }
-                self.alertController!.addAction(cancelAction)
-                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction) in
-                    print("Ok Button Pressed 1");
-                }
+                self.alertController = UIAlertController(title: "Login Error", message: "Incorrect Username and Password, Try Again.", preferredStyle: UIAlertControllerStyle.alert)
+                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
                 self.alertController!.addAction(OKAction)
                 self.present(self.alertController!, animated: true, completion:nil)
             }
         } else {
-            self.alertController = UIAlertController(title: "", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action:UIAlertAction) in
-                print("Cancel Button Pressed 1");
-            }
-            self.alertController!.addAction(cancelAction)
-            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction) in
-                print("Ok Button Pressed 1");
-            }
+            self.alertController = UIAlertController(title: "Login error", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
             self.alertController!.addAction(OKAction)
             self.present(self.alertController!, animated: true, completion:nil)
         }
@@ -107,14 +80,8 @@ class LoginViewController: UIViewController {
         if userNameTextField.text != "" && passwordTextField.text != "" {
             saveLogin(user: userNameTextField.text!, pass: passwordTextField.text!)
         } else {
-            self.alertController = UIAlertController(title: "", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action:UIAlertAction) in
-                print("Cancel Button Pressed 1");
-            }
-            self.alertController!.addAction(cancelAction)
-            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction) in
-                print("Ok Button Pressed 1");
-            }
+            self.alertController = UIAlertController(title: "Signup error", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
             self.alertController!.addAction(OKAction)
             self.present(self.alertController!, animated: true, completion:nil)
         }
@@ -123,6 +90,17 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "appLogin" {
+            let destination = segue.destination as? AppLoginViewController
+            destination?.username = username
+        }
+        if segue.identifier == "spotifyLogin" {
+            let destination = segue.destination as? SpotifyLoginViewController
+            destination?.username = username
+        }
     }
     
 }

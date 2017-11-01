@@ -7,35 +7,16 @@
 //
 
 import UIKit
-import CoreData
 
 class AppLoginViewController: UIViewController {
 
-    var loginList = [NSManagedObject]()
-    
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    //Fetch data from CoreData
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Login")
-        do {
-            loginList = try managedContext.fetch(fetchRequest)
-//            print(loginList)
-            self.usernameLabel.text = loginList[0].value(forKey: "username") as! String
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-    }
+    var username: String?
+    @IBOutlet weak var userNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        userNameLabel.text = username
     }
 
     override func didReceiveMemoryWarning() {
