@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var username: String?
     var alertController: UIAlertController?
@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     func saveLogin(user: String, pass: String) {
@@ -49,9 +51,9 @@ class LoginViewController: UIViewController {
         if userNameTextField.text != "" && passwordTextField.text != "" {
             saveLogin(user: userNameTextField.text!, pass: passwordTextField.text!)
         } else {
-            self.alertController = UIAlertController(title: "Signup error", message: "Complete all fields.", preferredStyle: UIAlertControllerStyle.alert)
-            let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-            self.alertController!.addAction(ok)
+            self.alertController = UIAlertController(title: "Signup error", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            self.alertController!.addAction(OKAction)
             self.present(self.alertController!, animated: true, completion:nil)
         }
     }
@@ -59,6 +61,15 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
