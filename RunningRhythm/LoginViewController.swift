@@ -41,7 +41,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func signUp(_ sender: Any) {
+    @IBAction func loginWithApp3(_ sender: Any) {
         if userNameTextField.text != "" && passwordTextField.text != "" {
             if UserDefaults.standard.object(forKey: userNameTextField.text!) != nil {
                 UserDefaults.standard.set(passwordTextField.text!, forKey: userNameTextField.text!)
@@ -60,7 +60,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.present(self.alertController!, animated: true, completion:nil)
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -82,7 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             destination?.username = username
         }
         if segue.identifier == "spotifyLogin" {
-            let destination = segue.destination as? SpotifyLoginViewController
+            let destination = segue.destination as? AppLoginViewController
             destination?.username = username
         }
     }

@@ -55,7 +55,7 @@ class SpotifyLoginViewController: UIViewController {
         if segue.identifier == "appLogin" {
             print("appLogin")
             let destination = segue.destination as? AppLoginViewController
-            destination?.username = username
+            destination?.username = userNameLabel.text
         }
     }
     

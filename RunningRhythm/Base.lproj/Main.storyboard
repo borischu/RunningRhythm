@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -36,7 +36,7 @@
                                 <color key="textColor" red="0.71381551027297974" green="0.34294027090072632" blue="0.40023919939994812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HYI-h8-yzK">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HYI-h8-yzK">
                                 <rect key="frame" x="66" y="298" width="273" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="273" id="eb8-h2-wJt"/>
@@ -46,7 +46,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpm-Ou-fY6">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpm-Ou-fY6">
                                 <rect key="frame" x="231" y="336" width="85" height="30"/>
                                 <color key="backgroundColor" red="0.71381551027297974" green="0.34294027090072632" blue="0.40023919939994812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -58,25 +58,10 @@
                                 </state>
                                 <connections>
                                     <action selector="loginWithApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8im-1F-5Qv"/>
-                                    <segue destination="CFt-Sm-nnB" kind="show" identifier="appLogin" id="J1r-RE-U4j"/>
+                                    <segue destination="CFt-Sm-nnB" kind="show" id="Uz1-E1-gEv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hat-2Y-WnB">
-                                <rect key="frame" x="78" y="336" width="85" height="30"/>
-                                <color key="backgroundColor" red="0.71381551027297974" green="0.34294027090072632" blue="0.40023919939994812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="WtU-aC-DV2"/>
-                                    <constraint firstAttribute="width" constant="85" id="osX-rC-06U"/>
-                                </constraints>
-                                <state key="normal" title="Signup">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="czl-YG-xKs"/>
-                                    <segue destination="RoS-Jb-cCs" kind="show" identifier="spotifyLogin" id="15G-GC-M5o"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJn-kG-T6H">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJn-kG-T6H">
                                 <rect key="frame" x="66" y="268" width="273" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="273" id="6X3-by-Kcr"/>
@@ -86,25 +71,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vo-TR-GGU">
+                                <rect key="frame" x="41" y="414" width="293" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FUCK BOB SEITSINGER"/>
+                                <connections>
+                                    <action selector="loginWithApp3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Qf-5o-64g"/>
+                                    <segue destination="RoS-Jb-cCs" kind="show" identifier="spotifyLogin" id="mzh-zP-BfA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.209755539894104" green="0.26463538408279419" blue="0.34427553415298462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hat-2Y-WnB" firstAttribute="baseline" secondItem="Rpm-Ou-fY6" secondAttribute="baseline" id="2w8-dt-mpl"/>
                             <constraint firstItem="HYI-h8-yzK" firstAttribute="top" secondItem="oJn-kG-T6H" secondAttribute="bottom" id="5EI-8A-vhQ"/>
                             <constraint firstItem="818-cr-eaw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8cF-KC-laJ"/>
-                            <constraint firstItem="M49-Ux-oja" firstAttribute="top" secondItem="hat-2Y-WnB" secondAttribute="bottom" constant="301" id="Ama-8Y-u1a"/>
-                            <constraint firstItem="hat-2Y-WnB" firstAttribute="top" secondItem="HYI-h8-yzK" secondAttribute="bottom" constant="8" id="EpC-vx-SSP"/>
                             <constraint firstItem="1CX-qv-6An" firstAttribute="top" secondItem="hiv-cl-NHC" secondAttribute="bottom" constant="185" id="Mbz-zj-Jgw"/>
                             <constraint firstItem="818-cr-eaw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="StU-20-6J7"/>
                             <constraint firstItem="oJn-kG-T6H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="WH5-ke-6IL"/>
                             <constraint firstItem="Rpm-Ou-fY6" firstAttribute="top" secondItem="HYI-h8-yzK" secondAttribute="bottom" constant="8" id="XM7-x7-WNr"/>
                             <constraint firstItem="oJn-kG-T6H" firstAttribute="trailing" secondItem="HYI-h8-yzK" secondAttribute="trailing" id="bEX-YH-vOj"/>
-                            <constraint firstItem="hat-2Y-WnB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="62" id="ibn-ga-54l"/>
                             <constraint firstItem="oJn-kG-T6H" firstAttribute="leading" secondItem="HYI-h8-yzK" secondAttribute="leading" id="mCY-WA-gTz"/>
-                            <constraint firstItem="Rpm-Ou-fY6" firstAttribute="leading" secondItem="hat-2Y-WnB" secondAttribute="trailing" constant="68" id="mkS-Ru-za3"/>
                             <constraint firstItem="818-cr-eaw" firstAttribute="top" secondItem="hiv-cl-NHC" secondAttribute="bottom" constant="85" id="oPD-SP-De4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1CX-qv-6An" secondAttribute="trailing" constant="27" id="w4Y-Bx-mCg"/>
-                            <constraint firstItem="hat-2Y-WnB" firstAttribute="top" secondItem="HYI-h8-yzK" secondAttribute="bottom" constant="8" symbolic="YES" id="xHG-Hj-ijd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -114,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-628" y="116"/>
+            <point key="canvasLocation" x="-628" y="115.59220389805098"/>
         </scene>
         <!--Spotify Login View Controller-->
         <scene sceneID="CfZ-zS-rkl">
@@ -246,7 +234,7 @@
                                 <state key="normal" title="Settings" image="realsettingsicon"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5se-l2-Kdo">
-                                <rect key="frame" x="206" y="199" width="0.0" height="0.0"/>
+                                <rect key="frame" x="206" y="179" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -458,6 +446,6 @@
         <image name="runningrhythmlaunchalternate" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vic-HX-flQ"/>
+        <segue reference="Uz1-E1-gEv"/>
     </inferredMetricsTieBreakers>
 </document>
