@@ -53,6 +53,7 @@ class SpotifyLoginViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "appLogin" {
+            print("appLogin")
             let destination = segue.destination as? AppLoginViewController
             destination?.username = username
         }
