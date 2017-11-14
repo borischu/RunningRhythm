@@ -46,16 +46,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if UserDefaults.standard.object(forKey: userNameTextField.text!) != nil {
                 UserDefaults.standard.set(passwordTextField.text!, forKey: userNameTextField.text!)
                 username = userNameTextField.text!
+                self.alertController = UIAlertController(title: "Signed up successful", message: "Enter username and password to login", preferredStyle: UIAlertControllerStyle.alert)
+                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                self.alertController!.addAction(OKAction)
+                self.present(self.alertController!, animated: true, completion:nil)
             } else {
                 self.alertController = UIAlertController(title: "Signup error", message: "That username has been taken. Please choose another one.", preferredStyle: UIAlertControllerStyle.alert)
-                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                let OKAction = UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default)
                 self.alertController!.addAction(OKAction)
                 self.present(self.alertController!, animated: true, completion:nil)
             }
         } else {
             print("in signup error")
             self.alertController = UIAlertController(title: "Signup error", message: "You must enter a value for all fields.", preferredStyle: UIAlertControllerStyle.alert)
-            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            let OKAction = UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default)
             self.alertController!.addAction(OKAction)
             self.present(self.alertController!, animated: true, completion:nil)
         }
@@ -79,10 +83,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "appLogin" {
             let destination = segue.destination as? AppLoginViewController
-            destination?.username = username
-        }
-        if segue.identifier == "spotifyLogin" {
-            let destination = segue.destination as? SpotifyLoginViewController
             destination?.username = username
         }
     }
