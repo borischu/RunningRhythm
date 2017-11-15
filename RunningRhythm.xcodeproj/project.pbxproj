@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */; };
 		A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */; };
 		A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */; };
 		A1D0A1831FA2B8CB003862B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D0A1811FA2B8CB003862B4 /* Main.storyboard */; };
@@ -19,7 +20,6 @@
 		A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */; };
 		A1F08C1D1FA843B2009BDAFA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1F08C1C1FA843B2009BDAFA /* README.md */; };
 		A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */; };
-		A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */; };
 		C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
 		A1D0A17A1FA2B8CB003862B4 /* RunningRhythm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningRhythm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		A1D0A1B41FA2C302003862B4 /* RunningRhythm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningRhythm-Bridging-Header.h"; sourceTree = "<group>"; };
 		A1F08C1C1FA843B2009BDAFA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginViewController.swift; sourceTree = "<group>"; };
-		A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
 		C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,13 +120,13 @@
 				A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */,
 				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
+				A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */,
 				A1F08C1C1FA843B2009BDAFA /* README.md */,
 				A1D0A1AE1FA2C153003862B4 /* SpotifyAudioPlayback.framework */,
 				A1D0A1AF1FA2C153003862B4 /* SpotifyAuthentication.framework */,
 				A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */,
 				A1D0A1871FA2B8CB003862B4 /* Assets.xcassets */,
 				A1D0A1891FA2B8CB003862B4 /* LaunchScreen.storyboard */,
-				A1F08C261FA907BB009BDAFA /* RunningRhythm.xcdatamodel */,
 				A1D0A18C1FA2B8CB003862B4 /* Info.plist */,
 				A1D0A1B41FA2C302003862B4 /* RunningRhythm-Bridging-Header.h */,
 			);
@@ -289,8 +289,8 @@
 			files = (
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
+				A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */,
 				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
-				A1F08C271FA907BB009BDAFA /* RunningRhythm.xcdatamodel in Sources */,
 				A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -445,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

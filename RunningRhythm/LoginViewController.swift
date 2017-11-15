@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUp(_ sender: Any) {
         if userNameTextField.text != "" && passwordTextField.text != "" {
-            if UserDefaults.standard.object(forKey: userNameTextField.text!) != nil {
+            if UserDefaults.standard.object(forKey: userNameTextField.text!) == nil {
                 UserDefaults.standard.set(passwordTextField.text!, forKey: userNameTextField.text!)
                 username = userNameTextField.text!
                 self.alertController = UIAlertController(title: "Signed up successful", message: "Enter username and password to login", preferredStyle: UIAlertControllerStyle.alert)

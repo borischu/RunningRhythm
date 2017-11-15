@@ -16,6 +16,7 @@ class AppLoginViewController: UIViewController {
     let redirectURL = "RunningRhythm://returnAfterLogin"
     let tokenSwapURL = "http://localhost:1234/swap"
     let tokenRefreshServiceURL = "http://localhost:1234/refresh"
+    @IBOutlet weak var spotifyLoginButton: UIButton!
     var session:SPTSession!
     
     
@@ -33,20 +34,17 @@ class AppLoginViewController: UIViewController {
         }
     }
     
-    
     @IBAction func connectWithSpotify(_ sender: Any) {
         let auth = SPTAuth.defaultInstance()!
-        if auth == nil {
-            auth.clientID = clientID
-            auth.redirectURL = URL(string: redirectURL)
-            auth.tokenRefreshURL = URL(string: tokenRefreshServiceURL)
-            auth.tokenSwapURL = URL(string: tokenSwapURL)
-            auth.requestedScopes = [SPTAuthStreamingScope]
-            let loginURL = auth.spotifyWebAuthenticationURL()
-            UIApplication.shared.open(loginURL!)
-        } else {
-            
-        }
+        auth.clientID = clientID
+        auth.redirectURL = URL(string: redirectURL)
+        auth.tokenRefreshURL = URL(string: tokenRefreshServiceURL)
+        auth.tokenSwapURL = URL(string: tokenSwapURL)
+        auth.requestedScopes = [SPTAuthStreamingScope]
+        let loginURL = auth.spotifyWebAuthenticationURL()
+        UIApplication.shared.open(loginURL!)
+        spotifyLoginButton.setTitle("Connected with Spotify", for: .normal)
+        spotifyLoginButton.backgroundColor = UIColor.clear
     }
     
     override func didReceiveMemoryWarning() {
