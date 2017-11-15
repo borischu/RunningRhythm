@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var auth = SPTAuth()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         auth.redirectURL = URL(string: "RunningRhythm://returnAfterLogin")
         auth.sessionUserDefaultsKey = "current session"
@@ -23,20 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift. Modeled off recommneded auth flow suggested by Spotify documentation
         if auth.canHandle(auth.redirectURL) {
-            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: {(error, session) in
+            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
                 if error != nil {
-                    print("error")
+                    print("error!")
+                    print(error)
                 }
-        let userDefaults = UserDefaults.standard
-        let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
-        print(sessionData)
-        userDefaults.set(sessionData, forKey: "SpotifySession")
-        userDefaults.synchronize()
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessful"), object: nil)
-        })
-        return true
+                let userDefaults = UserDefaults.standard
+                print(session?.canonicalUsername)
+                print(session?.accessToken)
+                print(session?.encryptedRefreshToken)
+                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
+                userDefaults.set(sessionData, forKey: "SpotifySession")
+                userDefaults.synchronize()
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessful"), object: nil)
+            })
+            print("true")
+            return true
         }
+        print("false")
         return false
     }
 

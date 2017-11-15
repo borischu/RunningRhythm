@@ -11,12 +11,8 @@ import HealthKit
 
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
 
-    var accessToken: String?
-    let clientID = "e6b39d82ce7945a493ebe0811837cd3b"
-    let redirectURL = "RunningRhythm://returnAfterLogin"
-    let tokenSwapURL = "http://localhost:1234/swap"
-    let tokenRefreshServiceURL = "http://localhost:1234/refresh"
-    
+    let auth = SPTAuth.defaultInstance()!
+    var session:SPTSession!
     var player: SPTAudioStreamingController?
     var uri: String!
     
@@ -35,14 +31,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         if player == nil {
             player = SPTAudioStreamingController.sharedInstance()
             do {
-                try player?.start(withClientId: clientID)
+                try player?.start(withClientId: auth.clientID)
             } catch {
                 print("Player could not be initialized")
             }
         }
         player?.delegate = self
         player?.playbackDelegate = self
-        player?.login(withAccessToken: accessToken)
+        player?.login(withAccessToken: session.accessToken)
     }
     
 

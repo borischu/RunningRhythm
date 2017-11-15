@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SafariServices
 
 class AppLoginViewController: UIViewController {
   
     @IBOutlet weak var userNameLabel: UILabel!
     var username: String?
-    let clientID = "e6b39d82ce7945a493ebe0811837cd3b"
+    let clientID = "aa7f9cdbd127419581e250a4525c4105"
     let redirectURL = "RunningRhythm://returnAfterLogin"
     let tokenSwapURL = "http://localhost:1234/swap"
     let tokenRefreshServiceURL = "http://localhost:1234/refresh"
@@ -32,6 +33,7 @@ class AppLoginViewController: UIViewController {
             print("Valid session exists")
             return
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(AppLoginViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
     }
     
     @IBAction func connectWithSpotify(_ sender: Any) {
@@ -43,8 +45,16 @@ class AppLoginViewController: UIViewController {
         auth.requestedScopes = [SPTAuthStreamingScope]
         let loginURL = auth.spotifyWebAuthenticationURL()
         UIApplication.shared.open(loginURL!)
-        spotifyLoginButton.setTitle("Connected with Spotify", for: .normal)
-        spotifyLoginButton.backgroundColor = UIColor.clear
+    }
+    
+    func updateAfterFirstLogin() {
+        if let sessionObj:AnyObject = UserDefaults.standard.object(forKey: "SpotifySession") as AnyObject? {
+            let sessionDataObj = sessionObj as! Data
+            let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
+            session = firstTimeSession
+            spotifyLoginButton.setTitle("Connected with Spotify", for: .normal)
+            spotifyLoginButton.backgroundColor = UIColor.clear
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,14 +63,18 @@ class AppLoginViewController: UIViewController {
     }
     
     
-    /*
+
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "musicPlayer" {
+            let destination = segue.destination as? MusicPlayerViewController
+            destination?.session = session
+        }
      }
-     */
+
     
 }
