@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5292FEEE1FBC044D00C2A0CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */; };
+		5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */; };
+		5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */; };
+		5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */; };
 		A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */; };
 		A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */; };
 		A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
+		5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataViewController.swift; sourceTree = "<group>"; };
+		5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTakenViewController.swift; sourceTree = "<group>"; };
+		5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
 		A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
 		A1D0A17A1FA2B8CB003862B4 /* RunningRhythm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningRhythm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +127,10 @@
 				A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */,
 				A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */,
 				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
+				5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */,
+				5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */,
+				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
+				5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
 				A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */,
 				A1F08C1C1FA843B2009BDAFA /* README.md */,
@@ -289,9 +301,13 @@
 			files = (
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
+				5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */,
+				5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */,
 				A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */,
 				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
+				5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */,
 				A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */,
+				5292FEEE1FBC044D00C2A0CE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="845.60000000000002" y="116.49175412293854"/>
         </scene>
-        <!--View Controller-->
+        <!--Steps Taken View Controller-->
         <scene sceneID="6TH-zu-7Wa">
             <objects>
-                <viewController id="mpB-J3-KJE" sceneMemberID="viewController">
+                <viewController id="mpB-J3-KJE" customClass="StepsTakenViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Hv-7r-pmN"/>
                         <viewControllerLayoutGuide type="bottom" id="Z0U-Xe-dWy"/>
@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="-444" y="884"/>
         </scene>
-        <!--View Controller-->
+        <!--Health Data View Controller-->
         <scene sceneID="NWF-Pu-FjM">
             <objects>
-                <viewController id="9FE-Wr-JGP" sceneMemberID="viewController">
+                <viewController id="9FE-Wr-JGP" customClass="HealthDataViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x66-lO-alb"/>
                         <viewControllerLayoutGuide type="bottom" id="STa-Ab-HiC"/>
@@ -384,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="495" y="884"/>
         </scene>
-        <!--View Controller-->
+        <!--Heart Rate View Controller-->
         <scene sceneID="zCY-t8-l7d">
             <objects>
-                <viewController id="Ayj-Uj-gIK" sceneMemberID="viewController">
+                <viewController id="Ayj-Uj-gIK" customClass="HeartRateViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3lz-tq-JK3"/>
                         <viewControllerLayoutGuide type="bottom" id="0At-fA-qc2"/>
@@ -573,10 +573,10 @@
             </objects>
             <point key="canvasLocation" x="1967" y="116"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="KOb-7o-zet">
             <objects>
-                <viewController id="cWU-ls-skd" sceneMemberID="viewController">
+                <viewController id="cWU-ls-skd" customClass="SettingsViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c0O-bK-ege"/>
                         <viewControllerLayoutGuide type="bottom" id="OTF-Wm-y0A"/>
@@ -617,6 +617,14 @@
                                     <segue destination="CFt-Sm-nnB" kind="show" id="Hyd-cj-07W"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oN-aJ-ePE">
+                                <rect key="frame" x="243" y="71" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="colorChange:" destination="cWU-ls-skd" eventType="touchUpInside" id="epj-IL-t7E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97036689519882202" green="0.9224129319190979" blue="0.87584108114242554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -649,7 +657,7 @@
         <image name="runningrhythmlaunchalternate" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hyd-cj-07W"/>
+        <segue reference="ZBr-vj-jDD"/>
         <segue reference="riz-Fc-ZhG"/>
     </inferredMetricsTieBreakers>
 </document>
