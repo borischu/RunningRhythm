@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5287BC6E1FBFC3590018ED0D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5287BC6D1FBFC3590018ED0D /* HealthKit.framework */; };
+		5263E0901FC0CD9F00C3A076 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263E08F1FC0CD9F00C3A076 /* HealthKit.framework */; };
+		5263E0921FC0D5A800C3A076 /* WorkoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263E0911FC0D5A800C3A076 /* WorkoutTimer.swift */; };
 		5287BC701FBFC3F80018ED0D /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */; };
 		5292FEEE1FBC044D00C2A0CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */; };
 		5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */; };
@@ -47,8 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5263E08F1FC0CD9F00C3A076 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		5263E0911FC0D5A800C3A076 /* WorkoutTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTimer.swift; sourceTree = "<group>"; };
 		5287BC6B1FBFC3590018ED0D /* RunningRhythm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningRhythm.entitlements; sourceTree = "<group>"; };
-		5287BC6D1FBFC3590018ED0D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
 		5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1D0A1B11FA2C154003862B4 /* SpotifyAudioPlayback.framework in Frameworks */,
-				5287BC6E1FBFC3590018ED0D /* HealthKit.framework in Frameworks */,
+				5263E0901FC0CD9F00C3A076 /* HealthKit.framework in Frameworks */,
 				A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */,
 				A1D0A1B21FA2C154003862B4 /* SpotifyAuthentication.framework in Frameworks */,
 			);
@@ -109,7 +111,7 @@
 		5287BC6C1FBFC3590018ED0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5287BC6D1FBFC3590018ED0D /* HealthKit.framework */,
+				5263E08F1FC0CD9F00C3A076 /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,6 +147,7 @@
 				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
 				5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */,
 				5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */,
+				5263E0911FC0D5A800C3A076 /* WorkoutTimer.swift */,
 				5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */,
 				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
 				5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */,
@@ -323,6 +326,7 @@
 			files = (
 				5287BC701FBFC3F80018ED0D /* HealthKitHelper.swift in Sources */,
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
+				5263E0921FC0D5A800C3A076 /* WorkoutTimer.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
 				5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */,
 				5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */,
@@ -499,7 +503,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RunningRhythm/RunningRhythm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 97A24MD78K;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RunningRhythm",
@@ -523,7 +527,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RunningRhythm/RunningRhythm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 97A24MD78K;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RunningRhythm",
@@ -545,7 +549,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 97A24MD78K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RunningRhythmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cindercapital.RunningRhythmTests;
@@ -562,7 +566,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 97A24MD78K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RunningRhythmTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cindercapital.RunningRhythmTests;
@@ -577,12 +581,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 97A24MD78K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RunningRhythmUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cindercapital.RunningRhythmUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RunningRhythm;
@@ -593,12 +599,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 97A24MD78K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RunningRhythmUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cindercapital.RunningRhythmUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RunningRhythm;
