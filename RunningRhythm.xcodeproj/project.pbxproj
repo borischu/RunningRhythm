@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5287BC6E1FBFC3590018ED0D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5287BC6D1FBFC3590018ED0D /* HealthKit.framework */; };
+		5287BC701FBFC3F80018ED0D /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */; };
 		5292FEEE1FBC044D00C2A0CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */; };
 		5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */; };
 		5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */; };
@@ -45,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5287BC6B1FBFC3590018ED0D /* RunningRhythm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningRhythm.entitlements; sourceTree = "<group>"; };
+		5287BC6D1FBFC3590018ED0D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
 		5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataViewController.swift; sourceTree = "<group>"; };
 		5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTakenViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1D0A1B11FA2C154003862B4 /* SpotifyAudioPlayback.framework in Frameworks */,
+				5287BC6E1FBFC3590018ED0D /* HealthKit.framework in Frameworks */,
 				A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */,
 				A1D0A1B21FA2C154003862B4 /* SpotifyAuthentication.framework in Frameworks */,
 			);
@@ -100,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5287BC6C1FBFC3590018ED0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5287BC6D1FBFC3590018ED0D /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A1D0A1711FA2B8CB003862B4 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +121,7 @@
 				A1D0A1941FA2B8CB003862B4 /* RunningRhythmTests */,
 				A1D0A19F1FA2B8CC003862B4 /* RunningRhythmUITests */,
 				A1D0A17B1FA2B8CB003862B4 /* Products */,
+				5287BC6C1FBFC3590018ED0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,12 +138,14 @@
 		A1D0A17C1FA2B8CB003862B4 /* RunningRhythm */ = {
 			isa = PBXGroup;
 			children = (
+				5287BC6B1FBFC3590018ED0D /* RunningRhythm.entitlements */,
 				A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */,
 				A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */,
 				A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */,
 				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
 				5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */,
 				5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */,
+				5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */,
 				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
 				5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
@@ -233,6 +250,11 @@
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					A1D0A1901FA2B8CB003862B4 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -299,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5287BC701FBFC3F80018ED0D /* HealthKitHelper.swift in Sources */,
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
 				5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */,
@@ -474,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RunningRhythm/RunningRhythm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97A24MD78K;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -497,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RunningRhythm/RunningRhythm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97A24MD78K;
 				FRAMEWORK_SEARCH_PATHS = (
