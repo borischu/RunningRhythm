@@ -10,9 +10,11 @@ import UIKit
 
 class StepsTakenViewController: UIViewController {
 
+    public var totalTime = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(totalTime)
         // Do any additional setup after loading the view.
     }
 

@@ -319,7 +319,7 @@
                                 <rect key="frame" x="16" y="220" width="43" height="30"/>
                                 <state key="normal" title="Graph"/>
                                 <connections>
-                                    <segue destination="Ayj-Uj-gIK" kind="show" id="LuN-9O-AEP"/>
+                                    <segue destination="Ayj-Uj-gIK" kind="show" identifier="heartRate" id="LuN-9O-AEP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEn-VJ-cpZ">
@@ -351,7 +351,7 @@
                                 <rect key="frame" x="16" y="142" width="43" height="30"/>
                                 <state key="normal" title="Graph"/>
                                 <connections>
-                                    <segue destination="mpB-J3-KJE" kind="show" id="2LP-P9-k7y"/>
+                                    <segue destination="mpB-J3-KJE" kind="show" identifier="stepsTaken" id="2LP-P9-k7y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-CR-vJf">
@@ -698,7 +698,7 @@
         <image name="runningrhythmlaunchalternate" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zNi-js-yQi"/>
-        <segue reference="J1r-RE-U4j"/>
+        <segue reference="A3K-jR-2As"/>
+        <segue reference="ZBr-vj-jDD"/>
     </inferredMetricsTieBreakers>
 </document>
