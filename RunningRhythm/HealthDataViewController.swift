@@ -21,8 +21,22 @@ class HealthDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        HKWorkoutEvent.self
-        
+        let healthStore = HKHealthStore()
+        func authorizeHealthKit() -> Bool {
+            var isEnabled = true
+            print(String(isEnabled))
+            if HKHealthStore.isHealthDataAvailable() {
+                let stepsCount = NSSet(object: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
+                healthStore.requestAuthorization(toShare: nil, read: (stepsCount as! Set<HKObjectType>)) {
+                    (success, error) -> Void in
+                    isEnabled = success
+                }
+            }
+            else {
+                isEnabled = false
+            }
+            return isEnabled
+        }
         // Do any additional setup after loading the view.
     }
     
