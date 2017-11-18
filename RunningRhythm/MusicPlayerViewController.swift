@@ -8,6 +8,8 @@
 
 import UIKit
 import HealthKit
+import AudioToolbox
+import AVFoundation
 
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
 

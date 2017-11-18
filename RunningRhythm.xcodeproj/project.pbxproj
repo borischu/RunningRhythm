@@ -26,6 +26,9 @@
 		A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D0A1B01FA2C154003862B4 /* SpotifyMetadata.framework */; };
 		A1F08C1D1FA843B2009BDAFA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1F08C1C1FA843B2009BDAFA /* README.md */; };
 		A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */; };
+		A1F8795E1FC03CFF00F64F00 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F8795D1FC03CFB00F64F00 /* AVFoundation.framework */; };
+		A1F879601FC03D0C00F64F00 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F8795F1FC03D0600F64F00 /* SystemConfiguration.framework */; };
+		A1F879621FC0D5C300F64F00 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F879611FC0D5C300F64F00 /* WebViewController.swift */; };
 		C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,9 @@
 		A1D0A1B41FA2C302003862B4 /* RunningRhythm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningRhythm-Bridging-Header.h"; sourceTree = "<group>"; };
 		A1F08C1C1FA843B2009BDAFA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginViewController.swift; sourceTree = "<group>"; };
+		A1F8795D1FC03CFB00F64F00 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A1F8795F1FC03D0600F64F00 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A1F879611FC0D5C300F64F00 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F879601FC03D0C00F64F00 /* SystemConfiguration.framework in Frameworks */,
+				A1F8795E1FC03CFF00F64F00 /* AVFoundation.framework in Frameworks */,
 				A1D0A1B11FA2C154003862B4 /* SpotifyAudioPlayback.framework in Frameworks */,
 				5287BC6E1FBFC3590018ED0D /* HealthKit.framework in Frameworks */,
 				A1D0A1B31FA2C154003862B4 /* SpotifyMetadata.framework in Frameworks */,
@@ -109,6 +117,8 @@
 		5287BC6C1FBFC3590018ED0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1F8795F1FC03D0600F64F00 /* SystemConfiguration.framework */,
+				A1F8795D1FC03CFB00F64F00 /* AVFoundation.framework */,
 				5287BC6D1FBFC3590018ED0D /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -145,6 +155,7 @@
 				C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */,
 				5292FEED1FBC044D00C2A0CE /* SettingsViewController.swift */,
 				5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */,
+				A1F879611FC0D5C300F64F00 /* WebViewController.swift */,
 				5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */,
 				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
 				5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */,
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5287BC701FBFC3F80018ED0D /* HealthKitHelper.swift in Sources */,
+				A1F879621FC0D5C300F64F00 /* WebViewController.swift in Sources */,
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
 				5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */,
