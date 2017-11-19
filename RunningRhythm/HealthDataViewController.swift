@@ -22,6 +22,8 @@ class HealthDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        second.text = String(secondPassed)
+        minute.text = "\(minutePassed):"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateLabels), userInfo: nil, repeats: true)
         let healthStore = HKHealthStore()
         func authorizeHealthKit() -> Bool {
