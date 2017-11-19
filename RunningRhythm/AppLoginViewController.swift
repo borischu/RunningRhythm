@@ -15,7 +15,6 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     var username: String?
     @IBOutlet weak var spotifyLoginButton: UIButton!
     
-    
     @IBOutlet weak var statusLabel: UILabel!
     var authViewController: UIViewController?
     var firstLoad: Bool!
@@ -88,10 +87,8 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
             return
         }
         // Oh noes, the token has expired, if we have a token refresh service set up, we'll call tat one.
-        self.statusLabel.text = "Token expired."
+//        self.statusLabel.text = "Token expired."
         if auth!.hasTokenRefreshService {
-            spotifyLoginButton.setTitle("Connected with Spotify", for: .normal)
-            spotifyLoginButton.backgroundColor = UIColor.clear
             self.renewToken()
             return
         }
@@ -125,6 +122,10 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "musicPlayer" {
+            let destination = segue.destination as? MusicPlayerViewController
+            destination?.username = username
+        }
      }
 
     
