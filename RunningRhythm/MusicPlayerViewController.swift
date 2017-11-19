@@ -27,6 +27,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     let audioSession = AVAudioSession.sharedInstance()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         self.trackTitle.text = "Nothing Playing"
         self.artistTitle.text = ""
     }

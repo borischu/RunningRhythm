@@ -13,6 +13,7 @@ class HeartRateViewController: UIViewController {
     public var totalTime = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         print(totalTime)
         // Do any additional setup after loading the view.
     }
