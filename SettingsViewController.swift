@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Foundation
+
+public var backgroundHex:UInt32 = 0xf7ebdf
+private var count = 0
 
 class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         // Do any additional setup after loading the view.
     }
 
@@ -22,9 +26,31 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func colorChange(_ sender: Any) {
-        self.view.backgroundColor = UIColor(red: 25, green: 30, blue: 25, alpha: 1)
-    }
 
+        if count == 0 {
+            backgroundHex = 0x222222
+            count += 1
+        }
+        else if count == 1 {
+            backgroundHex = 0x9afc33
+            count += 1
+        }
+        else if count == 2 {
+            backgroundHex = 0xf7edbf
+            count = 0
+        }
+        self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+
+    }
+    
+    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        
+        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+    
     /*
     // MARK: - Navigation
 

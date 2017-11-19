@@ -28,6 +28,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         print(initialURL)
         let initialRequest = URLRequest(url: self.initialURL)
         self.webView = UIWebView(frame: self.view.bounds)
