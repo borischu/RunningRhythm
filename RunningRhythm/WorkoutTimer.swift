@@ -27,6 +27,8 @@ class TimerModel: NSObject {
         }
         if timeRunning == false {
             internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(fireTimerAction), userInfo: nil, repeats: true)
+            secondPassed = 0
+            minutePassed = 0
             timePassed = 0
             timeRunning = true
         }
@@ -50,8 +52,6 @@ class TimerModel: NSObject {
             return
         }
         internalTimer?.invalidate()
-        secondPassed = 0
-        minutePassed = 0
         timeRunning = false
     }
     

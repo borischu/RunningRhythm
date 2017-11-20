@@ -14,7 +14,8 @@ import AVFoundation
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
     
     var username: String?
-    
+    var workoutState = false
+    @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -30,6 +31,12 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     let audioSession = AVAudioSession.sharedInstance()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if workoutState == false {
+            startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
+        }
+        else if workoutState == true {
+            startStop.setTitle("End Workout", for: UIControlState(rawValue: 0))
+        }
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         self.trackTitle.text = "Nothing Playing"
         self.artistTitle.text = ""
@@ -223,6 +230,18 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         }
     }
     
+    @IBAction func startStop(_ sender: UIButton) {
+        if workoutState == false {
+            workoutState = true
+            startStop.setTitle("End Workout", for: UIControlState(rawValue: 0))
+            TimerModel.sharedTimer.startTimer(withInterval: 1)
+        }
+        else {
+            workoutState = false
+            startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
+            TimerModel.sharedTimer.stopTimer()
+        }
+    }
     
     
     // MARK: - Navigation
