@@ -23,19 +23,22 @@ public var text:UInt32 = night
 
 class SettingsViewController: UIViewController {
 
-    
+    @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var backgroundLabel: UILabel!
     @IBOutlet weak var nightLabel: UILabel!
     @IBOutlet weak var backBtnSettings: UIButton!
+    @IBOutlet weak var backgroundColorBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        settingsLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         switchButton.isOn =  UserDefaults.standard.bool(forKey: "switchState")
         backBtnSettings.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
+        backgroundColorBtn.backgroundColor = UIColorFromHex(rgbValue: colors[count+1], alpha: 1)
         // Do any additional setup after loading the view.
     }
 
@@ -51,6 +54,13 @@ class SettingsViewController: UIViewController {
             }
             count += 1
             backgroundHex = colors[count]
+            
+            var btncount = count
+            if count == 3 {
+                btncount = -1
+            }
+            backgroundColorBtn.backgroundColor = UIColorFromHex(rgbValue: colors[btncount+1], alpha: 1)
+            
             self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         }
     }
@@ -67,6 +77,7 @@ class SettingsViewController: UIViewController {
             text = color1
             backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
             nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+            settingsLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
             backBtnSettings.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         }
         else if nightCount == true {
@@ -76,6 +87,7 @@ class SettingsViewController: UIViewController {
             text = night
             backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
             nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+            settingsLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
             backBtnSettings.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         }
         self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
