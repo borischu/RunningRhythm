@@ -101,6 +101,11 @@ class SettingsViewController: UIViewController {
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
     
+    @IBAction func logOff(_ sender: Any) {
+        SPTAudioStreamingController.sharedInstance().logout()
+    }
+    
+    
     /*
     // MARK: - Navigation
 

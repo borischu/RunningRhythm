@@ -43,6 +43,14 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         
         self.delegate?.webViewControllerDidFinish(self)
         self.presentingViewController?.dismiss(animated: true, completion: { _ in })
+        URLCache.shared.removeAllCachedResponses()
+        
+        // Delete any associated cookies
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+        }
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
