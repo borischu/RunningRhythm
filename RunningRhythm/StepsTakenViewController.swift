@@ -12,9 +12,11 @@ class StepsTakenViewController: UIViewController {
 
     public var totalTime = Int()
     
+    @IBOutlet weak var stepsTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+        backBtnSteps.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         print(totalTime)
         // Do any additional setup after loading the view.
     }

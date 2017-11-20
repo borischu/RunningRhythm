@@ -24,6 +24,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     @IBOutlet weak var playbackSourceTitle: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     
+    @IBOutlet weak var backBtnMusic: UIButton!
     
     var isChangingProgress: Bool = false
     let audioSession = AVAudioSession.sharedInstance()
@@ -36,6 +37,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         playbackSourceTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         trackTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        backBtnMusic.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
     }
     
     override func didReceiveMemoryWarning() {

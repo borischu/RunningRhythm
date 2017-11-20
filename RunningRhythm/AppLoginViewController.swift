@@ -18,6 +18,8 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     var authViewController: UIViewController?
     var firstLoad: Bool!
+    var logged = false
+    var alertController: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         self.openLoginPage()
     }
     
+
+    
     func backToApp() {
         self.firstLoad = false
         self.statusLabel.text = "Logged in."
@@ -49,6 +53,7 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         self.presentedViewController?.dismiss(animated: true, completion: { _ in })
         if auth!.session != nil && auth!.session.isValid() {
             self.statusLabel.text = ""
+            logged = true
             self.backToApp()
         }
         else {
@@ -88,6 +93,7 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         // Check if it's still valid
         if auth!.session.isValid() && self.firstLoad {
             // It's still valid, show the player.
+            logged = true
             self.backToApp()
             return
         }
@@ -122,7 +128,14 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     }
     
      // MARK: - Navigation
-     
+    @IBAction func CheckForLogged(_ sender: Any) {
+        if logged == false {
+            self.alertController = UIAlertController(title: "Log In Error", message: "You must be logged into Spotify to advance.", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default)
+            self.alertController!.addAction(OKAction)
+            self.present(self.alertController!, animated: true, completion:nil)
+        }
+    }
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.

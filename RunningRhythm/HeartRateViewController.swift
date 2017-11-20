@@ -10,10 +10,12 @@ import UIKit
 
 class HeartRateViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     public var totalTime = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+        backBtnHeart.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         print(totalTime)
         // Do any additional setup after loading the view.
     }

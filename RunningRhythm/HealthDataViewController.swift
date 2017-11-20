@@ -31,6 +31,7 @@ class HealthDataViewController: UIViewController {
         second.text = String(secondPassed)
         minute.text = "\(minutePassed):"
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+        backBtnHealth.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateLabels), userInfo: nil, repeats: true)
         let healthStore = HKHealthStore()
         func authorizeHealthKit() -> Bool {
