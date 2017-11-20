@@ -25,6 +25,7 @@ class HealthDataViewController: UIViewController {
     @IBOutlet weak var heartRateLabel: UILabel!
     @IBOutlet weak var heartRateNumber: UILabel!
     @IBOutlet weak var workoutLengthLabel: UILabel!
+    @IBOutlet weak var backBtnHealth: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

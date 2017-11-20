@@ -25,6 +25,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var backgroundLabel: UILabel!
     @IBOutlet weak var nightLabel: UILabel!
+    @IBOutlet weak var backBtnSettings: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class SettingsViewController: UIViewController {
         backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         switchButton.isOn =  UserDefaults.standard.bool(forKey: "switchState")
-        backBtnMusic.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
+        backBtnSettings.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         // Do any additional setup after loading the view.
     }
 

@@ -265,24 +265,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfg-TW-Bp0">
-                                <rect key="frame" x="16" y="20" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xe-Ja-d7w">
+                                <rect key="frame" x="7" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                <state key="normal" title="‹"/>
                                 <connections>
-                                    <segue destination="9FE-Wr-JGP" kind="show" id="A3K-jR-2As"/>
+                                    <segue destination="9FE-Wr-JGP" kind="show" id="iCz-WN-SxH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.209755539894104" green="0.26463538408279419" blue="0.34427553415298462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pV6-SV-gAY" firstAttribute="top" secondItem="5Hv-7r-pmN" secondAttribute="bottom" constant="33" id="8oB-Xj-YAS"/>
-                            <constraint firstItem="Jfg-TW-Bp0" firstAttribute="top" secondItem="5Hv-7r-pmN" secondAttribute="bottom" id="Fuv-Eu-lcM"/>
-                            <constraint firstItem="Jfg-TW-Bp0" firstAttribute="leading" secondItem="M9a-ep-meF" secondAttribute="leadingMargin" id="JGe-lc-euS"/>
                             <constraint firstItem="pV6-SV-gAY" firstAttribute="centerX" secondItem="M9a-ep-meF" secondAttribute="centerX" id="jRs-rc-oTR"/>
                             <constraint firstItem="pV6-SV-gAY" firstAttribute="leading" secondItem="M9a-ep-meF" secondAttribute="leadingMargin" constant="57" id="oGN-Zg-Vvb"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtnSteps" destination="7Xe-Ja-d7w" id="8aR-NK-Do6"/>
                         <outlet property="stepsTitle" destination="pV6-SV-gAY" id="7ec-e9-3ac"/>
                     </connections>
                 </viewController>
@@ -433,6 +434,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtnHealth" destination="zde-lG-6A4" id="XB7-5b-KzC"/>
                         <outlet property="heartRateLabel" destination="bFl-EA-gNo" id="lgw-fx-E80"/>
                         <outlet property="heartRateNumber" destination="n9t-0z-aDQ" id="Mv1-si-IGm"/>
                         <outlet property="minute" destination="AJY-Fb-eaX" id="QQG-QM-n9E"/>
@@ -465,24 +467,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-9Y-Xsl">
-                                <rect key="frame" x="16" y="20" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04F-tS-gH9">
+                                <rect key="frame" x="7" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                <state key="normal" title="‹"/>
                                 <connections>
-                                    <segue destination="9FE-Wr-JGP" kind="show" id="riz-Fc-ZhG"/>
+                                    <segue destination="9FE-Wr-JGP" kind="show" id="yAe-VO-7Yp"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.209755539894104" green="0.26463538408279419" blue="0.34427553415298462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ecd-9Y-Xsl" firstAttribute="leading" secondItem="1Bz-Fv-Z2B" secondAttribute="leading" constant="16" id="CYp-bU-RzO"/>
                             <constraint firstItem="QTR-F0-RPq" firstAttribute="centerX" secondItem="1Bz-Fv-Z2B" secondAttribute="centerX" id="IZO-wb-4As"/>
                             <constraint firstItem="QTR-F0-RPq" firstAttribute="leading" secondItem="1Bz-Fv-Z2B" secondAttribute="leadingMargin" constant="57" id="Rcp-r8-XC8"/>
                             <constraint firstItem="QTR-F0-RPq" firstAttribute="top" secondItem="3lz-tq-JK3" secondAttribute="bottom" constant="33" id="UCr-t0-PRs"/>
-                            <constraint firstItem="ecd-9Y-Xsl" firstAttribute="top" secondItem="3lz-tq-JK3" secondAttribute="bottom" id="XQW-Nk-eYy"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtnHeart" destination="04F-tS-gH9" id="I1F-ri-Sca"/>
                         <outlet property="titleLabel" destination="QTR-F0-RPq" id="dB8-fX-nrA"/>
                     </connections>
                 </viewController>
@@ -742,6 +745,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtnSettings" destination="Zsy-N5-aX8" id="6JN-mo-eGe"/>
                         <outlet property="backgroundLabel" destination="cgq-eH-xmw" id="AYy-hB-shM"/>
                         <outlet property="nightLabel" destination="8pu-zv-Lzi" id="Jdr-hP-69S"/>
                         <outlet property="switchButton" destination="HL2-Kk-kfw" id="wY8-aU-Uj2"/>
@@ -763,6 +767,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="997-tc-8Nb"/>
-        <segue reference="A3K-jR-2As"/>
+        <segue reference="yAe-VO-7Yp"/>
     </inferredMetricsTieBreakers>
 </document>
