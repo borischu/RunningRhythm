@@ -19,6 +19,12 @@ class HealthDataViewController: UIViewController {
     var duration = Int()
     var minDuration = Int()
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var stepsTakenLabel: UILabel!
+    @IBOutlet weak var stepsTakenNumber: UILabel!
+    @IBOutlet weak var heartRateLabel: UILabel!
+    @IBOutlet weak var heartRateNumber: UILabel!
+    @IBOutlet weak var workoutLengthLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,14 @@ class HealthDataViewController: UIViewController {
             return isEnabled
         }
         // Do any additional setup after loading the view.
+        minute.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        second.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        titleLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        stepsTakenLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        stepsTakenNumber.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        heartRateLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        heartRateNumber.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        workoutLengthLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
     }
     
     @IBAction func startWorkout(_ sender: UIButton) {

@@ -12,12 +12,26 @@ import Foundation
 public var backgroundHex:UInt32 = 0xf7ebdf
 private var count = 0
 private var nightCount = false
+private var isNight = false
+public var color1:UInt32 = 0xf7ebdf
+public var color2:UInt32 = 0xe56666
+public var color3:UInt32 = 0x9afc33
+public var night:UInt32 = 0x222222
+public var text:UInt32 = night
 
 class SettingsViewController: UIViewController {
 
+    
+    @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet weak var backgroundLabel: UILabel!
+    @IBOutlet weak var nightLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+        backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        switchButton.isOn =  UserDefaults.standard.bool(forKey: "switchState")
         // Do any additional setup after loading the view.
     }
 
@@ -27,32 +41,59 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func colorChange(_ sender: Any) {
-
-        if count == 0 {
-            backgroundHex = 0xe56666
-            count += 1
+        if isNight == false {
+            if backgroundHex == color1 {
+                backgroundHex = color2
+                count = 1
+            }
+            else if backgroundHex == color2{
+                backgroundHex = color3
+                count = 2
+            }
+            else if backgroundHex == color3 {
+                backgroundHex = color1
+                count = 0
+            }
+            self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         }
-        else if count == 1 {
-            backgroundHex = 0x9afc33
-            count += 1
-        }
-        else if count == 2 {
-            backgroundHex = 0xf7edbf
-            count = 0
-        }
-        self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
-
+    }
+    
+    @IBAction func saveSwitchPressed(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "switchState")
     }
     
     @IBAction func nightMode(_ sender: Any) {
         if nightCount == false {
-            backgroundHex = 0x222222
+            backgroundHex = night
             nightCount = true
+            isNight = true
+            text = color1
+            backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+            nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         }
         else if nightCount == true {
-            backgroundHex = 0xf7edbf
-            nightCount = false
-            count = 2
+            if count == 0 {
+                backgroundHex = 0xf7ebdf
+                nightCount = false
+                isNight = false
+                count = -1
+            }
+            else if count == 1 {
+                backgroundHex = 0xe56666
+                nightCount = false
+                isNight = false
+                count = 0
+            }
+            else if count == 2 {
+                backgroundHex = 0x9afc33
+                nightCount = false
+                isNight = false
+                count = 1
+            }
+            count += 1
+            text = night
+            backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+            nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         }
         self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
     }

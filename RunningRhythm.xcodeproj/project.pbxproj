@@ -30,7 +30,6 @@
 		A1F08C1D1FA843B2009BDAFA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1F08C1C1FA843B2009BDAFA /* README.md */; };
 		A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */; };
 		A1F879621FC0D5C300F64F00 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F879611FC0D5C300F64F00 /* WebViewController.swift */; };
-		C72C8A191FC2497700DB5E04 /* TextSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C8A181FC2497700DB5E04 /* TextSettings.swift */; };
 		C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +88,6 @@
 		A1F879611FC0D5C300F64F00 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B3BD14A37C2EB4E0AA464E2C /* Pods-RunningRhythm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningRhythm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningRhythm/Pods-RunningRhythm.debug.xcconfig"; sourceTree = "<group>"; };
 		BC88FD24597EF581044DDE49 /* Pods-RunningRhythm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningRhythm.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningRhythm/Pods-RunningRhythm.release.xcconfig"; sourceTree = "<group>"; };
-		C72C8A181FC2497700DB5E04 /* TextSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSettings.swift; sourceTree = "<group>"; };
 		C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,7 +172,6 @@
 				5287BC6F1FBFC3F80018ED0D /* HealthKitHelper.swift */,
 				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
 				5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */,
-				C72C8A181FC2497700DB5E04 /* TextSettings.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
 				A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */,
 				A1F08C1C1FA843B2009BDAFA /* README.md */,
@@ -523,7 +520,6 @@
 				5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */,
 				A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */,
 				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
-				C72C8A191FC2497700DB5E04 /* TextSettings.swift in Sources */,
 				5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */,
 				A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */,
 				5292FEEE1FBC044D00C2A0CE /* SettingsViewController.swift in Sources */,

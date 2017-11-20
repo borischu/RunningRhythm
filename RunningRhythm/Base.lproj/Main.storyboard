@@ -154,7 +154,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runningrhythmlaunchalternate" translatesAutoresizingMaskIntoConstraints="NO" id="mfV-37-lLK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runningrhythmlaunch" translatesAutoresizingMaskIntoConstraints="NO" id="mfV-37-lLK">
                                 <rect key="frame" x="16.5" y="105" width="342" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="114" id="90X-A7-4Zv"/>
@@ -163,7 +163,7 @@
                                     <constraint firstAttribute="height" constant="114" id="wgJ-2J-p4K"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="logged in as:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hs-gY-htn" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="logged in as:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hs-gY-htn">
                                 <rect key="frame" x="59" y="262" width="122" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="Cz1-QZ-5B0"/>
@@ -192,7 +192,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-x0-YLP" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-x0-YLP">
                                 <rect key="frame" x="180" y="262.5" width="188" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="188" id="NM4-Hs-EO0"/>
@@ -201,7 +201,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcj-20-xP1" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcj-20-xP1">
                                 <rect key="frame" x="78" y="366" width="218" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -230,6 +230,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loggedIn" destination="8Hs-gY-htn" id="SeP-rw-TcU"/>
                         <outlet property="spotifyLoginButton" destination="TkB-9B-gMX" id="ld4-8C-9Rj"/>
                         <outlet property="statusLabel" destination="Lcj-20-xP1" id="zUA-uK-qmd"/>
                         <outlet property="userNameLabel" destination="UPl-x0-YLP" id="XPv-A1-K0u"/>
@@ -291,25 +292,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UV5-Ix-DYh" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UV5-Ix-DYh">
                                 <rect key="frame" x="73" y="53" width="229" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps Taken:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEr-Ds-lMF" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps Taken:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEr-Ds-lMF">
                                 <rect key="frame" x="16" y="113" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFl-EA-gNo" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFl-EA-gNo">
                                 <rect key="frame" x="16" y="191" width="87" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Length:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpa-YW-vOh" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Length:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpa-YW-vOh">
                                 <rect key="frame" x="16" y="269" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -329,19 +330,19 @@
                                     <action selector="startWorkout:" destination="9FE-Wr-JGP" eventType="touchUpInside" id="BIE-jw-CLB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9t-0z-aDQ" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9t-0z-aDQ">
                                 <rect key="frame" x="343" y="191" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8D-Oy-hhv" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8D-Oy-hhv">
                                 <rect key="frame" x="343" y="113" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNX-uB-cAU" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNX-uB-cAU">
                                 <rect key="frame" x="338" y="269" width="21" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -361,7 +362,7 @@
                                     <segue destination="CFt-Sm-nnB" kind="show" id="ZBr-vj-jDD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJY-Fb-eaX" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJY-Fb-eaX">
                                 <rect key="frame" x="321" y="269" width="15" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -417,8 +418,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="heartRateLabel" destination="bFl-EA-gNo" id="lgw-fx-E80"/>
+                        <outlet property="heartRateNumber" destination="n9t-0z-aDQ" id="Mv1-si-IGm"/>
                         <outlet property="minute" destination="AJY-Fb-eaX" id="QQG-QM-n9E"/>
                         <outlet property="second" destination="MNX-uB-cAU" id="mAR-SG-6kb"/>
+                        <outlet property="stepsTakenLabel" destination="lEr-Ds-lMF" id="rnX-3z-aKr"/>
+                        <outlet property="stepsTakenNumber" destination="y8D-Oy-hhv" id="X79-jn-bbe"/>
+                        <outlet property="titleLabel" destination="UV5-Ix-DYh" id="Mdc-tV-5Et"/>
+                        <outlet property="workoutLengthLabel" destination="Rpa-YW-vOh" id="GNc-39-HQe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgk-5z-LJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -527,14 +534,14 @@
                                     <segue destination="CFt-Sm-nnB" kind="show" identifier="appLogin" id="QR1-ba-XFw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX2-ZW-RK4" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX2-ZW-RK4">
                                 <rect key="frame" x="146.5" y="396" width="81" height="21"/>
                                 <color key="backgroundColor" red="0.209755539894104" green="0.26463538408279419" blue="0.34427553415298462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.91499453783035278" green="0.87916004657745361" blue="0.84105926752090454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XN-3O-aMV" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XN-3O-aMV">
                                 <rect key="frame" x="83" y="425" width="208" height="21"/>
                                 <color key="backgroundColor" red="0.20975553990000001" green="0.26463538409999998" blue="0.34427553420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -555,13 +562,13 @@
                                     <action selector="seekValueChanged:" destination="NmI-1y-iNS" eventType="valueChanged" id="bOe-n2-Klv"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1v-KU-Y3A" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1v-KU-Y3A">
                                 <rect key="frame" x="133" y="55" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.91499453783035278" green="0.87916004657745361" blue="0.84105926752090454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Source" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuY-sk-RGP" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Source" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuY-sk-RGP">
                                 <rect key="frame" x="131" y="81" width="113" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.91499453779999995" green="0.87916004660000002" blue="0.84105926750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -625,6 +632,7 @@
                         <outlet property="prevButton" destination="9Bg-wn-wga" id="Pla-MV-DMm"/>
                         <outlet property="progressSlider" destination="HP8-cf-EeW" id="QDs-en-GmE"/>
                         <outlet property="trackTitle" destination="ZX2-ZW-RK4" id="wtW-1U-3gS"/>
+                        <outlet property="workoutLabel" destination="q1v-KU-Y3A" id="H9t-oU-dce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzY-B8-Dp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -652,14 +660,17 @@
                                 <state key="normal" title="Log Off">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="pRd-xp-qv8"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pu-zv-Lzi" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pu-zv-Lzi">
                                 <rect key="frame" x="65" y="137" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Color:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgq-eH-xmw" customClass="TextSettings" customModule="RunningRhythm" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Color:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgq-eH-xmw">
                                 <rect key="frame" x="65" y="75" width="143" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -669,6 +680,7 @@
                                 <rect key="frame" x="243" y="132" width="51" height="31"/>
                                 <connections>
                                     <action selector="nightMode:" destination="cWU-ls-skd" eventType="valueChanged" id="iLj-DR-tgm"/>
+                                    <action selector="saveSwitchPressed:" destination="cWU-ls-skd" eventType="valueChanged" id="19v-Ub-zJ4"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSK-t2-r2H">
@@ -701,6 +713,11 @@
                             <constraint firstItem="HK6-ke-Nbk" firstAttribute="centerX" secondItem="UGj-A8-bEG" secondAttribute="centerX" id="qpo-td-NIJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundLabel" destination="cgq-eH-xmw" id="AYy-hB-shM"/>
+                        <outlet property="nightLabel" destination="8pu-zv-Lzi" id="Jdr-hP-69S"/>
+                        <outlet property="switchButton" destination="HL2-Kk-kfw" id="wY8-aU-Uj2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEk-uA-6JF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -715,10 +732,9 @@
         <image name="music_player_icon" width="256" height="256"/>
         <image name="realsettingsicon" width="512" height="512"/>
         <image name="runningrhythmlaunch" width="1536" height="512"/>
-        <image name="runningrhythmlaunchalternate" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QR1-ba-XFw"/>
+        <segue reference="Hyd-cj-07W"/>
         <segue reference="zNi-js-yQi"/>
     </inferredMetricsTieBreakers>
 </document>

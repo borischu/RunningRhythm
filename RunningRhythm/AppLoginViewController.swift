@@ -12,9 +12,9 @@ import WebKit
 class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var loggedIn: UILabel!
     var username: String?
     @IBOutlet weak var spotifyLoginButton: UIButton!
-    
     @IBOutlet weak var statusLabel: UILabel!
     var authViewController: UIViewController?
     var firstLoad: Bool!
@@ -26,6 +26,10 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.sessionUpdatedNotification), name: NSNotification.Name(rawValue: "sessionUpdated"), object: nil)
         self.firstLoad = true
         self.statusLabel.text = ""
+        userNameLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        loggedIn.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        statusLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        
     }
     
     @IBAction func connectWithSpotify(_ sender: Any) {
