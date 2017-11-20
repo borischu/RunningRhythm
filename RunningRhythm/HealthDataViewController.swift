@@ -15,9 +15,6 @@ class HealthDataViewController: UIViewController {
     @IBOutlet weak var minute: UILabel!
     @IBOutlet weak var second: UILabel!
     public var timer: Timer!
-    var fullTime = Int()
-    var duration = Int()
-    var minDuration = Int()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stepsTakenLabel: UILabel!
@@ -71,8 +68,6 @@ class HealthDataViewController: UIViewController {
     
     @IBAction func EndWorkout(_ sender: UIButton) {
         TimerModel.sharedTimer.stopTimer()
-        duration = 0
-        minDuration = 0
         second.text = String(secondPassed)
         minute.text = "\(minutePassed):"
     }

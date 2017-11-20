@@ -13,7 +13,8 @@ class HeartRateViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backBtnHeart: UIButton!
     
-    public var totalTime = Int()
+    public var totalTime = timePassed
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);

@@ -10,7 +10,7 @@ import UIKit
 
 class StepsTakenViewController: UIViewController {
 
-    public var totalTime = Int()
+    public var totalTime = timePassed
     
     @IBOutlet weak var stepsTitle: UILabel!
     @IBOutlet weak var backBtnSteps: UIButton!
