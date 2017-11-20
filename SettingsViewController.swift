@@ -11,6 +11,7 @@ import Foundation
 
 public var backgroundHex:UInt32 = 0xf7ebdf
 private var count = 0
+private var nightCount = false
 
 class SettingsViewController: UIViewController {
 
@@ -28,7 +29,7 @@ class SettingsViewController: UIViewController {
     @IBAction func colorChange(_ sender: Any) {
 
         if count == 0 {
-            backgroundHex = 0x222222
+            backgroundHex = 0xe56666
             count += 1
         }
         else if count == 1 {
@@ -41,6 +42,19 @@ class SettingsViewController: UIViewController {
         }
         self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
 
+    }
+    
+    @IBAction func nightMode(_ sender: Any) {
+        if nightCount == false {
+            backgroundHex = 0x222222
+            nightCount = true
+        }
+        else if nightCount == true {
+            backgroundHex = 0xf7edbf
+            nightCount = false
+            count = 2
+        }
+        self.view.backgroundColor = UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
     }
     
     func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
