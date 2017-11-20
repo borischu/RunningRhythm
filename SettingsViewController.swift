@@ -11,6 +11,7 @@ import Foundation
 
 public var backgroundHex:UInt32 = 0xf7ebdf
 private var count = 0
+private var btncount = count
 private var nightCount = false
 private var isNight = false
 public var color1:UInt32 = 0xf7ebdf
@@ -38,7 +39,10 @@ class SettingsViewController: UIViewController {
         nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         switchButton.isOn =  UserDefaults.standard.bool(forKey: "switchState")
         backBtnSettings.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
-        backgroundColorBtn.backgroundColor = UIColorFromHex(rgbValue: colors[count+1], alpha: 1)
+        if count == 3 {
+            btncount = -1
+        }
+        backgroundColorBtn.backgroundColor = UIColorFromHex(rgbValue: colors[btncount+1], alpha: 1)
         // Do any additional setup after loading the view.
     }
 
@@ -55,7 +59,7 @@ class SettingsViewController: UIViewController {
             count += 1
             backgroundHex = colors[count]
             
-            var btncount = count
+            btncount = count
             if count == 3 {
                 btncount = -1
             }
