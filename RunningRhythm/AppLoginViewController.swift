@@ -31,6 +31,7 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         userNameLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         loggedIn.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         statusLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        spotifyLoginButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         
     }
     

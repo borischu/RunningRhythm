@@ -14,6 +14,7 @@ private var count = 0
 private var btncount = count
 private var nightCount = false
 private var isNight = false
+private var firstLoad = true
 public var color1:UInt32 = 0xf7ebdf
 public var color2:UInt32 = 0xCBECFF
 public var color3:UInt32 = 0xFFCFFE
@@ -37,7 +38,12 @@ class SettingsViewController: UIViewController {
         backgroundLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         settingsLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         nightLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
-        switchButton.isOn =  UserDefaults.standard.bool(forKey: "switchState")
+        if firstLoad {
+            switchButton.setOn(false, animated: false)
+        }
+        else {
+            switchButton.isOn =  UserDefaults.standard.bool(forKey: "switchState")
+        }
         backBtnSettings.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         if count == 3 {
             btncount = -1
@@ -71,6 +77,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func saveSwitchPressed(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "switchState")
+        firstLoad = false
     }
     
     @IBAction func nightMode(_ sender: Any) {

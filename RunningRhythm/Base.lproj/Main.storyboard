@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -216,7 +216,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcj-20-xP1">
-                                <rect key="frame" x="78" y="325" width="217.5" height="33"/>
+                                <rect key="frame" x="78" y="321" width="217.5" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="UfD-Dr-wLM"/>
                                 </constraints>
@@ -247,7 +247,7 @@
                             <constraint firstItem="xf1-O0-mFH" firstAttribute="trailing" secondItem="KZW-W8-zNd" secondAttribute="trailingMargin" id="bJr-Hy-ICm"/>
                             <constraint firstItem="Lcj-20-xP1" firstAttribute="leading" secondItem="KZW-W8-zNd" secondAttribute="leadingMargin" constant="62" id="fkZ-i1-FXK"/>
                             <constraint firstItem="mfV-37-lLK" firstAttribute="centerX" secondItem="FxH-Zv-LRe" secondAttribute="centerX" constant="-1" id="gYf-rC-rg3"/>
-                            <constraint firstItem="Lcj-20-xP1" firstAttribute="top" secondItem="TkB-9B-gMX" secondAttribute="bottom" constant="8" symbolic="YES" id="iDa-hV-NMY"/>
+                            <constraint firstItem="Lcj-20-xP1" firstAttribute="top" secondItem="TkB-9B-gMX" secondAttribute="bottom" constant="4" id="iDa-hV-NMY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UPl-x0-YLP" secondAttribute="trailing" constant="13" id="nYB-U1-pxB"/>
                             <constraint firstItem="8Hs-gY-htn" firstAttribute="centerY" secondItem="UPl-x0-YLP" secondAttribute="centerY" id="qeG-Ia-Oxl"/>
                             <constraint firstItem="8Hs-gY-htn" firstAttribute="top" secondItem="mfV-37-lLK" secondAttribute="bottom" constant="19" id="sQS-yR-TsQ"/>
@@ -830,8 +830,7 @@
         <image name="runningrhythmlaunch" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zNi-js-yQi"/>
-        <segue reference="J1r-RE-U4j"/>
         <segue reference="qMz-uR-arY"/>
+        <segue reference="zNi-js-yQi"/>
     </inferredMetricsTieBreakers>
 </document>
