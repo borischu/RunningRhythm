@@ -11,10 +11,11 @@ import HealthKit
 import AudioToolbox
 import AVFoundation
 
+public var workoutState = false
+
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
     
     var username: String?
-    var workoutState = false
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
