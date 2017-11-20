@@ -29,6 +29,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     var isChangingProgress: Bool = false
     let audioSession = AVAudioSession.sharedInstance()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if workoutState == false {
@@ -45,6 +46,11 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         trackTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         backBtnMusic.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
+        
+        SPTAudioStreamingController.sharedInstance().delegate = self
+        SPTAudioStreamingController.sharedInstance().playbackDelegate = self
+        SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
+        self.updateUI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,7 +93,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         self.playbackSourceTitle.text = SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.playbackSourceName
         
         let imageURL = URL.init(string: (SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.albumCoverArtURL)!)
-        print(imageURL)
         if imageURL == nil {
             print("Album \(SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.albumName) doesn't have any images!")
             self.coverView.image = nil
@@ -115,16 +120,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.handleNewSession()
+        self.login()
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
     }
     
-    func handleNewSession() {
+    func login() {
+        if SPTAudioStreamingController.sharedInstance().loggedIn { return }
         do {
             try SPTAudioStreamingController.sharedInstance().start(withClientId: SPTAuth.defaultInstance().clientID, audioController: nil, allowCaching: true)
-            SPTAudioStreamingController.sharedInstance().delegate = self
-            SPTAudioStreamingController.sharedInstance().playbackDelegate = self
-            SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
             SPTAudioStreamingController.sharedInstance().login(withAccessToken: SPTAuth.defaultInstance().session.accessToken!)
         } catch let error {
             let alert = UIAlertController(title: "Error init", message: error.localizedDescription, preferredStyle: .alert)
@@ -138,7 +141,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         do {
             try SPTAudioStreamingController.sharedInstance().stop()
             SPTAuth.defaultInstance().session = nil
-            _ = self.navigationController!.popViewController(animated: true)
+//            _ = self.navigationController!.popViewController(animated: true)
         } catch let error {
             let alert = UIAlertController(title: "Error deinit", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -203,7 +206,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController) {
         self.updateUI()
-        SPTAudioStreamingController.sharedInstance().playSpotifyURI("spotify:user:1218209521:playlist:1KGUsCZrmq8SemKWZDla27", startingWith: 0, startingWithPosition: 10) { error in
+        SPTAudioStreamingController.sharedInstance().playSpotifyURI("spotify:user:billboard.com:playlist:6UeSakyzhiEt4NB3UAd6NQ", startingWith: 0, startingWithPosition: 10) { error in
             if error != nil {
                 print("*** failed to play: \(error)")
                 return
