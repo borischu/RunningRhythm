@@ -13,7 +13,6 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var loggedIn: UILabel!
-    var username: String?
     @IBOutlet weak var spotifyLoginButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     var authViewController: UIViewController?

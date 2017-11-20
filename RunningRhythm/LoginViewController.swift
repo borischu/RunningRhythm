@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
+    public var username: String?
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    var username: String?
+
     var alertController: UIAlertController?
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -82,10 +82,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "appLogin" {
-            let destination = segue.destination as? AppLoginViewController
-            destination?.username = username
-        }
+
     }
 }
 
