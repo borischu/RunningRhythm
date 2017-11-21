@@ -96,12 +96,11 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         }
         // Check if it's still valid
         if auth!.session.isValid() && self.firstLoad {
-            // It's still valid, show the player.
             logged = true
             self.backToApp()
             return
         }
-        // Oh noes, the token has expired, if we have a token refresh service set up, we'll call tat one.
+        // Token expired, attempt to renew
 //        self.statusLabel.text = "Token expired."
         if auth!.hasTokenRefreshService {
             self.renewToken()

@@ -12,6 +12,8 @@
 		5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */; };
 		5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */; };
 		5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */; };
+		5F23F3E0349818DFB0A0D9B6 /* Pods_RunningRhythmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFEA773FEC2A7DE0A882959 /* Pods_RunningRhythmTests.framework */; };
+		89E451CD6B566EA6D25C130E /* Pods_RunningRhythmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC03DDAFE1A18E07BE2B422 /* Pods_RunningRhythmUITests.framework */; };
 		A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */; };
 		A1692D9A1FC376AA00DF0328 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1692D991FC376AA00DF0328 /* HealthKitManager.swift */; };
 		A1760F7C1FC1715400F43667 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1760F771FC1715300F43667 /* SpotifyMetadata.framework */; };
@@ -59,6 +61,8 @@
 		5292FEEF1FBC070700C2A0CE /* HealthDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataViewController.swift; sourceTree = "<group>"; };
 		5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTakenViewController.swift; sourceTree = "<group>"; };
 		5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
+		6BFEA773FEC2A7DE0A882959 /* Pods_RunningRhythmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningRhythmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89B66F9E9B3472AC5355F811 /* Pods_RunningRhythm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningRhythm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971AA2BE7223CEFA7ED5138A /* Pods-RunningRhythmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningRhythmUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningRhythmUITests/Pods-RunningRhythmUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A030318C2E275C3452F5FEDA /* Pods-RunningRhythmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningRhythmTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningRhythmTests/Pods-RunningRhythmTests.release.xcconfig"; sourceTree = "<group>"; };
 		A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RunningRhythm.xcdatamodel; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		A1F08C211FA846B6009BDAFA /* AppLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginViewController.swift; sourceTree = "<group>"; };
 		A1F879611FC0D5C300F64F00 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B3BD14A37C2EB4E0AA464E2C /* Pods-RunningRhythm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningRhythm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningRhythm/Pods-RunningRhythm.debug.xcconfig"; sourceTree = "<group>"; };
+		BAC03DDAFE1A18E07BE2B422 /* Pods_RunningRhythmUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningRhythmUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC88FD24597EF581044DDE49 /* Pods-RunningRhythm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningRhythm.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningRhythm/Pods-RunningRhythm.release.xcconfig"; sourceTree = "<group>"; };
 		C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F23F3E0349818DFB0A0D9B6 /* Pods_RunningRhythmTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89E451CD6B566EA6D25C130E /* Pods_RunningRhythmUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +138,9 @@
 				A1760F781FC1715300F43667 /* SpotifyAudioPlayback.framework */,
 				A1760F7A1FC1715400F43667 /* SpotifyAuthentication.framework */,
 				A1760F771FC1715300F43667 /* SpotifyMetadata.framework */,
+				89B66F9E9B3472AC5355F811 /* Pods_RunningRhythm.framework */,
+				6BFEA773FEC2A7DE0A882959 /* Pods_RunningRhythmTests.framework */,
+				BAC03DDAFE1A18E07BE2B422 /* Pods_RunningRhythmUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

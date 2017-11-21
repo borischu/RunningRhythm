@@ -11,11 +11,6 @@ import WebKit
 
 @objc protocol WebViewControllerDelegate {
     func webViewControllerDidFinish(_ controller: WebViewController)
-    /*! @abstract Invoked when the initial URL load is complete.
-     @param success YES if loading completed successfully, NO if loading failed.
-     @discussion This method is invoked when SFSafariViewController completes the loading of the URL that you pass
-     to its initializer. It is not invoked for any subsequent page loads in the same SFSafariViewController instance.
-     */
     @objc optional func webViewController(_ controller: WebViewController, didCompleteInitialLoad didLoadSuccessfully: Bool)
 }
 
