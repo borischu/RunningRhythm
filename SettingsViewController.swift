@@ -113,7 +113,9 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func logOff(_ sender: Any) {
-        SPTAudioStreamingController.sharedInstance().logout()
+        if SPTAudioStreamingController.sharedInstance().loggedIn == true {
+            SPTAudioStreamingController.sharedInstance().logout()
+        }
     }
     
     

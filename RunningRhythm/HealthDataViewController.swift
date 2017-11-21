@@ -9,6 +9,7 @@
 import UIKit
 import HealthKit
 import HealthKitUI
+import CoreMotion
 
 class HealthDataViewController: UIViewController {
 
@@ -24,6 +25,9 @@ class HealthDataViewController: UIViewController {
     @IBOutlet weak var workoutLengthLabel: UILabel!
     @IBOutlet weak var backBtnHealth: UIButton!
     
+    let healthManager = HealthKitManager()
+    let healthStore = HKHealthStore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         second.text = String(secondPassed)
@@ -31,22 +35,6 @@ class HealthDataViewController: UIViewController {
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         backBtnHealth.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateLabels), userInfo: nil, repeats: true)
-        let healthStore = HKHealthStore()
-        func authorizeHealthKit() -> Bool {
-            var isEnabled = true
-            print(String(isEnabled))
-            if HKHealthStore.isHealthDataAvailable() {
-                let stepsCount = NSSet(object: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
-                healthStore.requestAuthorization(toShare: nil, read: (stepsCount as! Set<HKObjectType>)) {
-                    (success, error) -> Void in
-                    isEnabled = success
-                }
-            }
-            else {
-                isEnabled = false
-            }
-            return isEnabled
-        }
         // Do any additional setup after loading the view.
         minute.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         second.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
@@ -56,6 +44,56 @@ class HealthDataViewController: UIViewController {
         heartRateLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         heartRateNumber.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLengthLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        
+        if (healthManager.authorizeHealthKit()) {
+            let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
+            let heartRate = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+            //   Get the start of the day
+            let date = Date()
+            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+            let yest = date.yesterday
+            
+            //  Set the Predicates & Interval
+            let predicate = HKQuery.predicateForSamples(withStart: yest, end: date, options: .strictStartDate)
+            var interval = DateComponents()
+            interval.day = 1
+            //  Perform the Query
+            let stepsQuery = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: date as Date, intervalComponents:interval)
+            
+            stepsQuery.initialResultsHandler = { query, results, error in
+                if error != nil {
+                    return
+                }
+                if let myResults = results {
+                    myResults.enumerateStatistics(from: yest, to: date) {
+                        statistics, stop in
+                        if let quantity = statistics.sumQuantity() {
+                            let steps = quantity.doubleValue(for: HKUnit.count())
+                            self.stepsTakenNumber.text = String(steps)
+                        }
+                    }
+                }
+            }
+            
+            let heartRateQuery = HKStatisticsCollectionQuery(quantityType: heartRate!, quantitySamplePredicate: predicate, options: [.discreteAverage], anchorDate: date as Date, intervalComponents:interval)
+            
+            heartRateQuery.initialResultsHandler = { query, results, error in
+                if error != nil {
+                    return
+                }
+                if let myResults = results {
+                    myResults.enumerateStatistics(from: yest, to: date) {
+                        statistics, stop in
+                        if let quantity = statistics.sumQuantity() {
+                            let heartRate = quantity.doubleValue(for: HKUnit.count())
+                            self.heartRateNumber.text = String(heartRate)
+                        }
+                    }
+                }
+            }
+            self.healthStore.execute(stepsQuery)
+            self.healthStore.execute(heartRateQuery)
+        }
     }
     
     @IBAction func startWorkout(_ sender: UIButton) {
@@ -99,5 +137,21 @@ class HealthDataViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
 
-
+}
+extension Date {
+    var yesterday: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var tomorrow: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return tomorrow.month != month
+    }
 }

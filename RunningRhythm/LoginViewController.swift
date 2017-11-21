@@ -7,7 +7,8 @@
 //
 
 import UIKit
-    public var username: String?
+public var username: String?
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
 
