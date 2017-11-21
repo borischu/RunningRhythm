@@ -54,6 +54,10 @@ class HealthDataViewController: UIViewController {
         startWorkout.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
         pauseButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
         endWorkout.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        if backgroundHex == night {
+            stepsChartButton.setImage(#imageLiteral(resourceName: "graphiconinvert"), for: UIControlState(rawValue: 0))
+            heartRateButton.setImage(#imageLiteral(resourceName: "graphiconinvert"), for: UIControlState(rawValue: 0))
+        }
         
         if (healthManager.authorizeHealthKit()) {
             let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)

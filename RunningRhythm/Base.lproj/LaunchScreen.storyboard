@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <development version="8000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,6 +27,7 @@
                                 <rect key="frame" x="32" y="105" width="311" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="EEO-Ue-O4p"/>
+                                    <constraint firstAttribute="width" secondItem="cO5-mg-6OP" secondAttribute="height" multiplier="311:114" id="M0y-mC-mX9"/>
                                     <constraint firstAttribute="width" constant="311" id="Zy0-L0-fkA"/>
                                 </constraints>
                             </imageView>
