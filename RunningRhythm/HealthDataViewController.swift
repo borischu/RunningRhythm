@@ -24,14 +24,19 @@ class HealthDataViewController: UIViewController {
     @IBOutlet weak var heartRateNumber: UILabel!
     @IBOutlet weak var workoutLengthLabel: UILabel!
     @IBOutlet weak var backBtnHealth: UIButton!
+    @IBOutlet weak var stepsChartButton: UIButton!
+    @IBOutlet weak var heartRateButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var startWorkout: UIButton!
+    @IBOutlet weak var endWorkout: UIButton!
     
     let healthManager = HealthKitManager()
     let healthStore = HKHealthStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        second.text = String(secondPassed)
-        minute.text = "\(minutePassed):"
+        second.text = String(format: "%02d", secondPassed)
+        minute.text = String(format: "%02d", minutePassed) + ":"
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
         backBtnHealth.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateLabels), userInfo: nil, repeats: true)
@@ -44,13 +49,17 @@ class HealthDataViewController: UIViewController {
         heartRateLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         heartRateNumber.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLengthLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        stepsChartButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        heartRateButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        startWorkout.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        pauseButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        endWorkout.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
         
         if (healthManager.authorizeHealthKit()) {
             let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
             let heartRate = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
             //   Get the start of the day
             let date = Date()
-            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
             let yest = date.yesterday
             
             //  Set the Predicates & Interval
@@ -69,7 +78,9 @@ class HealthDataViewController: UIViewController {
                         statistics, stop in
                         if let quantity = statistics.sumQuantity() {
                             let steps = quantity.doubleValue(for: HKUnit.count())
-                            self.stepsTakenNumber.text = String(steps)
+                            DispatchQueue.main.async {
+                                self.stepsTakenNumber.text = String(steps)
+                            }
                         }
                     }
                 }
@@ -82,11 +93,15 @@ class HealthDataViewController: UIViewController {
                     return
                 }
                 if let myResults = results {
+                    print(myResults)
                     myResults.enumerateStatistics(from: yest, to: date) {
                         statistics, stop in
                         if let quantity = statistics.sumQuantity() {
                             let heartRate = quantity.doubleValue(for: HKUnit.count())
-                            self.heartRateNumber.text = String(heartRate)
+                            DispatchQueue.main.async {
+                                print(heartRate)
+                                self.heartRateNumber.text = String(heartRate)
+                            }
                         }
                     }
                 }
@@ -106,13 +121,13 @@ class HealthDataViewController: UIViewController {
     
     @IBAction func EndWorkout(_ sender: UIButton) {
         TimerModel.sharedTimer.stopTimer()
-        second.text = String(secondPassed)
-        minute.text = "\(minutePassed):"
+        second.text = String(format: "%02d", secondPassed)
+        minute.text = String(format: "%02d", minutePassed) + ":"
     }
     
     func updateLabels() {
-        second.text = String(secondPassed)
-        minute.text = "\(minutePassed):"
+        second.text = String(format: "%02d", secondPassed)
+        minute.text = String(format: "%02d", minutePassed) + ":"
     }
 
     override func didReceiveMemoryWarning() {

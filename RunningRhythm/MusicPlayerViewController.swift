@@ -243,7 +243,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         else {
             workoutState = false
             startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
-            TimerModel.sharedTimer.stopTimer()
+            TimerModel.sharedTimer.pauseTimer()
         }
     }
     

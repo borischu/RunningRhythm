@@ -51,6 +51,9 @@ class TimerModel: NSObject {
             print("No timer active, start the timer before you stop it.")
             return
         }
+        secondPassed = 0
+        minutePassed = 0
+        timePassed = 0
         internalTimer?.invalidate()
         timeRunning = false
     }
@@ -58,7 +61,6 @@ class TimerModel: NSObject {
     func fireTimerAction(sender: AnyObject?){
         secondPassed += 1
         timePassed += 1
-        print(secondPassed)
         if (secondPassed == 59) {
             secondPassed = 0
             minutePassed += 1

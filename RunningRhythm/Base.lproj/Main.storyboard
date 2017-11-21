@@ -257,7 +257,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="healthVCButton" destination="eMF-v8-wcK" id="DeS-Dy-TWT"/>
                         <outlet property="loggedIn" destination="8Hs-gY-htn" id="SeP-rw-TcU"/>
+                        <outlet property="musicVCButton" destination="FxH-Zv-LRe" id="VdV-Ec-3Ik"/>
+                        <outlet property="settingsVCButton" destination="xf1-O0-mFH" id="gR2-tU-ddh"/>
                         <outlet property="spotifyLoginButton" destination="TkB-9B-gMX" id="ld4-8C-9Rj"/>
                         <outlet property="statusLabel" destination="Lcj-20-xP1" id="zUA-uK-qmd"/>
                         <outlet property="userNameLabel" destination="UPl-x0-YLP" id="XPv-A1-K0u"/>
@@ -476,10 +479,15 @@
                     </view>
                     <connections>
                         <outlet property="backBtnHealth" destination="zde-lG-6A4" id="XB7-5b-KzC"/>
+                        <outlet property="endWorkout" destination="bwj-zt-aOX" id="uFC-vc-8hN"/>
+                        <outlet property="heartRateButton" destination="he8-bA-KbT" id="xJB-3m-2ED"/>
                         <outlet property="heartRateLabel" destination="bFl-EA-gNo" id="lgw-fx-E80"/>
                         <outlet property="heartRateNumber" destination="n9t-0z-aDQ" id="Mv1-si-IGm"/>
                         <outlet property="minute" destination="AJY-Fb-eaX" id="QQG-QM-n9E"/>
+                        <outlet property="pauseButton" destination="4wy-n6-ZLb" id="7x2-Hb-guI"/>
                         <outlet property="second" destination="MNX-uB-cAU" id="mAR-SG-6kb"/>
+                        <outlet property="startWorkout" destination="SEn-VJ-cpZ" id="lNm-OG-zNA"/>
+                        <outlet property="stepsChartButton" destination="dgp-Ej-Hea" id="rXi-3L-LRV"/>
                         <outlet property="stepsTakenLabel" destination="lEr-Ds-lMF" id="rnX-3z-aKr"/>
                         <outlet property="stepsTakenNumber" destination="y8D-Oy-hhv" id="X79-jn-bbe"/>
                         <outlet property="titleLabel" destination="UV5-Ix-DYh" id="Mdc-tV-5Et"/>

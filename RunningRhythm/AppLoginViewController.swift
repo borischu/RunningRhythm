@@ -15,6 +15,10 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     @IBOutlet weak var loggedIn: UILabel!
     @IBOutlet weak var spotifyLoginButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var healthVCButton: UIButton!
+    @IBOutlet weak var musicVCButton: UIButton!
+    @IBOutlet weak var settingsVCButton: UIButton!
+    
     var authViewController: UIViewController?
     var firstLoad: Bool!
     var logged = false
@@ -31,14 +35,14 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         loggedIn.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         statusLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         spotifyLoginButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
-        
+        healthVCButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        musicVCButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
+        settingsVCButton.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: .normal)
     }
     
     @IBAction func connectWithSpotify(_ sender: Any) {
         self.openLoginPage()
     }
-    
-
     
     func backToApp() {
         self.firstLoad = false
