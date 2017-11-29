@@ -27,11 +27,6 @@ class PlaylistTableViewController: UITableViewController {
         })
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.reloadData()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +44,7 @@ class PlaylistTableViewController: UITableViewController {
         return self.playlists.count
     }
     
-    private func getPlaylists(completion : ()->()) {
+    private func getPlaylists(completion : @escaping ()->()) {
         let playListRequest = try! SPTPlaylistList.createRequestForGettingPlaylists(forUser: SPTAuth.defaultInstance().session.canonicalUsername, withAccessToken: SPTAuth.defaultInstance().session.accessToken)
         Alamofire.request(playListRequest)
             .response { response in
@@ -59,13 +54,12 @@ class PlaylistTableViewController: UITableViewController {
                         self.playlists.append(playlist)
                     }
                 }
+            completion()
         }
-        completion()
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        self.tableView.reloadData()
         let cell = tableView.dequeueReusableCell(withIdentifier: "playlist", for: indexPath)
         // Configure the cell...
         cell.textLabel?.text = playlists[indexPath.row].name

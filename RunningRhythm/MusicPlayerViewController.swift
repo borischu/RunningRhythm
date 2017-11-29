@@ -210,9 +210,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController) {
         self.updateUI()
-        let trackNum = track!.trackNumber as? UInt
+        let trackNum = UInt(track!.trackNumber-4)
         print(trackNum)
-        SPTAudioStreamingController.sharedInstance().playSpotifyURI(playlist?.playableUri.absoluteString, startingWith: trackNum!, startingWithPosition: 0) { error in
+        SPTAudioStreamingController.sharedInstance().playSpotifyURI(playlist?.playableUri.absoluteString, startingWith: trackNum, startingWithPosition: 0) { error in
             if error != nil {
                 print("*** failed to play: \(error)")
                 return

@@ -27,11 +27,6 @@ class TrackListTableViewController: UITableViewController {
         })
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.reloadData()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,13 +45,12 @@ class TrackListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        self.tableView.reloadData()
         let cell = tableView.dequeueReusableCell(withIdentifier: "tracks", for: indexPath)
         cell.textLabel?.text = trackList[indexPath.row].name
         return cell
     }
     
-    private func getTracks(completion : ()->()) {
+    private func getTracks(completion : @escaping ()->()) {
         let stringFromUrl =  playlist?.uri.absoluteString
         let uri = URL(string: stringFromUrl!)
         // use SPTPlaylistSnapshot to get all the playlists
@@ -68,12 +62,9 @@ class TrackListTableViewController: UITableViewController {
                         self.trackList.append(thistrack)
                     }
                 }
-                DispatchQueue.main.async{
-                    self.tableView.reloadData()
-                }
             }
+            completion()
         }
-        completion()
     }
 
     /*
