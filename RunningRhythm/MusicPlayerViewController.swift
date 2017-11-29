@@ -16,6 +16,8 @@ public var workoutState = false
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
     
     var username: String?
+    var track: SPTPlaylistTrack?
+    var playlist: SPTPartialPlaylist?
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -52,6 +54,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self
         SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
         self.updateUI()
+        print(track?.playableUri)
     }
     
     override func didReceiveMemoryWarning() {
@@ -207,7 +210,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController) {
         self.updateUI()
-        SPTAudioStreamingController.sharedInstance().playSpotifyURI("spotify:user:billboard.com:playlist:6UeSakyzhiEt4NB3UAd6NQ", startingWith: 0, startingWithPosition: 10) { error in
+        let trackNum = track!.trackNumber as? UInt
+        print(trackNum)
+        SPTAudioStreamingController.sharedInstance().playSpotifyURI(playlist?.playableUri.absoluteString, startingWith: trackNum!, startingWithPosition: 0) { error in
             if error != nil {
                 print("*** failed to play: \(error)")
                 return

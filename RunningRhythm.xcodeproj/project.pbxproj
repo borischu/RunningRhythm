@@ -13,6 +13,7 @@
 		5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */; };
 		5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */; };
 		5F23F3E0349818DFB0A0D9B6 /* Pods_RunningRhythmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFEA773FEC2A7DE0A882959 /* Pods_RunningRhythmTests.framework */; };
+		6C0AA257E9B8F0D3BA79F604 /* Pods_RunningRhythm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B66F9E9B3472AC5355F811 /* Pods_RunningRhythm.framework */; };
 		89E451CD6B566EA6D25C130E /* Pods_RunningRhythmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC03DDAFE1A18E07BE2B422 /* Pods_RunningRhythmUITests.framework */; };
 		A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */; };
 		A1692D9A1FC376AA00DF0328 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1692D991FC376AA00DF0328 /* HealthKitManager.swift */; };
@@ -22,6 +23,8 @@
 		A1760F831FC172E300F43667 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1760F821FC172DB00F43667 /* AVFoundation.framework */; };
 		A1760F841FC172E300F43667 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1760F811FC172DB00F43667 /* HealthKit.framework */; };
 		A1760F851FC172E300F43667 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1760F801FC172DB00F43667 /* SystemConfiguration.framework */; };
+		A19716A51FCE33280005476A /* TrackListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19716A41FCE33280005476A /* TrackListTableViewController.swift */; };
+		A1B538591FCD4A9C00D25455 /* PlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B538581FCD4A9C00D25455 /* PlaylistTableViewController.swift */; };
 		A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */; };
 		A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */; };
 		A1D0A1831FA2B8CB003862B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D0A1811FA2B8CB003862B4 /* Main.storyboard */; };
@@ -73,6 +76,8 @@
 		A1760F801FC172DB00F43667 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A1760F811FC172DB00F43667 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		A1760F821FC172DB00F43667 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A19716A41FCE33280005476A /* TrackListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewController.swift; sourceTree = "<group>"; };
+		A1B538581FCD4A9C00D25455 /* PlaylistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewController.swift; sourceTree = "<group>"; };
 		A1D0A17A1FA2B8CB003862B4 /* RunningRhythm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningRhythm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 				A1760F7F1FC1715400F43667 /* SpotifyAuthentication.framework in Frameworks */,
 				A1760F7C1FC1715400F43667 /* SpotifyMetadata.framework in Frameworks */,
 				A1760F7D1FC1715400F43667 /* SpotifyAudioPlayback.framework in Frameworks */,
+				6C0AA257E9B8F0D3BA79F604 /* Pods_RunningRhythm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +189,8 @@
 				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
 				5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
+				A19716A41FCE33280005476A /* TrackListTableViewController.swift */,
+				A1B538581FCD4A9C00D25455 /* PlaylistTableViewController.swift */,
 				A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */,
 				A1F08C1C1FA843B2009BDAFA /* README.md */,
 				A1D0A1871FA2B8CB003862B4 /* Assets.xcassets */,
@@ -490,9 +498,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RunningRhythm/Pods-RunningRhythm-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,12 +537,14 @@
 				A1692D9A1FC376AA00DF0328 /* HealthKitManager.swift in Sources */,
 				5263E0921FC0D5A800C3A076 /* WorkoutTimer.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
+				A19716A51FCE33280005476A /* TrackListTableViewController.swift in Sources */,
 				5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */,
 				5292FEF01FBC070700C2A0CE /* HealthDataViewController.swift in Sources */,
 				A11EF8CF1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel in Sources */,
 				A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */,
 				5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */,
 				A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */,
+				A1B538591FCD4A9C00D25455 /* PlaylistTableViewController.swift in Sources */,
 				5292FEEE1FBC044D00C2A0CE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,7 +650,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -712,6 +725,12 @@
 				INFOPLIST_FILE = RunningRhythm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cindercapital.RunningRhythm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RunningRhythm/RunningRhythm-Bridging-Header.h";
@@ -738,6 +757,12 @@
 				INFOPLIST_FILE = RunningRhythm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cindercapital.RunningRhythm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RunningRhythm/RunningRhythm-Bridging-Header.h";

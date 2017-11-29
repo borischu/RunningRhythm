@@ -142,7 +142,7 @@
                                 <state key="normal" title="Music" image="music_player_icon"/>
                                 <connections>
                                     <action selector="CheckForLogged:" destination="CFt-Sm-nnB" eventType="touchUpInside" id="2iR-HH-tOb"/>
-                                    <segue destination="NmI-1y-iNS" kind="show" identifier="musicPlayer" id="Sge-cd-UEH"/>
+                                    <segue destination="blA-hG-3J9" kind="show" id="ACu-PD-o4z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xf1-O0-mFH">
@@ -552,6 +552,109 @@
             </objects>
             <point key="canvasLocation" x="33" y="1612"/>
         </scene>
+        <!--Playlist Table View Controller-->
+        <scene sceneID="V27-M9-L0r">
+            <objects>
+                <tableViewController id="blA-hG-3J9" customClass="PlaylistTableViewController" customModule="RunningRhythm" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j6f-Hs-rTu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" red="0.97036689519999997" green="0.92241293189999995" blue="0.87584108110000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.97036689519999997" green="0.92241293189999995" blue="0.87584108110000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.97036689519999997" green="0.92241293189999995" blue="0.87584108110000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="255-WR-esG">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Playlists" id="RxK-Yt-seg">
+                                    <barButtonItem key="backBarButtonItem" title="‹" id="i9C-sh-uoC"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playlist" textLabel="FaV-jH-McB" style="IBUITableViewCellStyleDefault" id="IxD-Gj-qZL">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IxD-Gj-qZL" id="Ugf-7G-gGd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FaV-jH-McB">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="tintColor" red="0.97036689519999997" green="0.92241293189999995" blue="0.87584108110000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="hhc-hL-yK8" kind="showDetail" identifier="showTracks" id="bXY-u6-5OO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="blA-hG-3J9" id="Swe-DA-iTH"/>
+                            <outlet property="delegate" destination="blA-hG-3J9" id="cTo-hM-78b"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="QLF-Zm-UZf">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="osA-AF-wyn"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxp-TF-1B5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2165.5999999999999" y="115.59220389805098"/>
+        </scene>
+        <!--Track List Table View Controller-->
+        <scene sceneID="N93-2v-RwS">
+            <objects>
+                <tableViewController id="hhc-hL-yK8" customClass="TrackListTableViewController" customModule="RunningRhythm" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uMA-3o-gur">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="AMY-vB-2PM">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="Eqt-Xk-zlJ"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tracks" textLabel="PkK-Yb-Yoc" style="IBUITableViewCellStyleDefault" id="Y04-3q-pc3">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y04-3q-pc3" id="9m0-EV-zxp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PkK-Yb-Yoc">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="NmI-1y-iNS" kind="show" identifier="showPlayer" id="QZM-xO-Ath"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hhc-hL-yK8" id="FiE-un-cXo"/>
+                            <outlet property="delegate" destination="hhc-hL-yK8" id="K6E-3j-eGx"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XeF-6T-CHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3452" y="121"/>
+        </scene>
         <!--Music Player View Controller-->
         <scene sceneID="2ge-kK-gAY">
             <objects>
@@ -661,7 +764,7 @@
                                     <color key="titleColor" red="0.91499453783035278" green="0.87916004657745361" blue="0.84105926752090454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CFt-Sm-nnB" kind="show" identifier="appLogin" id="QR1-ba-XFw"/>
+                                    <segue destination="hhc-hL-yK8" kind="show" id="GD8-Nv-WRv"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPp-za-Nah">
@@ -735,7 +838,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzY-B8-Dp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965.5999999999999" y="115.59220389805098"/>
+            <point key="canvasLocation" x="4684" y="140"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="KOb-7o-zet">
@@ -868,7 +971,8 @@
         <image name="runningrhythmlaunch" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bXY-u6-5OO"/>
         <segue reference="zNi-js-yQi"/>
-        <segue reference="997-tc-8Nb"/>
+        <segue reference="qMz-uR-arY"/>
     </inferredMetricsTieBreakers>
 </document>
