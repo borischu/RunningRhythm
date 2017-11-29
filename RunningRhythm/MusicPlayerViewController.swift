@@ -125,10 +125,20 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         super.viewDidAppear(animated)
         self.login()
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
+        print(track?.name)
     }
     
     func login() {
-        if SPTAudioStreamingController.sharedInstance().loggedIn { return }
+        if SPTAudioStreamingController.sharedInstance().loggedIn {
+            SPTAudioStreamingController.sharedInstance().playSpotifyURI(track?.playableUri.absoluteString, startingWith: 0, startingWithPosition: 0) { error in
+                if error != nil {
+                    print("*** failed to play: \(error)")
+                    return
+                }
+            }
+            self.updateUI()
+            return
+        }
         do {
             try SPTAudioStreamingController.sharedInstance().start(withClientId: SPTAuth.defaultInstance().clientID, audioController: nil, allowCaching: true)
             SPTAudioStreamingController.sharedInstance().login(withAccessToken: SPTAuth.defaultInstance().session.accessToken!)
@@ -208,7 +218,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     }
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController) {
-        print(track?.name)
         SPTAudioStreamingController.sharedInstance().playSpotifyURI(track?.playableUri.absoluteString, startingWith: 0, startingWithPosition: 0) { error in
             if error != nil {
                 print("*** failed to play: \(error)")
