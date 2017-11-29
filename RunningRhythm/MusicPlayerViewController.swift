@@ -54,7 +54,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self
         SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
         self.updateUI()
-        print(track?.playableUri)
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,7 +93,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         self.prevButton.isEnabled = SPTAudioStreamingController.sharedInstance().metadata.prevTrack != nil
         self.trackTitle.text = SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.name
         self.artistTitle.text = SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.artistName
-        self.playbackSourceTitle.text = SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.playbackSourceName
+        self.playbackSourceTitle.text = playlist?.name
         
         let imageURL = URL.init(string: (SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.albumCoverArtURL)!)
         if imageURL == nil {
@@ -209,15 +208,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     }
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController) {
-        self.updateUI()
-        let trackNum = UInt(track!.trackNumber-1)
-        print(trackNum)
-        SPTAudioStreamingController.sharedInstance().playSpotifyURI(playlist?.playableUri.absoluteString, startingWith: trackNum, startingWithPosition: 0) { error in
+        print(track?.name)
+        SPTAudioStreamingController.sharedInstance().playSpotifyURI(track?.playableUri.absoluteString, startingWith: 0, startingWithPosition: 0) { error in
             if error != nil {
                 print("*** failed to play: \(error)")
                 return
             }
         }
+        self.updateUI()
     }
     
     func activateAudioSession() {
@@ -259,6 +257,11 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller
+        var _ : TrackListTableViewController = segue.destination as! TrackListTableViewController
+        if segue.identifier == "goBackTracks" {
+            let destination = segue.destination as? TrackListTableViewController;
+            destination?.playlist = playlist
+        }
     }
     
 }
