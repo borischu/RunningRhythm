@@ -22,7 +22,14 @@ class TrackListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        getTracks()
+        getTracks(completion: {
+            self.tableView.reloadData()
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +56,7 @@ class TrackListTableViewController: UITableViewController {
         return cell
     }
     
-    private func getTracks() {
+    private func getTracks(completion : ()->()) {
         let stringFromUrl =  playlist?.uri.absoluteString
         let uri = URL(string: stringFromUrl!)
         // use SPTPlaylistSnapshot to get all the playlists
@@ -66,6 +73,7 @@ class TrackListTableViewController: UITableViewController {
                 }
             }
         }
+        completion()
     }
 
     /*

@@ -22,7 +22,14 @@ class PlaylistTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        getPlaylists()
+        getPlaylists(completion : {
+            self.tableView.reloadData()
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,21 +49,18 @@ class PlaylistTableViewController: UITableViewController {
         return self.playlists.count
     }
     
-    private func getPlaylists() {
+    private func getPlaylists(completion : ()->()) {
         let playListRequest = try! SPTPlaylistList.createRequestForGettingPlaylists(forUser: SPTAuth.defaultInstance().session.canonicalUsername, withAccessToken: SPTAuth.defaultInstance().session.accessToken)
         Alamofire.request(playListRequest)
             .response { response in
                 let list = try! SPTPlaylistList(from: response.data, with: response.response)
                 for playList in list.items  {
                     if let playlist = playList as? SPTPartialPlaylist {
-                        print(playlist.name)
                         self.playlists.append(playlist)
                     }
                 }
-                DispatchQueue.main.async{
-                    self.tableView.reloadData()
-                }
         }
+        completion()
     }
 
 
