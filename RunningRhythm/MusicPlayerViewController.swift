@@ -68,13 +68,20 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         self.login()
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
         print(track?.name)
-        motionManager.startAccelerometerUpdates()
-        motionManager.startDeviceMotionUpdates()
-        let acceleration = motionManager.accelerometerData?.acceleration
-        
-        
-        
-        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {( acclData : CMAccelerometerData?, error: Error!) in
+            self.outputAccelData(acceleration: acclData!.acceleration)
+            if (error != nil) {
+                print("\(error)")
+            }
+            })
+    }
+    
+    func outputAccelData(acceleration: CMAcceleration) {
+        let acceleration_x = acceleration.x
+        let acceleration_y = acceleration.y
+        let acceleration_z = acceleration.z
+        let norm = sqrt(pow(acceleration_x, 2.0) + pow(acceleration_y, 2.0) + pow(acceleration_z, 2.0))
+        workoutLabel.text = String(norm)
     }
     
     @IBAction func switchPic(_ sender: Any) {
