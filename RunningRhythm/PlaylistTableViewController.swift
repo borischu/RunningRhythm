@@ -11,11 +11,13 @@ import Alamofire
 
 class PlaylistTableViewController: UITableViewController {
 
+
     
     var playlists = [SPTPartialPlaylist]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,6 +65,8 @@ class PlaylistTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playlist", for: indexPath)
         // Configure the cell...
         cell.textLabel?.text = playlists[indexPath.row].name
+        cell.contentView.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+        cell.textLabel?.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1);
         return cell
     }
     

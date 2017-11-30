@@ -16,6 +16,7 @@ class TrackListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,6 +49,8 @@ class TrackListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tracks", for: indexPath)
         cell.textLabel?.text = trackList[indexPath.row].name
+        cell.contentView.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
+        cell.textLabel?.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1);
         return cell
     }
     
