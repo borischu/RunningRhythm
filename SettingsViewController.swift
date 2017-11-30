@@ -116,6 +116,14 @@ class SettingsViewController: UIViewController {
         if SPTAudioStreamingController.sharedInstance().loggedIn == true {
             SPTAudioStreamingController.sharedInstance().logout()
         }
+        // Delete any associated cookies
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+        }
+        SPTAuth.defaultInstance().session = nil
+        
     }
     
     
