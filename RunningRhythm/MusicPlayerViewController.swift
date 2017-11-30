@@ -11,6 +11,8 @@ import HealthKit
 import AudioToolbox
 import AVFoundation
 import CoreMotion
+import Alamofire
+import Spartan
 
 public var workoutState = false
 
@@ -72,8 +74,17 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
             self.outputAccelData(acceleration: acclData!.acceleration)
             if (error != nil) {
                 print("\(error)")
-            }
-            })
+            }})
+        print(track?.identifier)
+        Spartan.authorizationToken = SPTAuth.defaultInstance().session.accessToken!
+        Spartan.getAudioFeatures(trackId: (track?.identifier)!, success: { (AudioFeaturesObject) in
+            print(AudioFeaturesObject.tempo)
+            print(AudioFeaturesObject.energy)
+            print(AudioFeaturesObject.danceability)
+        }, failure: {(error) in
+            print(error)
+        })
+        
     }
     
     func outputAccelData(acceleration: CMAcceleration) {

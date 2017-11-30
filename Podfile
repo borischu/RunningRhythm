@@ -8,6 +8,7 @@ target 'RunningRhythm' do
   # Pods for RunningRhythm
 #  pod 'Charts'
   pod 'Alamofire'
+  pod 'Spartan'
 
   target 'RunningRhythmTests' do
     inherit! :search_paths
