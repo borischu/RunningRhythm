@@ -31,6 +31,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     @IBOutlet weak var backBtnMusic: UIButton!
     
+    @IBOutlet weak var pauseImage: UIImageView!
+    
+    
     var isChangingProgress: Bool = false
     let audioSession = AVAudioSession.sharedInstance()
     
@@ -74,6 +77,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         
     }
     
+    @IBAction func switchPic(_ sender: Any) {
+        if SPTAudioStreamingController.sharedInstance().playbackState.isPlaying {
+            pauseImage.image = UIImage(named:"play_button")
+        }
+        else {
+            pauseImage.image = UIImage(named:"Pause")
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
