@@ -10,6 +10,7 @@ import UIKit
 import HealthKit
 import AudioToolbox
 import AVFoundation
+import CoreMotion
 
 public var workoutState = false
 
@@ -32,6 +33,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     var isChangingProgress: Bool = false
     let audioSession = AVAudioSession.sharedInstance()
+    
+    let motionManager = CMMotionManager()
+    let activityManager = CMMotionActivityManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +65,15 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         self.login()
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
         print(track?.name)
+        motionManager.startAccelerometerUpdates()
+        motionManager.startDeviceMotionUpdates()
+        let acceleration = motionManager.accelerometerData?.acceleration
+        
+        
+        
+        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

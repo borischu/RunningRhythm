@@ -25,7 +25,6 @@
 		A1760F851FC172E300F43667 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1760F801FC172DB00F43667 /* SystemConfiguration.framework */; };
 		A19716A51FCE33280005476A /* TrackListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19716A41FCE33280005476A /* TrackListTableViewController.swift */; };
 		A1B538591FCD4A9C00D25455 /* PlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B538581FCD4A9C00D25455 /* PlaylistTableViewController.swift */; };
-		A1CE36E71FCFB59E00B1EDBC /* CoreMotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CE36E61FCFB59E00B1EDBC /* CoreMotionData.swift */; };
 		A1D0A17E1FA2B8CB003862B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */; };
 		A1D0A1801FA2B8CB003862B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */; };
 		A1D0A1831FA2B8CB003862B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D0A1811FA2B8CB003862B4 /* Main.storyboard */; };
@@ -79,7 +78,6 @@
 		A1760F821FC172DB00F43667 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A19716A41FCE33280005476A /* TrackListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewController.swift; sourceTree = "<group>"; };
 		A1B538581FCD4A9C00D25455 /* PlaylistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewController.swift; sourceTree = "<group>"; };
-		A1CE36E61FCFB59E00B1EDBC /* CoreMotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotionData.swift; sourceTree = "<group>"; };
 		A1D0A17A1FA2B8CB003862B4 /* RunningRhythm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningRhythm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0A17D1FA2B8CB003862B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D0A17F1FA2B8CB003862B4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				5263E0911FC0D5A800C3A076 /* WorkoutTimer.swift */,
 				5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */,
 				A1D0A1811FA2B8CB003862B4 /* Main.storyboard */,
-				A1CE36E61FCFB59E00B1EDBC /* CoreMotionData.swift */,
 				A19716A41FCE33280005476A /* TrackListTableViewController.swift */,
 				A1B538581FCD4A9C00D25455 /* PlaylistTableViewController.swift */,
 				A11EF8CE1FBBD5EF005297E2 /* RunningRhythm.xcdatamodel */,
@@ -538,7 +535,6 @@
 				A1F879621FC0D5C300F64F00 /* WebViewController.swift in Sources */,
 				C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */,
 				A1692D9A1FC376AA00DF0328 /* HealthKitManager.swift in Sources */,
-				A1CE36E71FCFB59E00B1EDBC /* CoreMotionData.swift in Sources */,
 				5263E0921FC0D5A800C3A076 /* WorkoutTimer.swift in Sources */,
 				A1F08C221FA846B6009BDAFA /* AppLoginViewController.swift in Sources */,
 				A19716A51FCE33280005476A /* TrackListTableViewController.swift in Sources */,
