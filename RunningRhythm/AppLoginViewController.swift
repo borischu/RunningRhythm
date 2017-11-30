@@ -143,10 +143,6 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
-        if segue.identifier == "musicPlayer" {
-            let destination = segue.destination as? MusicPlayerViewController
-            destination?.username = username
-        }
      }
 
     

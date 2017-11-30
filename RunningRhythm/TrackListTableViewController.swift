@@ -109,7 +109,6 @@ class TrackListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        var _ : MusicPlayerViewController = segue.destination as! MusicPlayerViewController
         if segue.identifier == "showPlayer" {
             let destination = segue.destination as? MusicPlayerViewController;
             destination?.track = trackList[(tableView.indexPathForSelectedRow?.row)!]

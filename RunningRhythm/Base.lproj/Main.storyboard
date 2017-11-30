@@ -570,6 +570,16 @@
                             <items>
                                 <navigationItem title="Playlists" id="RxK-Yt-seg">
                                     <barButtonItem key="backBarButtonItem" title="‹" id="i9C-sh-uoC"/>
+                                    <barButtonItem key="leftBarButtonItem" style="plain" id="Qf9-Fu-hbV">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lqa-Aw-rZy">
+                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="‹"/>
+                                        </button>
+                                        <connections>
+                                            <segue destination="CFt-Sm-nnB" kind="show" identifier="showBackHome" id="NAf-4N-B1x"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -623,7 +633,19 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.97036689519999997" green="0.92241293189999995" blue="0.87584108110000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <items>
-                                <navigationItem id="Eqt-Xk-zlJ"/>
+                                <navigationItem id="Eqt-Xk-zlJ">
+                                    <nil key="title"/>
+                                    <barButtonItem key="leftBarButtonItem" style="plain" id="AF6-7K-2j1">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ECJ-2o-DK8">
+                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="‹"/>
+                                        </button>
+                                        <connections>
+                                            <segue destination="blA-hG-3J9" kind="show" action="showDetailViewController:sender:" id="TNj-AA-qtF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
                             </items>
                         </navigationBar>
                         <prototypes>
@@ -975,9 +997,9 @@
         <image name="runningrhythmlaunch" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QZM-xO-Ath"/>
         <segue reference="GD8-Nv-WRv"/>
+        <segue reference="TNj-AA-qtF"/>
         <segue reference="zNi-js-yQi"/>
-        <segue reference="qMz-uR-arY"/>
+        <segue reference="NAf-4N-B1x"/>
     </inferredMetricsTieBreakers>
 </document>
