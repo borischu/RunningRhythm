@@ -115,6 +115,7 @@ class TrackListTableViewController: UITableViewController {
         if segue.identifier == "showPlayer" {
             let destination = segue.destination as? MusicPlayerViewController;
             destination?.track = trackList[(tableView.indexPathForSelectedRow?.row)!]
+            destination?.trackList = trackList
             destination?.playlist = playlist
         }
     }

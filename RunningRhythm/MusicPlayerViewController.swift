@@ -21,6 +21,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     var username: String?
     var track: SPTPlaylistTrack?
     var playlist: SPTPartialPlaylist?
+    var trackList = [SPTPlaylistTrack]()
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -31,8 +32,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     @IBOutlet weak var playbackSourceTitle: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     
-    @IBOutlet weak var backBtnMusic: UIButton!
-    
     @IBOutlet weak var pauseImage: UIImageView!
     
     
@@ -41,6 +40,10 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     let motionManager = CMMotionManager()
     let activityManager = CMMotionActivityManager()
+    let logItem = CMLogItem()
+    
+    var avgAcceleration = 0.0
+//    let timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: Selector(("getAcceleration")), userInfo: nil, repeats: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +60,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         playbackSourceTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         trackTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
-        backBtnMusic.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         
         SPTAudioStreamingController.sharedInstance().delegate = self
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self
@@ -69,30 +71,92 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         super.viewDidAppear(animated)
         self.login()
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
-        print(track?.name)
-        motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {( acclData : CMAccelerometerData?, error: Error!) in
-            self.outputAccelData(acceleration: acclData!.acceleration)
-            if (error != nil) {
-                print("\(error)")
-            }})
-        print(track?.identifier)
-        Spartan.authorizationToken = SPTAuth.defaultInstance().session.accessToken!
-        Spartan.getAudioFeatures(trackId: (track?.identifier)!, success: { (AudioFeaturesObject) in
-            print(AudioFeaturesObject.tempo)
-            print(AudioFeaturesObject.energy)
-            print(AudioFeaturesObject.danceability)
-        }, failure: {(error) in
-            print(error)
+//        findNextSong()
+    }
+    
+    func findNextSong() {
+        getAcceleration()
+        var tracksEnergy = [String: Float]()
+        for track in trackList {
+            let trackId = track.identifier
+            Spartan.getAudioFeatures(trackId: trackId!, success: { (AudioFeaturesObject) in
+                let energy = AudioFeaturesObject.energy
+                let dance = AudioFeaturesObject.danceability
+                let rrCoefficient = (energy! * 80 + dance! * 20)/100
+                tracksEnergy[track.playableUri.absoluteString] = Float(rrCoefficient)
+            }, failure: {(error) in
+                print(error)
+            })
+        }
+        var currentActivity = 0.0
+        
+        if avgAcceleration <= 1 {
+            currentActivity = 0.1
+        }
+        if avgAcceleration <= 2 {
+            currentActivity = 0.3
+        }
+        if avgAcceleration <= 3 {
+            currentActivity = 0.4
+        }
+        if avgAcceleration <= 4 {
+            currentActivity = 0.5
+        }
+        if avgAcceleration <= 5 {
+            currentActivity = 0.6
+        }
+        if avgAcceleration <= 6 {
+            currentActivity = 0.7
+        }
+        if avgAcceleration <= 7 {
+            currentActivity = 0.8
+        }
+        if avgAcceleration > 7 {
+            currentActivity = 0.9
+        }
+        
+        var n = 0
+        var nearestElement: Float!
+        print(tracksEnergy)
+        while Array(tracksEnergy.values)[n] <= Float(currentActivity) {
+            n += 1
+        }
+        nearestElement = Array(tracksEnergy.values)[n]
+        var queuedSpotifyURL = String()
+        for (track, energy) in tracksEnergy
+        {
+            if (energy == nearestElement)
+            {
+                queuedSpotifyURL = track
+            }
+        }
+        
+        
+        SPTAudioStreamingController.sharedInstance().queueSpotifyURI(queuedSpotifyURL, callback: { error in
+            if error != nil {
+                print("*** failed to play: \(error)")
+                return
+            }
         })
+        print(queuedSpotifyURL)
+
         
     }
     
-    func outputAccelData(acceleration: CMAcceleration) {
-        let acceleration_x = acceleration.x
-        let acceleration_y = acceleration.y
-        let acceleration_z = acceleration.z
-        let norm = sqrt(pow(acceleration_x, 2.0) + pow(acceleration_y, 2.0) + pow(acceleration_z, 2.0))
-        workoutLabel.text = String(norm)
+    func getAcceleration() {
+        var accelerationList = [Double]()
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {( acclData : CMAccelerometerData?, error: Error!) in
+            let norm = sqrt(pow((acclData?.acceleration.x)!, 2.0) + pow((acclData?.acceleration.y)!, 2.0) + pow((acclData?.acceleration.z)!, 2.0))
+            let absAcceleration = (norm - 1)/(9.81)
+            accelerationList.append(absAcceleration)
+            if (error != nil) {
+                print("\(error)")
+            }})
+        var accelerationSum = 0.0
+        for acceleration in accelerationList {
+            accelerationSum += acceleration
+        }
+        avgAcceleration = accelerationSum/Double(accelerationList.count)
     }
     
     @IBAction func switchPic(_ sender: Any) {
@@ -171,6 +235,15 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     func login() {
         if SPTAudioStreamingController.sharedInstance().loggedIn {
+//            for track in trackList {
+//                print(track.name)
+//                SPTAudioStreamingController.sharedInstance().queueSpotifyURI(track.playableUri.absoluteString, callback: { error in
+//                    if error != nil {
+//                        print("*** failed to play: \(error)")
+//                        return
+//                    }
+//                })
+//            }
             SPTAudioStreamingController.sharedInstance().playSpotifyURI(track?.playableUri.absoluteString, startingWith: 0, startingWithPosition: 0) { error in
                 if error != nil {
                     print("*** failed to play: \(error)")
@@ -310,7 +383,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller
-        var _ : TrackListTableViewController = segue.destination as! TrackListTableViewController
         if segue.identifier == "goBackTracks" {
             let destination = segue.destination as? TrackListTableViewController;
             destination?.playlist = playlist

@@ -27,7 +27,7 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
-        userNameLabel.text = username
+        userNameLabel.text = UserDefaults.standard.object(forKey: "userName") as! String
         NotificationCenter.default.addObserver(self, selector: #selector(self.sessionUpdatedNotification), name: NSNotification.Name(rawValue: "sessionUpdated"), object: nil)
         self.firstLoad = true
         self.statusLabel.text = ""

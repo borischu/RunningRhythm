@@ -27,8 +27,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if userNameTextField.text != "" && passwordTextField.text != "" {
             let password = UserDefaults.standard.object(forKey: userNameTextField.text!)
             if passwordTextField.text == password as? String {
-                print("Login successful")
                 username = userNameTextField.text
+                UserDefaults.standard.set(username, forKey: "userName")
+                UserDefaults.standard.synchronize()
             } else {
                 self.alertController = UIAlertController(title: "Login Error", message: "Incorrect Username and Password, Try Again.", preferredStyle: UIAlertControllerStyle.alert)
                 let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)

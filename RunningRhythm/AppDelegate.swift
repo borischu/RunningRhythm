@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAudioStreamingDelegate
         SPTAuth.defaultInstance().requestedScopes = [SPTAuthStreamingScope]
 //        SPTAuth.defaultInstance().tokenRefreshURL = URL(string: kTokenRefreshServiceURL)!
         SPTAuth.defaultInstance().sessionUserDefaultsKey = kSessionUserDefaultsKey
-        
+        userIsLoggedIn()
         return true
     }
     
@@ -58,6 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAudioStreamingDelegate
             }
         }
         return false
+    }
+    
+    func userIsLoggedIn() {
+        let userName = UserDefaults.standard.object(forKey: "userName")
+        if userName != nil {
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let nav = storyBoard.instantiateViewController(withIdentifier: "appMain")
+            self.window?.rootViewController = nav
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
