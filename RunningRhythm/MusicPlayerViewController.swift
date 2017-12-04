@@ -22,6 +22,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     var track: SPTPlaylistTrack?
     var playlist: SPTPartialPlaylist?
     var trackList = [SPTPlaylistTrack]()
+    var trackIds = [String]()
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -65,80 +66,117 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self
         SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
         self.updateUI()
+        for track in self.trackList {
+            let trackId = track.identifier
+            trackIds.append(trackId!)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.login()
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
-//        findNextSong()
+        Spartan.loggingEnabled = false
+        motionManager.startAccelerometerUpdates()
+        findNextSong()
     }
+    
+    func getPlaylistJSON(completion: @escaping ([[String: Any]]?) -> ()) {
+        var json: [[String: Any]]?
+        if SPTAuth.defaultInstance().session.accessToken == nil {
+            self.login()
+        }
+        Spartan.authorizationToken = SPTAuth.defaultInstance().session.accessToken!
+        Spartan.getAudioFeatures(trackIds: self.trackIds, success: { (AudioFeaturesObject) in
+            json = AudioFeaturesObject.toJSON()
+            completion(json)
+        }, failure: {(error) in
+            print(error)
+        })
+    }
+    
     
     func findNextSong() {
         getAcceleration()
         var tracksEnergy = [String: Float]()
-        for track in trackList {
-            let trackId = track.identifier
-            Spartan.getAudioFeatures(trackId: trackId!, success: { (AudioFeaturesObject) in
-                let energy = AudioFeaturesObject.energy
-                let dance = AudioFeaturesObject.danceability
+        getPlaylistJSON(completion: {(jsonObject) -> () in
+            for track in jsonObject! {
+                let trackURL = track["uri"] as? String
+                let energy = track["energy"] as? Double
+                let dance = track["danceability"] as? Double
                 let rrCoefficient = (energy! * 80 + dance! * 20)/100
-                tracksEnergy[track.playableUri.absoluteString] = Float(rrCoefficient)
-            }, failure: {(error) in
-                print(error)
+                tracksEnergy[trackURL!] = Float(rrCoefficient)
+            }
+            var currentActivity = 0.0
+            
+            if self.avgAcceleration >= 0.0 {
+                currentActivity = 0.3
+            }
+            if self.avgAcceleration >= 0.1 {
+                currentActivity = 0.4
+            }
+            if self.avgAcceleration >= 0.2 {
+                currentActivity = 0.5
+            }
+            if self.avgAcceleration >= 0.3 {
+                currentActivity = 0.55
+            }
+            if self.avgAcceleration >= 0.4 {
+                currentActivity = 0.6
+            }
+            if self.avgAcceleration >= 0.5 {
+                currentActivity = 0.65
+            }
+            if self.avgAcceleration >= 0.6 {
+                currentActivity = 0.7
+            }
+            if self.avgAcceleration >= 0.7 {
+                currentActivity = 0.75
+            }
+            if self.avgAcceleration >= 0.8 {
+                currentActivity = 0.8
+            }
+            if self.avgAcceleration >= 0.9 {
+                currentActivity = 0.85
+            }
+            if self.avgAcceleration > 1.0 {
+                currentActivity = 0.9
+            }
+            
+            var n = 0
+            var nearestElement: Float!
+            var energyArray = Array(tracksEnergy.values).sorted()
+            while energyArray[n] <= Float(currentActivity) {
+                n += 1
+            }
+            nearestElement = Array(tracksEnergy.values)[n]
+            var queuedSpotifyURL = String()
+            for (track, energy) in tracksEnergy {
+                if (energy == nearestElement) {
+                    queuedSpotifyURL = track
+                }
+            }
+            let startIndex = queuedSpotifyURL.index(queuedSpotifyURL.startIndex, offsetBy: 14)
+            let trackID = queuedSpotifyURL.substring(from: startIndex)
+            var i = 0
+            for track in self.trackIds {
+                if (track == trackID) {
+                    self.trackIds.remove(at: i)
+                    print("removed\(i) \(track)")
+                } else {
+                    i += 1
+                }
+            }
+            
+            tracksEnergy.removeAll()
+            
+            SPTAudioStreamingController.sharedInstance().queueSpotifyURI(queuedSpotifyURL, callback: { error in
+                if error != nil {
+                    print("*** failed to play: \(error)")
+                    return
+                }
             })
-        }
-        var currentActivity = 0.0
-        
-        if avgAcceleration <= 1 {
-            currentActivity = 0.1
-        }
-        if avgAcceleration <= 2 {
-            currentActivity = 0.3
-        }
-        if avgAcceleration <= 3 {
-            currentActivity = 0.4
-        }
-        if avgAcceleration <= 4 {
-            currentActivity = 0.5
-        }
-        if avgAcceleration <= 5 {
-            currentActivity = 0.6
-        }
-        if avgAcceleration <= 6 {
-            currentActivity = 0.7
-        }
-        if avgAcceleration <= 7 {
-            currentActivity = 0.8
-        }
-        if avgAcceleration > 7 {
-            currentActivity = 0.9
-        }
-        
-        var n = 0
-        var nearestElement: Float!
-        print(tracksEnergy)
-        while Array(tracksEnergy.values)[n] <= Float(currentActivity) {
-            n += 1
-        }
-        nearestElement = Array(tracksEnergy.values)[n]
-        var queuedSpotifyURL = String()
-        for (track, energy) in tracksEnergy
-        {
-            if (energy == nearestElement)
-            {
-                queuedSpotifyURL = track
-            }
-        }
-        
-        
-        SPTAudioStreamingController.sharedInstance().queueSpotifyURI(queuedSpotifyURL, callback: { error in
-            if error != nil {
-                print("*** failed to play: \(error)")
-                return
-            }
         })
-        print(queuedSpotifyURL)
 
         
     }
@@ -146,17 +184,19 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     func getAcceleration() {
         var accelerationList = [Double]()
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {( acclData : CMAccelerometerData?, error: Error!) in
+            // calculate magnitude of the 3 dimensional acceleration vector and normalize to m/s
             let norm = sqrt(pow((acclData?.acceleration.x)!, 2.0) + pow((acclData?.acceleration.y)!, 2.0) + pow((acclData?.acceleration.z)!, 2.0))
             let absAcceleration = (norm - 1)/(9.81)
             accelerationList.append(absAcceleration)
+            var accelerationSum = 0.0
+            for acceleration in accelerationList {
+                accelerationSum += acceleration
+            }
+            self.avgAcceleration = accelerationSum/Double(accelerationList.count)
+            self.workoutLabel.text = String(self.avgAcceleration)
             if (error != nil) {
                 print("\(error)")
             }})
-        var accelerationSum = 0.0
-        for acceleration in accelerationList {
-            accelerationSum += acceleration
-        }
-        avgAcceleration = accelerationSum/Double(accelerationList.count)
     }
     
     @IBAction func switchPic(_ sender: Any) {
@@ -235,15 +275,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     func login() {
         if SPTAudioStreamingController.sharedInstance().loggedIn {
-//            for track in trackList {
-//                print(track.name)
-//                SPTAudioStreamingController.sharedInstance().queueSpotifyURI(track.playableUri.absoluteString, callback: { error in
-//                    if error != nil {
-//                        print("*** failed to play: \(error)")
-//                        return
-//                    }
-//                })
-//            }
             SPTAudioStreamingController.sharedInstance().playSpotifyURI(track?.playableUri.absoluteString, startingWith: 0, startingWithPosition: 0) { error in
                 if error != nil {
                     print("*** failed to play: \(error)")
@@ -328,6 +359,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         // than we can assume that relink has happended.
         let isRelinked = SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.playbackSourceUri.contains("spotify:track") && !(SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.playbackSourceUri == trackUri)
         print("Relinked \(isRelinked)")
+        findNextSong()
     }
     
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController, didStopPlayingTrack trackUri: String) {
