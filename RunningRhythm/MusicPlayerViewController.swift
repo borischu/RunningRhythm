@@ -23,6 +23,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     var playlist: SPTPartialPlaylist?
     var trackList = [SPTPlaylistTrack]()
     var trackIds = [String]()
+    var alertController: UIAlertController?
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -37,14 +38,13 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     
     var isChangingProgress: Bool = false
-    let audioSession = AVAudioSession.sharedInstance()
     
     let motionManager = CMMotionManager()
     let activityManager = CMMotionActivityManager()
     let logItem = CMLogItem()
+    var accelerationList = [Double]()
     
     var avgAcceleration = 0.0
-//    let timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: Selector(("getAcceleration")), userInfo: nil, repeats: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         self.updateUI()
         for track in self.trackList {
             let trackId = track.identifier
-            trackIds.append(trackId!)
+            if trackId != self.track?.identifier{
+                trackIds.append(trackId!)
+            }
         }
     }
     
@@ -78,7 +80,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         print("session: \(SPTAuth.defaultInstance().session.accessToken!)")
         Spartan.loggingEnabled = false
         motionManager.startAccelerometerUpdates()
-        findNextSong()
+        let date = Date().addingTimeInterval(5)
+        let timer = Timer.init(fireAt: date, interval: 30, target: self, selector: #selector(MusicPlayerViewController.getAcceleration), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
     }
     
     func getPlaylistJSON(completion: @escaping ([[String: Any]]?) -> ()) {
@@ -97,7 +101,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     
     func findNextSong() {
-        getAcceleration()
         var tracksEnergy = [String: Float]()
         getPlaylistJSON(completion: {(jsonObject) -> () in
             for track in jsonObject! {
@@ -112,34 +115,34 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
             if self.avgAcceleration >= 0.0 {
                 currentActivity = 0.3
             }
-            if self.avgAcceleration >= 0.1 {
+            if self.avgAcceleration >= 0.05 {
                 currentActivity = 0.4
             }
-            if self.avgAcceleration >= 0.2 {
+            if self.avgAcceleration >= 0.1 {
                 currentActivity = 0.5
             }
-            if self.avgAcceleration >= 0.3 {
+            if self.avgAcceleration >= 0.15 {
                 currentActivity = 0.55
             }
-            if self.avgAcceleration >= 0.4 {
+            if self.avgAcceleration >= 0.2 {
                 currentActivity = 0.6
             }
-            if self.avgAcceleration >= 0.5 {
+            if self.avgAcceleration >= 0.25 {
                 currentActivity = 0.65
             }
-            if self.avgAcceleration >= 0.6 {
+            if self.avgAcceleration >= 0.3 {
                 currentActivity = 0.7
             }
-            if self.avgAcceleration >= 0.7 {
+            if self.avgAcceleration >= 0.35 {
                 currentActivity = 0.75
             }
-            if self.avgAcceleration >= 0.8 {
+            if self.avgAcceleration >= 0.4 {
                 currentActivity = 0.8
             }
-            if self.avgAcceleration >= 0.9 {
+            if self.avgAcceleration >= 0.45 {
                 currentActivity = 0.85
             }
-            if self.avgAcceleration > 1.0 {
+            if self.avgAcceleration >= 0.5 {
                 currentActivity = 0.9
             }
             
@@ -162,13 +165,10 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
             for track in self.trackIds {
                 if (track == trackID) {
                     self.trackIds.remove(at: i)
-                    print("removed\(i) \(track)")
                 } else {
                     i += 1
                 }
             }
-            
-            tracksEnergy.removeAll()
             
             SPTAudioStreamingController.sharedInstance().queueSpotifyURI(queuedSpotifyURL, callback: { error in
                 if error != nil {
@@ -177,23 +177,32 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
                 }
             })
         })
-
-        
     }
     
     func getAcceleration() {
-        var accelerationList = [Double]()
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {( acclData : CMAccelerometerData?, error: Error!) in
             // calculate magnitude of the 3 dimensional acceleration vector and normalize to m/s
             let norm = sqrt(pow((acclData?.acceleration.x)!, 2.0) + pow((acclData?.acceleration.y)!, 2.0) + pow((acclData?.acceleration.z)!, 2.0))
-            let absAcceleration = (norm - 1)/(9.81)
-            accelerationList.append(absAcceleration)
+            let absAcceleration = abs((norm - 1)/(9.81))
+            self.accelerationList.append(absAcceleration)
             var accelerationSum = 0.0
-            for acceleration in accelerationList {
+            for acceleration in self.accelerationList {
                 accelerationSum += acceleration
             }
-            self.avgAcceleration = accelerationSum/Double(accelerationList.count)
-            self.workoutLabel.text = String(self.avgAcceleration)
+            self.avgAcceleration = accelerationSum/Double(self.accelerationList.count)
+            print(self.avgAcceleration)
+            if self.avgAcceleration <= 0.1 {
+                self.workoutLabel.text = "Workout Level: Very Low"
+            } else if self.avgAcceleration <= 0.2 {
+                self.workoutLabel.text = "Workout Level: Low"
+            } else if self.avgAcceleration <= 0.3 {
+                self.workoutLabel.text = "Workout Level: Medium"
+            } else if self.avgAcceleration <= 0.4 {
+                self.workoutLabel.text = "Workout Level: High"
+            } else if self.avgAcceleration > 0.5 {
+                self.workoutLabel.text = "Workout Level: Very High"
+            }
+            
             if (error != nil) {
                 print("\(error)")
             }})
@@ -314,11 +323,9 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     }
     
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController, didChangePlaybackStatus isPlaying: Bool) {
-        print("is playing = \(isPlaying)")
         if isPlaying {
             self.activateAudioSession()
-        }
-        else {
+        } else {
             self.deactivateAudioSession()
         }
     }
@@ -359,7 +366,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         // than we can assume that relink has happended.
         let isRelinked = SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.playbackSourceUri.contains("spotify:track") && !(SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.playbackSourceUri == trackUri)
         print("Relinked \(isRelinked)")
-        findNextSong()
+        if self.trackIds.count != 0 {
+            findNextSong()
+        } else {
+            self.alertController = UIAlertController(title: "End of Playlist", message: "Go back and choose another playlist.", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            self.alertController!.addAction(OKAction)
+            self.present(self.alertController!, animated: true, completion:nil)
+        }
     }
     
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController, didStopPlayingTrack trackUri: String) {
@@ -378,20 +392,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     func activateAudioSession() {
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
-            try audioSession.setActive(true)
-        }
-        catch let error {
-            print(error.localizedDescription)
+            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try? AVAudioSession.sharedInstance().setActive(true)
         }
     }
     
     func deactivateAudioSession() {
         do {
-            try AVAudioSession.sharedInstance().setActive(false)
-        }
-        catch let error {
-            print(error.localizedDescription)
+            try? AVAudioSession.sharedInstance().setActive(false)
         }
     }
     
