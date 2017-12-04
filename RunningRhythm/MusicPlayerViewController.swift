@@ -33,7 +33,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     @IBOutlet weak var progressSlider: UISlider!
     @IBOutlet weak var playbackSourceTitle: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
-    
+    @IBOutlet weak var backBtnMusic: UIButton!
     @IBOutlet weak var pauseImage: UIImageView!
     
     
@@ -61,6 +61,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         playbackSourceTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         trackTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
+        backBtnMusic.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         
         SPTAudioStreamingController.sharedInstance().delegate = self
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self

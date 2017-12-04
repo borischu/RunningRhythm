@@ -839,6 +839,7 @@
                     </view>
                     <connections>
                         <outlet property="artistTitle" destination="5XN-3O-aMV" id="cfI-Qt-EWJ"/>
+                        <outlet property="backBtnMusic" destination="auv-UL-fOO" id="Rvh-Ox-YpX"/>
                         <outlet property="coverView" destination="FPp-za-Nah" id="ctE-zA-umO"/>
                         <outlet property="nextButton" destination="DQi-yc-mgC" id="Klm-cM-ZM5"/>
                         <outlet property="pauseImage" destination="4fF-CX-XoC" id="4Uc-gW-cju"/>
