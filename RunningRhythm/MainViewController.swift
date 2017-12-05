@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class AppLoginViewController: UIViewController, WebViewControllerDelegate {
+class MainViewController: UIViewController, WebViewControllerDelegate {
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var loggedIn: UILabel!
@@ -49,6 +49,8 @@ class AppLoginViewController: UIViewController, WebViewControllerDelegate {
         self.statusLabel.text = "Logged in."
         spotifyLoginButton.setTitle("Connected with Spotify", for: .normal)
         spotifyLoginButton.backgroundColor = UIColor.clear
+        let newViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "appMain")
+        self.show(newViewController, sender: nil)
     }
     
     func sessionUpdatedNotification(_ notification: Notification) {

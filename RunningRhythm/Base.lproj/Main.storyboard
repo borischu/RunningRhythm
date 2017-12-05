@@ -120,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="-1546" y="121"/>
         </scene>
-        <!--App Login View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="bfW-H8-AZL">
             <objects>
-                <viewController storyboardIdentifier="appMain" id="CFt-Sm-nnB" customClass="AppLoginViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appMain" id="CFt-Sm-nnB" customClass="MainViewController" customModule="RunningRhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1zP-OJ-pdC"/>
                         <viewControllerLayoutGuide type="bottom" id="h4D-zk-CTD"/>
@@ -987,8 +987,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Sj7-0g-yZv"/>
-        <segue reference="WyY-Nb-Sbq"/>
+        <segue reference="ACu-PD-o4z"/>
         <segue reference="zNi-js-yQi"/>
-        <segue reference="qMz-uR-arY"/>
+        <segue reference="J1r-RE-U4j"/>
     </inferredMetricsTieBreakers>
 </document>
