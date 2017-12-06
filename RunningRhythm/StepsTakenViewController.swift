@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class StepsTakenViewController: UIViewController {
 
@@ -15,6 +16,8 @@ class StepsTakenViewController: UIViewController {
     @IBOutlet weak var stepsTitle: UILabel!
     @IBOutlet weak var backBtnSteps: UIButton!
    
+    @IBOutlet weak var linechartView: LineChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);

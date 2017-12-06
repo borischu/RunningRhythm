@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class HeartRateViewController: UIViewController {
 
@@ -14,6 +15,8 @@ class HeartRateViewController: UIViewController {
     @IBOutlet weak var backBtnHeart: UIButton!
     
     public var totalTime = timePassed
+    
+    @IBOutlet weak var lineChartView: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

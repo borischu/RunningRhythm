@@ -122,7 +122,6 @@ class SettingsViewController: UIViewController {
                 HTTPCookieStorage.shared.deleteCookie(cookie)
             }
         }
-        UserDefaults.standard.set(nil, forKey: "userName")
         SPTAuth.defaultInstance().session = nil
         
     }
