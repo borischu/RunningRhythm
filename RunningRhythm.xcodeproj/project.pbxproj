@@ -12,7 +12,6 @@
 		5292FEF21FBC072100C2A0CE /* StepsTakenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF11FBC072100C2A0CE /* StepsTakenViewController.swift */; };
 		5292FEF41FBC073500C2A0CE /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292FEF31FBC073500C2A0CE /* HeartRateViewController.swift */; };
 		5F23F3E0349818DFB0A0D9B6 /* Pods_RunningRhythmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFEA773FEC2A7DE0A882959 /* Pods_RunningRhythmTests.framework */; };
-		6C0AA257E9B8F0D3BA79F604 /* Pods_RunningRhythm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B66F9E9B3472AC5355F811 /* Pods_RunningRhythm.framework */; };
 		89E451CD6B566EA6D25C130E /* Pods_RunningRhythmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC03DDAFE1A18E07BE2B422 /* Pods_RunningRhythmUITests.framework */; };
 		A16564921FD761C400B40442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16564911FD761C400B40442 /* SettingsViewController.swift */; };
 		A1692D9A1FC376AA00DF0328 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1692D991FC376AA00DF0328 /* HealthKitManager.swift */; };
@@ -35,6 +34,7 @@
 		A1F08C221FA846B6009BDAFA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F08C211FA846B6009BDAFA /* MainViewController.swift */; };
 		A1F879621FC0D5C300F64F00 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F879611FC0D5C300F64F00 /* WebViewController.swift */; };
 		C7DCCF0C1FA95A8600A119BB /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCCF0B1FA95A8600A119BB /* MusicPlayerViewController.swift */; };
+		F2739315AC66D89D8DE4B9E3 /* Pods_RunningRhythm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B66F9E9B3472AC5355F811 /* Pods_RunningRhythm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,7 @@
 				A1760F7F1FC1715400F43667 /* SpotifyAuthentication.framework in Frameworks */,
 				A1760F7C1FC1715400F43667 /* SpotifyMetadata.framework in Frameworks */,
 				A1760F7D1FC1715400F43667 /* SpotifyAudioPlayback.framework in Frameworks */,
-				6C0AA257E9B8F0D3BA79F604 /* Pods_RunningRhythm.framework in Frameworks */,
+				F2739315AC66D89D8DE4B9E3 /* Pods_RunningRhythm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
