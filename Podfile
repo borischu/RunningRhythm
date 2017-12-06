@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+#Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
 
 target 'RunningRhythm' do
@@ -7,8 +7,8 @@ target 'RunningRhythm' do
 
   # Pods for RunningRhythm
   pod 'Charts', '3.0.3'
-  pod 'Alamofire'
-  pod 'Spartan'
+  pod 'Alamofire', '4.4.0'
+  pod 'Spartan'	
 
   target 'RunningRhythmTests' do
     inherit! :search_paths
