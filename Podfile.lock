@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.5.0)
+  - Alamofire (4.1.0)
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
@@ -13,18 +13,18 @@ PODS:
     - AlamoRecord (~> 1.1.1)
 
 DEPENDENCIES:
-  - Alamofire (= 4.5.0)
+  - Alamofire (= 4.1.0)
   - Charts (= 3.0.3)
   - Spartan
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Alamofire: e266cf991b933498df791e645e0d8ac294492153
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   AlamoRecord: 78653b9a5da21ab5bb723167e0f552994df85d30
   Charts: bcde37724c161958c1438dd4883971fcb2d50c06
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Spartan: 3c736e7407857f41a7240c2a39cbc9e2fd856e1d
 
-PODFILE CHECKSUM: 4c1fbac07897ea27d76672e2d1b77aeb8df91f46
+PODFILE CHECKSUM: 167a224e64942b279a06faa5b1c32031c78f0a0b
 
 COCOAPODS: 1.3.1

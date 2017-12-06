@@ -58,18 +58,10 @@ open class SessionManager {
         let acceptEncoding: String = "gzip;q=1.0, compress;q=0.5"
 
         // Accept-Language HTTP Header; see https://tools.ietf.org/html/rfc7231#section-5.3.5
-    #if swift(>=4.0)
-        let acceptLanguage = Locale.preferredLanguages.prefix(6).enumerated().map { enumeratedLanguage in
-            let (index, languageCode) = enumeratedLanguage
-            let quality = 1.0 - (Double(index) * 0.1)
-            return "\(languageCode);q=\(quality)"
-        }.joined(separator: ", ")
-    #else
         let acceptLanguage = Locale.preferredLanguages.prefix(6).enumerated().map { index, languageCode in
             let quality = 1.0 - (Double(index) * 0.1)
             return "\(languageCode);q=\(quality)"
         }.joined(separator: ", ")
-    #endif
 
         // User-Agent Header; see https://tools.ietf.org/html/rfc7231#section-5.5.3
         // Example: `iOS Example/1.0 (org.alamofire.iOS-Example; build:1; iOS 10.0.0) Alamofire/4.0.0`
@@ -291,7 +283,7 @@ open class SessionManager {
         let request = DataRequest(session: session, requestTask: requestTask, error: underlyingError)
 
         if let retrier = retrier, error is AdaptError {
-            allowRetrier(retrier, toRetry: request, with: underlyingError)
+            allowRetrier(retrier, toRetry: request, with: error)
         } else {
             if startRequestsImmediately { request.resume() }
         }
@@ -437,7 +429,7 @@ open class SessionManager {
         download.downloadDelegate.destination = destination
 
         if let retrier = retrier, error is AdaptError {
-            allowRetrier(retrier, toRetry: download, with: underlyingError)
+            allowRetrier(retrier, toRetry: download, with: error)
         } else {
             if startRequestsImmediately { download.resume() }
         }
@@ -667,8 +659,6 @@ open class SessionManager {
             let formData = MultipartFormData()
             multipartFormData(formData)
 
-            var tempFileURL: URL?
-
             do {
                 var urlRequestWithContentType = try urlRequest.asURLRequest()
                 urlRequestWithContentType.setValue(formData.contentType, forHTTPHeaderField: "Content-Type")
@@ -691,8 +681,6 @@ open class SessionManager {
                     let directoryURL = tempDirectoryURL.appendingPathComponent("org.alamofire.manager/multipart.form.data")
                     let fileName = UUID().uuidString
                     let fileURL = directoryURL.appendingPathComponent(fileName)
-
-                    tempFileURL = fileURL
 
                     var directoryError: Error?
 
@@ -731,15 +719,6 @@ open class SessionManager {
                     }
                 }
             } catch {
-                // Cleanup the temp file in the event that the multipart form data encoding failed
-                if let tempFileURL = tempFileURL {
-                    do {
-                        try FileManager.default.removeItem(at: tempFileURL)
-                    } catch {
-                        // No-op
-                    }
-                }
-
                 DispatchQueue.main.async { encodingCompletion?(.failure(error)) }
             }
         }
@@ -777,7 +756,7 @@ open class SessionManager {
         let upload = UploadRequest(session: session, requestTask: uploadTask, error: underlyingError)
 
         if let retrier = retrier, error is AdaptError {
-            allowRetrier(retrier, toRetry: upload, with: underlyingError)
+            allowRetrier(retrier, toRetry: upload, with: error)
         } else {
             if startRequestsImmediately { upload.resume() }
         }
@@ -882,16 +861,12 @@ open class SessionManager {
                     return
                 }
 
-                DispatchQueue.utility.after(timeDelay) {
-                    guard let strongSelf = self else { return }
+                let retrySucceeded = strongSelf.retry(request)
 
-                    let retrySucceeded = strongSelf.retry(request)
-
-                    if retrySucceeded, let task = request.task {
-                        strongSelf.delegate[task] = request
-                    } else {
-                        if strongSelf.startRequestsImmediately { request.resume() }
-                    }
+                if retrySucceeded, let task = request.task {
+                    strongSelf.delegate[task] = request
+                } else {
+                    if strongSelf.startRequestsImmediately { request.resume() }
                 }
             }
         }
