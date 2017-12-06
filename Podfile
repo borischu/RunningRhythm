@@ -7,7 +7,7 @@ target 'RunningRhythm' do
 
   # Pods for RunningRhythm
   pod 'Charts', '3.0.3'
-  pod 'Alamofire', '4.4.0'
+  pod 'Alamofire', '4.5.0'
   pod 'Spartan'	
 
   target 'RunningRhythmTests' do
