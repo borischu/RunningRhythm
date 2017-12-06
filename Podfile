@@ -6,7 +6,7 @@ target 'RunningRhythm' do
   use_frameworks!
 
   # Pods for RunningRhythm
-  pod 'Charts'
+  pod 'Charts', '3.0.3'
   pod 'Alamofire'
   pod 'Spartan'
 

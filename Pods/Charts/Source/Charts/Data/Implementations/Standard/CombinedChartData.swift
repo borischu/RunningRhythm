@@ -29,7 +29,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         super.init(dataSets: dataSets)
     }
     
-    @objc open var lineData: LineChartData!
+    open var lineData: LineChartData!
     {
         get
         {
@@ -42,7 +42,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    @objc open var barData: BarChartData!
+    open var barData: BarChartData!
     {
         get
         {
@@ -55,7 +55,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    @objc open var scatterData: ScatterChartData!
+    open var scatterData: ScatterChartData!
     {
         get
         {
@@ -68,7 +68,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    @objc open var candleData: CandleChartData!
+    open var candleData: CandleChartData!
     {
         get
         {
@@ -81,7 +81,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    @objc open var bubbleData: BubbleChartData!
+    open var bubbleData: BubbleChartData!
     {
         get
         {
@@ -160,7 +160,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
     }
     
     /// - returns: All data objects in row: line-bar-scatter-candle-bubble if not null.
-    @objc open var allData: [ChartData]
+    open var allData: [ChartData]
     {
         var data = [ChartData]()
         
@@ -188,7 +188,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         return data
     }
     
-    @objc open func dataByIndex(_ index: Int) -> ChartData
+    open func dataByIndex(_ index: Int) -> ChartData
     {
         return allData[index]
     }
@@ -278,24 +278,26 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         {
             return nil
         }
-        
-        // The value of the highlighted entry could be NaN - if we are not interested in highlighting a specific value.
-        let entries = data.getDataSetByIndex(highlight.dataSetIndex).entriesForXValue(highlight.x)
-        for e in entries
+        else
         {
-            if e.y == highlight.y || highlight.y.isNaN
+            // The value of the highlighted entry could be NaN - if we are not interested in highlighting a specific value.
+            let entries = data.getDataSetByIndex(highlight.dataSetIndex).entriesForXValue(highlight.x)
+            for e in entries
             {
-                return e
+                if e.y == highlight.y || highlight.y.isNaN
+                {
+                    return e
+                }
             }
+            return nil
         }
-        return nil
     }
     
-    /// Get dataset for highlight
+    /// get data set for highlight
     ///
     /// - Parameter highlight: current highlight
     /// - Returns: dataset related to highlight
-    @objc open func getDataSetByHighlight(_ highlight: Highlight) -> IChartDataSet!
+    open func getDataSetByHighlight(_ highlight: Highlight) -> IChartDataSet!
     {  
         if highlight.dataIndex >= allData.count
         {
@@ -308,7 +310,9 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         {
             return nil
         }
-        
-        return data.dataSets[highlight.dataSetIndex]
+        else
+        {
+            return data.dataSets[highlight.dataSetIndex]
+        }
     }
 }
