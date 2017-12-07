@@ -11,12 +11,14 @@ import Charts
 
 class StepsTakenViewController: UIViewController {
 
-    public var totalTime = timePassed
+    var totalTime: Int?
     
     @IBOutlet weak var stepsTitle: UILabel!
     @IBOutlet weak var backBtnSteps: UIButton!
-   
-    @IBOutlet weak var linechartView: LineChartView!
+    
+    @IBOutlet weak var lineChartView: LineChartView!
+    
+    var time = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,18 @@ class StepsTakenViewController: UIViewController {
         backBtnSteps.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
         stepsTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         print(totalTime)
-        // Do any additional setup after loading the view.
+        lineChartView.noDataText = "No Steps Data."
+        self.time = Array(0...totalTime!)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        lineChartView.noDataText = "You need to provide data for the chart."
+        
     }
     
 

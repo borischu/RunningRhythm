@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -142,7 +142,7 @@
                                 <state key="normal" title="Music" image="music_player_icon"/>
                                 <connections>
                                     <action selector="CheckForLogged:" destination="CFt-Sm-nnB" eventType="touchUpInside" id="2iR-HH-tOb"/>
-                                    <segue destination="blA-hG-3J9" kind="show" id="ACu-PD-o4z"/>
+                                    <segue destination="blA-hG-3J9" kind="show" identifier="toPlaylists" id="FI5-bz-qr1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xf1-O0-mFH">
@@ -315,7 +315,7 @@
                     </view>
                     <connections>
                         <outlet property="backBtnSteps" destination="7Xe-Ja-d7w" id="8aR-NK-Do6"/>
-                        <outlet property="linechartView" destination="utk-ho-22y" id="4ni-zs-BLA"/>
+                        <outlet property="lineChartView" destination="utk-ho-22y" id="lGw-c0-thw"/>
                         <outlet property="stepsTitle" destination="pV6-SV-gAY" id="7ec-e9-3ac"/>
                     </connections>
                 </viewController>
@@ -1009,9 +1009,9 @@
         <image name="runningrhythmlaunch" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sj7-0g-yZv"/>
-        <segue reference="ACu-PD-o4z"/>
+        <segue reference="bXY-u6-5OO"/>
+        <segue reference="FI5-bz-qr1"/>
         <segue reference="iCz-WN-SxH"/>
-        <segue reference="qMz-uR-arY"/>
+        <segue reference="Ecl-Ok-QRO"/>
     </inferredMetricsTieBreakers>
 </document>

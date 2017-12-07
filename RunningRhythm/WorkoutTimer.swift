@@ -11,6 +11,8 @@ import Foundation
 public var secondPassed = 0
 public var minutePassed = 0
 public var timePassed = 0
+public var timeStart: Date?
+public var timeStop: Date?
 public var timeRunning = false
 
 class TimerModel: NSObject {
@@ -34,6 +36,7 @@ class TimerModel: NSObject {
         }
         else if timeRunning == true {
             internalTimer?.invalidate()
+            timeStart = Date()
             internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(fireTimerAction), userInfo: nil, repeats: true)
         }
     }
@@ -56,6 +59,7 @@ class TimerModel: NSObject {
         timePassed = 0
         internalTimer?.invalidate()
         timeRunning = false
+        timeStop = Date()
     }
     
     func fireTimerAction(sender: AnyObject?){

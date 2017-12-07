@@ -17,10 +17,15 @@ class HealthKitManager {
         var isEnabled = true
         if HKHealthStore.isHealthDataAvailable() {
             let stepsCount = NSSet(object: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount))
+            let heartRate = NSSet(object: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate))
             healthStore.requestAuthorization(toShare: nil, read: stepsCount as! Set<HKObjectType>) {
                     (success, error) -> Void in
                     isEnabled = success
                 }
+            healthStore.requestAuthorization(toShare: nil, read: heartRate as! Set<HKObjectType>) {
+                (success, error) -> Void in
+                isEnabled = success
+            }
         }
         else {
             isEnabled = false
