@@ -15,6 +15,8 @@ import Alamofire
 import Spartan
 
 public var workoutState = false
+public var songTitle = ""
+public var playing = false
 
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
     
@@ -254,8 +256,11 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         self.nextButton.isEnabled = SPTAudioStreamingController.sharedInstance().metadata.nextTrack != nil
         self.prevButton.isEnabled = SPTAudioStreamingController.sharedInstance().metadata.prevTrack != nil
         self.trackTitle.text = SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.name
+        songTitle = self.trackTitle.text!
         self.artistTitle.text = SPTAudioStreamingController.sharedInstance().metadata.currentTrack?.artistName
         self.playbackSourceTitle.text = playlist?.name
+        playing = SPTAudioStreamingController.sharedInstance().playbackState.isPlaying
+
         
         let imageURL = URL.init(string: (SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.albumCoverArtURL)!)
         if imageURL == nil {

@@ -11,6 +11,8 @@ import WebKit
 
 class MainViewController: UIViewController, WebViewControllerDelegate {
     
+    public var timer: Timer!
+    @IBOutlet weak var nowPlaying: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var loggedIn: UILabel!
     @IBOutlet weak var spotifyLoginButton: UIButton!
@@ -31,6 +33,15 @@ class MainViewController: UIViewController, WebViewControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.sessionUpdatedNotification), name: NSNotification.Name(rawValue: "sessionUpdated"), object: nil)
         self.firstLoad = true
         self.statusLabel.text = ""
+        print(playing)
+        if (playing) {
+            self.nowPlaying.setTitle("Now Playing: \(songTitle)", for: .normal)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateSong), userInfo: nil, repeats: true)
+            self.nowPlaying.isEnabled = true
+        }
+        else {
+            self.nowPlaying.isEnabled = false
+        }
         userNameLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         loggedIn.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         statusLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
@@ -42,6 +53,10 @@ class MainViewController: UIViewController, WebViewControllerDelegate {
     
     @IBAction func connectWithSpotify(_ sender: Any) {
         self.openLoginPage()
+    }
+    
+    func updateSong() {
+        self.nowPlaying.setTitle("Now Playing: \(songTitle)", for: .normal)
     }
     
     func backToApp() {
