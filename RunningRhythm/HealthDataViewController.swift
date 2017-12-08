@@ -33,6 +33,9 @@ class HealthDataViewController: UIViewController {
     let healthManager = HealthKitManager()
     let healthStore = HKHealthStore()
     
+    var heartRateInTime: HKStatisticsCollectionQuery?
+    var stepsInTime: HKStatisticsCollectionQuery?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         second.text = String(format: "%02d", secondPassed)
@@ -62,51 +65,66 @@ class HealthDataViewController: UIViewController {
         if (healthManager.authorizeHealthKit()) {
             let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
             let heartRate = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
-            //   Get the start of the day
-            let date = Date()
-            let yest = date.yesterday
             
             //  Set the Predicates & Interval
-            let predicate = HKQuery.predicateForSamples(withStart: yest, end: date, options: .strictStartDate)
+            let predicate: NSPredicate?
+            if timeRunning {
+                predicate = HKQuery.predicateForSamples(withStart: timeStart, end: Date(), options: .strictStartDate)
+            } else {
+                predicate = HKQuery.predicateForSamples(withStart: timeStart, end: timeStop, options: .strictStartDate)
+            }
+            //   Get the start of the day
+            let date = Date()
             var interval = DateComponents()
-            interval.day = 1
+            interval.second = 1
             //  Perform the Query
             let stepsQuery = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: date as Date, intervalComponents:interval)
+            
+//            stepsInTime = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.separateBySource], anchorDate: date as Date, intervalComponents:interval)
             
             stepsQuery.initialResultsHandler = { query, results, error in
                 if error != nil {
                     return
                 }
                 if let myResults = results {
-                    myResults.enumerateStatistics(from: yest, to: date) {
-                        statistics, stop in
-                        if let quantity = statistics.sumQuantity() {
-                            let steps = quantity.doubleValue(for: HKUnit.count())
-                            DispatchQueue.main.async {
-                                self.stepsTakenNumber.text = String(steps)
+                    if timeRunning {
+                        myResults.enumerateStatistics(from: timeStart!, to: Date()) {
+                            statistics, stop in
+                            if let quantity = statistics.sumQuantity() {
+                                let steps = quantity.doubleValue(for: HKUnit.count())
+                                DispatchQueue.main.async {
+                                    self.stepsTakenNumber.text = String(steps)
+                                }
                             }
                         }
+                    } else {
+                        self.stepsTakenNumber.text = "0.0"
                     }
                 }
             }
             
             let heartRateQuery = HKStatisticsCollectionQuery(quantityType: heartRate!, quantitySamplePredicate: predicate, options: [.discreteAverage], anchorDate: date as Date, intervalComponents:interval)
             
+//            heartRateInTime = HKStatisticsCollectionQuery(quantityType: heartRate!, quantitySamplePredicate: predicate, options: [.separateBySource], anchorDate: date as Date, intervalComponents:interval)
+            
             heartRateQuery.initialResultsHandler = { query, results, error in
                 if error != nil {
                     return
                 }
                 if let myResults = results {
-                    print(myResults)
-                    myResults.enumerateStatistics(from: yest, to: date) {
-                        statistics, stop in
-                        if let quantity = statistics.sumQuantity() {
-                            let heartRate = quantity.doubleValue(for: HKUnit.count())
-                            DispatchQueue.main.async {
-                                print(heartRate)
-                                self.heartRateNumber.text = String(heartRate)
+                    if timeRunning {
+                        myResults.enumerateStatistics(from: timeStart!, to: Date()) {
+                            statistics, stop in
+                            if let quantity = statistics.sumQuantity() {
+                                let heartRate = quantity.doubleValue(for: HKUnit.count())
+                                DispatchQueue.main.async {
+                                    print(heartRate)
+                                    self.heartRateNumber.text = String(heartRate)
+                                }
                             }
                         }
+                    } else {
+                        self.heartRateNumber.text = "0.0"
                     }
                 }
             }
@@ -147,30 +165,15 @@ class HealthDataViewController: UIViewController {
         if segue.identifier == "stepsTaken" {
             let destination = segue.destination as? StepsTakenViewController
             destination?.totalTime = timePassed
+//            destination?.stepsTakenPoints = stepsInTime
         }
         else if segue.identifier == "heartRate" {
             let destination = segue.destination as? HeartRateViewController
             destination?.totalTime = timePassed
+//            destination?.heartRatePoints = heartRateInTime
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
 
-}
-extension Date {
-    var yesterday: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
-    }
-    var tomorrow: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
-    }
-    var noon: Date {
-        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
-    }
-    var month: Int {
-        return Calendar.current.component(.month,  from: self)
-    }
-    var isLastDayOfMonth: Bool {
-        return tomorrow.month != month
-    }
 }

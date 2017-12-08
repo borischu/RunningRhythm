@@ -24,6 +24,7 @@ class TimerModel: NSObject {
     var internalTimer: Timer?
     
     func startTimer(withInterval interval: Double) {
+        timeStart = Date()
         if internalTimer == nil {
             internalTimer?.invalidate()
         }
@@ -36,7 +37,6 @@ class TimerModel: NSObject {
         }
         else if timeRunning == true {
             internalTimer?.invalidate()
-            timeStart = Date()
             internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(fireTimerAction), userInfo: nil, repeats: true)
         }
     }
