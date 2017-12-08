@@ -29,6 +29,7 @@ class HealthDataViewController: UIViewController {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var startWorkout: UIButton!
     @IBOutlet weak var endWorkout: UIButton!
+    @IBOutlet weak var startStop: UIButton!
     
     let healthManager = HealthKitManager()
     let healthStore = HKHealthStore()
@@ -38,6 +39,12 @@ class HealthDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if workoutState == false {
+            startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
+        }
+        else if workoutState == true {
+            startStop.setTitle("End Workout", for: UIControlState(rawValue: 0))
+        }
         second.text = String(format: "%02d", secondPassed)
         minute.text = String(format: "%02d", minutePassed) + ":"
         self.view.backgroundColor = SettingsViewController().UIColorFromHex(rgbValue: backgroundHex, alpha: 1);
@@ -133,18 +140,17 @@ class HealthDataViewController: UIViewController {
         }
     }
     
-    @IBAction func startWorkout(_ sender: UIButton) {
-        TimerModel.sharedTimer.startTimer(withInterval: 1)
-    }
-    
-    @IBAction func pauseWorkout(_ sender: UIButton) {
-        TimerModel.sharedTimer.pauseTimer()
-    }
-    
-    @IBAction func EndWorkout(_ sender: UIButton) {
-        TimerModel.sharedTimer.stopTimer()
-        second.text = String(format: "%02d", secondPassed)
-        minute.text = String(format: "%02d", minutePassed) + ":"
+    @IBAction func startStopWorkout(_ sender: Any) {
+        if workoutState == false {
+            workoutState = true
+            startStop.setTitle("End Workout", for: UIControlState(rawValue: 0))
+            TimerModel.sharedTimer.startTimer(withInterval: 1)
+        }
+        else {
+            workoutState = false
+            startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
+            TimerModel.sharedTimer.pauseTimer()
+        }
     }
     
     func updateLabels() {

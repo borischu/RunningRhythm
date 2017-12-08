@@ -37,6 +37,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var backBtnMusic: UIButton!
     @IBOutlet weak var pauseImage: UIImageView!
+    @IBOutlet weak var healthData: UIButton!
     
     
     var isChangingProgress: Bool = false
@@ -64,7 +65,6 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         trackTitle.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         workoutLabel.textColor = SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1)
         backBtnMusic.setTitleColor(SettingsViewController().UIColorFromHex(rgbValue: text, alpha: 1), for: UIControlState(rawValue: 0))
-        
         SPTAudioStreamingController.sharedInstance().delegate = self
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self
         SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
