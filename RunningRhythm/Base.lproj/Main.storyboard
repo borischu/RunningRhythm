@@ -234,7 +234,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2N-Sj-3Wj">
                                 <rect key="frame" x="191.66666666666666" y="362" width="30" height="30"/>
                                 <connections>
-                                    <segue destination="NmI-1y-iNS" kind="show" id="F99-5j-qp9"/>
+                                    <segue destination="NmI-1y-iNS" kind="show" identifier="nowPlaying" id="F99-5j-qp9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -419,7 +419,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="‹"/>
                                 <connections>
-                                    <segue destination="CFt-Sm-nnB" kind="show" id="997-tc-8Nb"/>
+                                    <segue destination="CFt-Sm-nnB" kind="show" identifier="healthToHome" id="997-tc-8Nb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9t-0z-aDQ">
@@ -600,7 +600,7 @@
                                     <barButtonItem key="backBarButtonItem" title="‹" id="i9C-sh-uoC"/>
                                     <barButtonItem key="leftBarButtonItem" title="‹" id="ERG-af-i3w">
                                         <connections>
-                                            <segue destination="CFt-Sm-nnB" kind="show" id="Ecl-Ok-QRO"/>
+                                            <segue destination="CFt-Sm-nnB" kind="show" identifier="backHome" id="Ecl-Ok-QRO"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -813,7 +813,7 @@
                                     <color key="titleColor" red="0.91499453779999995" green="0.87916004660000002" blue="0.84105926750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CFt-Sm-nnB" kind="show" id="W4r-bq-HZU"/>
+                                    <segue destination="CFt-Sm-nnB" kind="show" identifier="musicToHome" id="W4r-bq-HZU"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pause" translatesAutoresizingMaskIntoConstraints="NO" id="4fF-CX-XoC">
@@ -830,7 +830,7 @@
                                 </constraints>
                                 <state key="normal" image="hearticon"/>
                                 <connections>
-                                    <segue destination="9FE-Wr-JGP" kind="show" id="bza-iv-R8L"/>
+                                    <segue destination="9FE-Wr-JGP" kind="show" identifier="goToHealth" id="bza-iv-R8L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1033,9 +1033,9 @@
         <image name="runningrhythmlaunch" width="1536" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QZM-xO-Ath"/>
-        <segue reference="WyY-Nb-Sbq"/>
-        <segue reference="bza-iv-R8L"/>
+        <segue reference="F99-5j-qp9"/>
+        <segue reference="FI5-bz-qr1"/>
+        <segue reference="zNi-js-yQi"/>
         <segue reference="W4r-bq-HZU"/>
     </inferredMetricsTieBreakers>
 </document>

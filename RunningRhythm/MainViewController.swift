@@ -21,6 +21,7 @@ class MainViewController: UIViewController, WebViewControllerDelegate {
     @IBOutlet weak var musicVCButton: UIButton!
     @IBOutlet weak var settingsVCButton: UIButton!
     
+    var playlist: SPTPartialPlaylist?
     var authViewController: UIViewController?
     var firstLoad: Bool!
     var logged = false
@@ -33,7 +34,6 @@ class MainViewController: UIViewController, WebViewControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.sessionUpdatedNotification), name: NSNotification.Name(rawValue: "sessionUpdated"), object: nil)
         self.firstLoad = true
         self.statusLabel.text = ""
-        print(playing)
         if (playing) {
             self.nowPlaying.setTitle("Now Playing: \(songTitle)", for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateSong), userInfo: nil, repeats: true)
@@ -160,6 +160,10 @@ class MainViewController: UIViewController, WebViewControllerDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "nowPlaying" {
+            let destination = segue.destination as? MusicPlayerViewController;
+            destination?.playlist = playlist
+        }
      }
 
     

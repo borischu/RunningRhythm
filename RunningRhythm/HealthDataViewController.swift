@@ -11,6 +11,8 @@ import HealthKit
 import HealthKitUI
 import CoreMotion
 
+public var timeStart: Date?
+
 class HealthDataViewController: UIViewController {
 
     @IBOutlet weak var minute: UILabel!
@@ -34,8 +36,10 @@ class HealthDataViewController: UIViewController {
     let healthManager = HealthKitManager()
     let healthStore = HKHealthStore()
     
-    var heartRateInTime: HKStatisticsCollectionQuery?
-    var stepsInTime: HKStatisticsCollectionQuery?
+    var stepsTakenPoints = [Double]()
+    var heartRatePoints = [Double]()
+    
+    var playlist: SPTPartialPlaylist?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,86 +74,88 @@ class HealthDataViewController: UIViewController {
         }
         
         if (healthManager.authorizeHealthKit()) {
+
             let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
             let heartRate = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
             
-            //  Set the Predicates & Interval
-            let predicate: NSPredicate?
-            if timeRunning {
-                predicate = HKQuery.predicateForSamples(withStart: timeStart, end: Date(), options: .strictStartDate)
-            } else {
-                predicate = HKQuery.predicateForSamples(withStart: timeStart, end: timeStop, options: .strictStartDate)
-            }
-            //   Get the start of the day
-            let date = Date()
             var interval = DateComponents()
             interval.second = 1
-            //  Perform the Query
-            let stepsQuery = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: date as Date, intervalComponents:interval)
+            var totalSteps = 0.0
+            var heartRateAvg = 0.0
+            var count = 1
             
-//            stepsInTime = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.separateBySource], anchorDate: date as Date, intervalComponents:interval)
+            if timeRunning {
+                let predicate = HKQuery.predicateForSamples(withStart: timeStart, end: Date(), options: .strictStartDate)
             
-            stepsQuery.initialResultsHandler = { query, results, error in
-                if error != nil {
-                    return
-                }
-                if let myResults = results {
-                    if timeRunning {
+                let stepsQuery = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: timeStart!, intervalComponents:interval)
+                
+                stepsQuery.initialResultsHandler = { query, results, error in
+                    if error != nil {
+                        return
+                    }
+                    if let myResults = results {
                         myResults.enumerateStatistics(from: timeStart!, to: Date()) {
                             statistics, stop in
                             if let quantity = statistics.sumQuantity() {
                                 let steps = quantity.doubleValue(for: HKUnit.count())
+                                totalSteps += steps
+                                let date = statistics.startDate
+                                print(date)
+                                self.stepsTakenPoints.append(totalSteps)
                                 DispatchQueue.main.async {
-                                    self.stepsTakenNumber.text = String(steps)
+                                    self.stepsTakenNumber.text = String(format: "%.f", totalSteps)
                                 }
+                            } else {
+                                self.stepsTakenPoints.append(totalSteps)
                             }
                         }
-                    } else {
-                        self.stepsTakenNumber.text = "0.0"
                     }
                 }
-            }
-            
-            let heartRateQuery = HKStatisticsCollectionQuery(quantityType: heartRate!, quantitySamplePredicate: predicate, options: [.discreteAverage], anchorDate: date as Date, intervalComponents:interval)
-            
-//            heartRateInTime = HKStatisticsCollectionQuery(quantityType: heartRate!, quantitySamplePredicate: predicate, options: [.separateBySource], anchorDate: date as Date, intervalComponents:interval)
-            
-            heartRateQuery.initialResultsHandler = { query, results, error in
-                if error != nil {
-                    return
-                }
-                if let myResults = results {
-                    if timeRunning {
+                
+                let heartRateQuery = HKStatisticsCollectionQuery(quantityType: heartRate!, quantitySamplePredicate: predicate, options: [.discreteAverage], anchorDate: timeStart!, intervalComponents:interval)
+                
+                heartRateQuery.initialResultsHandler = { query, results, error in
+                    if error != nil {
+                        return
+                    }
+                    if let myResults = results {
                         myResults.enumerateStatistics(from: timeStart!, to: Date()) {
                             statistics, stop in
-                            if let quantity = statistics.sumQuantity() {
-                                let heartRate = quantity.doubleValue(for: HKUnit.count())
+                            if let quantity = statistics.averageQuantity() {
+                                let heartRate = quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
+                                heartRateAvg += heartRate
+                                heartRateAvg = heartRateAvg/Double(count)
+                                self.heartRatePoints.append(heartRate)
                                 DispatchQueue.main.async {
-                                    print(heartRate)
-                                    self.heartRateNumber.text = String(heartRate)
+                                    self.heartRateNumber.text = String(format: "%.f", heartRateAvg)
                                 }
+                                count += 1
+                            } else {
+                                self.heartRatePoints.append(0)
                             }
                         }
-                    } else {
-                        self.heartRateNumber.text = "0.0"
                     }
                 }
+                self.healthStore.execute(stepsQuery)
+                self.healthStore.execute(heartRateQuery)
             }
-            self.healthStore.execute(stepsQuery)
-            self.healthStore.execute(heartRateQuery)
         }
     }
+        
     
     @IBAction func startStopWorkout(_ sender: Any) {
         if workoutState == false {
             workoutState = true
             startStop.setTitle("End Workout", for: UIControlState(rawValue: 0))
             TimerModel.sharedTimer.startTimer(withInterval: 1)
+            timeStart = Date()
         }
         else {
             workoutState = false
             startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
-            TimerModel.sharedTimer.pauseTimer()
+            TimerModel.sharedTimer.stopTimer()
+            second.text = String(format: "%02d", secondPassed)
+            minute.text = String(format: "%02d", minutePassed) + ":"
         }
     }
     
@@ -170,13 +176,15 @@ class HealthDataViewController: UIViewController {
         
         if segue.identifier == "stepsTaken" {
             let destination = segue.destination as? StepsTakenViewController
-            destination?.totalTime = timePassed
-//            destination?.stepsTakenPoints = stepsInTime
+            destination?.stepsTakenPoints = self.stepsTakenPoints
         }
-        else if segue.identifier == "heartRate" {
+        if segue.identifier == "heartRate" {
             let destination = segue.destination as? HeartRateViewController
-            destination?.totalTime = timePassed
-//            destination?.heartRatePoints = heartRateInTime
+            destination?.heartRatePoints = self.heartRatePoints
+        }
+        if segue.identifier == "healthToHome" {
+            let destination = segue.destination as? MainViewController;
+            destination?.playlist = playlist
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

@@ -414,11 +414,12 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
             workoutState = true
             startStop.setTitle("End Workout", for: UIControlState(rawValue: 0))
             TimerModel.sharedTimer.startTimer(withInterval: 1)
+            timeStart = Date()
         }
         else {
             workoutState = false
             startStop.setTitle("Start Workout", for: UIControlState(rawValue: 0))
-            TimerModel.sharedTimer.pauseTimer()
+            TimerModel.sharedTimer.stopTimer()
         }
     }
     
@@ -429,8 +430,12 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller
-        if segue.identifier == "goBackTracks" {
-            let destination = segue.destination as? TrackListTableViewController;
+        if segue.identifier == "goToHealth" {
+            let destination = segue.destination as? HealthDataViewController;
+            destination?.playlist = playlist
+        }
+        if segue.identifier == "musicToHome" {
+            let destination = segue.destination as? MainViewController;
             destination?.playlist = playlist
         }
     }
