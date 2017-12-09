@@ -9,10 +9,10 @@
 import UIKit
 import Alamofire
 
+public var playlist : SPTPartialPlaylist?
+
 class PlaylistTableViewController: UITableViewController {
 
-
-    
     var playlists = [SPTPartialPlaylist]()
     
     override func viewDidLoad() {
@@ -113,7 +113,7 @@ class PlaylistTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "showTracks" {
             let destination = segue.destination as? TrackListTableViewController;
-            destination?.playlist = playlists[(tableView.indexPathForSelectedRow?.row)!]
+            playlist = playlists[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
 

@@ -99,8 +99,6 @@ class HealthDataViewController: UIViewController {
                             if let quantity = statistics.sumQuantity() {
                                 let steps = quantity.doubleValue(for: HKUnit.count())
                                 totalSteps += steps
-                                let date = statistics.startDate
-                                print(date)
                                 self.stepsTakenPoints.append(totalSteps)
                                 DispatchQueue.main.async {
                                     self.stepsTakenNumber.text = String(format: "%.f", totalSteps)
@@ -184,7 +182,6 @@ class HealthDataViewController: UIViewController {
         }
         if segue.identifier == "healthToHome" {
             let destination = segue.destination as? MainViewController;
-            destination?.playlist = playlist
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

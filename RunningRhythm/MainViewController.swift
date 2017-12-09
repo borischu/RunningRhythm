@@ -160,9 +160,8 @@ class MainViewController: UIViewController, WebViewControllerDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
-        if segue.identifier == "nowPlaying" {
-            let destination = segue.destination as? MusicPlayerViewController;
-            destination?.playlist = playlist
+        if segue.identifier == "toPlaylists" {
+            playlist = nil
         }
      }
 

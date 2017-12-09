@@ -9,9 +9,10 @@
 import UIKit
 import Alamofire
 
+public var first: Bool?
+
 class TrackListTableViewController: UITableViewController {
     
-    var playlist : SPTPartialPlaylist?
     var trackList = [SPTPlaylistTrack]()
     
     override func viewDidLoad() {
@@ -63,7 +64,7 @@ class TrackListTableViewController: UITableViewController {
                 // get the tracks for each playlist
                 for track in s.firstTrackPage.items {
                     if let thistrack = track as? SPTPlaylistTrack {
-                        if thistrack != nil {
+                        if thistrack.identifier != nil {
                             self.trackList.append(thistrack)
                         }
                     }
@@ -118,11 +119,8 @@ class TrackListTableViewController: UITableViewController {
             let destination = segue.destination as? MusicPlayerViewController;
             destination?.track = trackList[(tableView.indexPathForSelectedRow?.row)!]
             destination?.trackList = trackList
-            destination?.playlist = playlist
-        }
-        if segue.identifier == "backHome" {
-            let destination = segue.destination as? MainViewController;
-            destination?.playlist = playlist
+            destination?.first = true
+            trackIds = []
         }
     }
 

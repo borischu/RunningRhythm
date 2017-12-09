@@ -124,7 +124,7 @@ class SettingsViewController: UIViewController {
         }
         SPTAuth.defaultInstance().session = nil
         UserDefaults.standard.set(nil, forKey: "userName")
-        
+        playing = false
     }
     
     

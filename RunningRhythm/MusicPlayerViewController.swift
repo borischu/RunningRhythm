@@ -17,15 +17,15 @@ import Spartan
 public var workoutState = false
 public var songTitle = ""
 public var playing = false
+public var trackIds = [String]()
 
 class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
     
     var username: String?
     var track: SPTPlaylistTrack?
-    var playlist: SPTPartialPlaylist?
     var trackList = [SPTPlaylistTrack]()
-    var trackIds = [String]()
     var alertController: UIAlertController?
+    
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -41,6 +41,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
     
     
     var isChangingProgress: Bool = false
+    var first: Bool?
     
     let motionManager = CMMotionManager()
     let activityManager = CMMotionActivityManager()
@@ -69,11 +70,14 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         SPTAudioStreamingController.sharedInstance().playbackDelegate = self
         SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache() /* capacity: 1024 * 1024 * 64 */
         self.updateUI()
-        for track in self.trackList {
-            let trackId = track.identifier
-            if trackId != self.track?.identifier{
-                trackIds.append(trackId!)
+        if first == true {
+            for track in self.trackList {
+                let trackId = track.identifier
+                if trackId != self.track?.identifier{
+                    trackIds.append(trackId!)
+                }
             }
+            first = false
         }
     }
     
@@ -94,7 +98,7 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
             self.login()
         }
         Spartan.authorizationToken = SPTAuth.defaultInstance().session.accessToken!
-        Spartan.getAudioFeatures(trackIds: self.trackIds, success: { (AudioFeaturesObject) in
+        Spartan.getAudioFeatures(trackIds: trackIds, success: { (AudioFeaturesObject) in
             json = AudioFeaturesObject.toJSON()
             completion(json)
         }, failure: {(error) in
@@ -114,44 +118,45 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
                 tracksEnergy[trackURL!] = Float(rrCoefficient)
             }
             var currentActivity = 0.0
-            
-            if self.avgAcceleration >= 0.0 {
-                currentActivity = 0.3
-            }
-            if self.avgAcceleration >= 0.05 {
-                currentActivity = 0.4
-            }
-            if self.avgAcceleration >= 0.1 {
-                currentActivity = 0.5
-            }
-            if self.avgAcceleration >= 0.15 {
-                currentActivity = 0.55
-            }
-            if self.avgAcceleration >= 0.2 {
-                currentActivity = 0.6
-            }
-            if self.avgAcceleration >= 0.25 {
-                currentActivity = 0.65
-            }
+            print(self.avgAcceleration)
             if self.avgAcceleration >= 0.3 {
-                currentActivity = 0.7
+                currentActivity = 0.9
             }
-            if self.avgAcceleration >= 0.35 {
-                currentActivity = 0.75
-            }
-            if self.avgAcceleration >= 0.4 {
-                currentActivity = 0.8
-            }
-            if self.avgAcceleration >= 0.45 {
+            else if self.avgAcceleration >= 0.25 {
                 currentActivity = 0.85
             }
-            if self.avgAcceleration >= 0.5 {
-                currentActivity = 0.9
+            else if self.avgAcceleration >= 0.2 {
+                currentActivity = 0.8
+            }
+            else if self.avgAcceleration >= 0.175 {
+                currentActivity = 0.75
+            }
+            else if self.avgAcceleration >= 0.15 {
+                currentActivity = 0.7
+            }
+            else if self.avgAcceleration >= 0.125 {
+                currentActivity = 0.65
+            }
+            else if self.avgAcceleration >= 0.1 {
+                currentActivity = 0.6
+            }
+            else if self.avgAcceleration >= 0.075 {
+                currentActivity = 0.55
+            }
+            else if self.avgAcceleration >= 0.05 {
+                currentActivity = 0.5
+            }
+            else if self.avgAcceleration >= 0.025 {
+                currentActivity = 0.4
+            }
+            else {
+                currentActivity = 0.3
             }
             
             var n = 0
             var nearestElement: Float!
             var energyArray = Array(tracksEnergy.values).sorted()
+            print(energyArray)
             while energyArray[n] <= Float(currentActivity) {
                 n += 1
             }
@@ -160,14 +165,16 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
             for (track, energy) in tracksEnergy {
                 if (energy == nearestElement) {
                     queuedSpotifyURL = track
+                    print(currentActivity)
+                    print(energy)
                 }
             }
             let startIndex = queuedSpotifyURL.index(queuedSpotifyURL.startIndex, offsetBy: 14)
             let trackID = queuedSpotifyURL.substring(from: startIndex)
             var i = 0
-            for track in self.trackIds {
+            for track in trackIds {
                 if (track == trackID) {
-                    self.trackIds.remove(at: i)
+                    trackIds.remove(at: i)
                 } else {
                     i += 1
                 }
@@ -193,16 +200,15 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
                 accelerationSum += acceleration
             }
             self.avgAcceleration = accelerationSum/Double(self.accelerationList.count)
-            print(self.avgAcceleration)
-            if self.avgAcceleration <= 0.1 {
+            if self.avgAcceleration <= 0.05 {
                 self.workoutLabel.text = "Workout Level: Very Low"
-            } else if self.avgAcceleration <= 0.2 {
+            } else if self.avgAcceleration <= 0.1 {
                 self.workoutLabel.text = "Workout Level: Low"
-            } else if self.avgAcceleration <= 0.3 {
+            } else if self.avgAcceleration <= 0.15 {
                 self.workoutLabel.text = "Workout Level: Medium"
-            } else if self.avgAcceleration <= 0.4 {
+            } else if self.avgAcceleration <= 0.2 {
                 self.workoutLabel.text = "Workout Level: High"
-            } else if self.avgAcceleration > 0.5 {
+            } else if self.avgAcceleration >= 0.25 {
                 self.workoutLabel.text = "Workout Level: Very High"
             }
             
@@ -372,9 +378,10 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         // than we can assume that relink has happended.
         let isRelinked = SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.playbackSourceUri.contains("spotify:track") && !(SPTAudioStreamingController.sharedInstance().metadata.currentTrack!.playbackSourceUri == trackUri)
         print("Relinked \(isRelinked)")
-        if self.trackIds.count != 0 {
+        if trackIds.count != 0 {
             findNextSong()
         } else {
+            first = true
             self.alertController = UIAlertController(title: "End of Playlist", message: "Go back and choose another playlist.", preferredStyle: UIAlertControllerStyle.alert)
             let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
             self.alertController!.addAction(OKAction)
@@ -423,22 +430,15 @@ class MusicPlayerViewController: UIViewController, SPTAudioStreamingDelegate, SP
         }
     }
     
-    
+    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller
-        if segue.identifier == "goToHealth" {
-            let destination = segue.destination as? HealthDataViewController;
-            destination?.playlist = playlist
-        }
-        if segue.identifier == "musicToHome" {
-            let destination = segue.destination as? MainViewController;
-            destination?.playlist = playlist
-        }
     }
+    */
     
 }
 
